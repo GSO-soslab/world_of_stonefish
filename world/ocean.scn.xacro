@@ -13,7 +13,7 @@
     <xacro:arg name="robot_name" default="changeme"/>
     <xacro:include filename="$(find world_of_stonefish)/vehicles/$(arg robot_name).scn.xacro"/>
 
-    <xacro:alpha_rise robot_name="$(arg robot_name)" xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <xacro:race2 robot_name="$(arg robot_name)" xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
     <environment>
         <ned latitude="41" longitude="-71"/>

@@ -16,7 +16,7 @@
 
     <arg name="scenario" default="ocean"/>
 
-    <arg name="robot_name" default="changeme"/>
+    <arg name="robot_name" default="race2"/>
 
     <arg name="data_path" default="$(find world_of_stonefish)/data"/>
     <arg name="simulation_rate" default="100.0"/>
