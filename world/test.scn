@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+    This file is part of ALPHA AUV project.
+
+    Author: Emir Cem Gezer
+    Email: emircem@uri.edu;emircem.gezer@gmail.com
+    Year: 2022
+
+    Copyright (C) 2022 Smart Ocean Systems Laboratory
+-->
+<scenario>
+	<environment>
+		<ned latitude="41.7777" longitude="3.0333"/>
+		<ocean>
+			<water density="1000.0" jerlov="0.2"/>
+		</ocean>
+		<atmosphere>
+			<sun azimuth="40.0" elevation="60.0"/>
+		</atmosphere>
+	</environment>
+</scenario>

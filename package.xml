@@ -1,17 +1,23 @@
 <?xml version="1.0"?>
-<package format="2">
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>world_of_stonefish</name>
   <version>0.0.0</version>
-  <description>The world_of_stonefish package</description>
+  <description>TODO: Package description</description>
+  <maintainer email="mingxi@todo.todo">mingxi</maintainer>
+  <license>TODO: License declaration</license>
 
-  <maintainer email="emircem@uri.edu">Emir Cem Gezer</maintainer>
-  <author email="emircem@uri.edu">Emir Cem Gezer</author>
-  <author email="mzhou@uri.edu">Mingxi Zhou</author>
-  <author email="linzhao@uri.edu">Lin Zhao</author>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>stonefish_mvp2</exec_depend>
+  <!-- <exec_depend>std_msgs</exec_depend> -->
 
-  <license>GPLv3</license>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
 
-  <buildtool_depend>catkin</buildtool_depend>
-  <depend>stonefish_mvp</depend>
-
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>
