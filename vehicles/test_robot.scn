@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+    This file is part of ALPHA AUV project.
+    Author: Emir Cem Gezer
+    Email: emircem@uri.edu;emircem.gezer@gmail.com
+    Year: 2022
+    Copyright (C) 2022 Smart Ocean Systems Laboratory
+-->
+<scenario>
+    <robot name="$(arg robot_name)" fixed="false" self_collisions="false">
+        <base_link name="Vehicle" type="compound" physics="submerged">
+            <external_part name="Hull" type="model" physics="submerged" buoyant="false">
+                <physical>
+                    <mesh filename="parts/body/hull_mk2_reduced.obj" scale="0.001"/>
+                    <origin rpy="1.5707 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/body/hull_mk2_visual.obj" scale="0.001"/>
+                    <origin rpy="1.5707 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                </visual>
+                <material name="Vehicle"/>
+                <look name="yellow"/>
+                <mass value="30.0"/>
+                <!-- <inertia xyz="1.0 5.0 5.0"/> -->
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <cg xyz="-0.65 0.0 0.00" rpy="0.0 0.0 0.0"/>
+            </external_part>
+
+            <internal_part name="Foam" type="cylinder" physics="surface" buoyant="true">
+                <dimensions radius="0.12" height="0.68"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <material name="Foam"/>
+                <mass value="0.1"/>
+                <look name="grey"/>
+                <compound_transform rpy="0.0 1.571 0.0" xyz="-0.65 0.0 -0.1"/>
+            </internal_part>
+
+            <external_part name="Mast" type="model" physics="submerged">
+                <physical>
+                    <mesh filename="parts/others/mast.obj" scale="0.001"/>
+                    <origin rpy="-1.571 0.0 1.571"  xyz="-1.0 0.0 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/others/mast.obj" scale="0.001"/>
+                    <origin rpy="-1.571 0.0 1.571" xyz="-1.0 0.0 0.0"/>
+                </visual>
+                <material name="Resin"/>
+                <look name="white"/>
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </external_part>
+
+            <external_part name="ThrusterDuctSurge" type="model" physics="submerged" buoyant="false">
+                <physical>
+                    <mesh filename="parts/thruster/duct.obj" scale="0.0015"/>
+                    <origin rpy="0.0 1.571 0.0" xyz="-1.5 0.0 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/thruster/duct.obj" scale="0.0015"/>
+                    <origin rpy="0.0 1.571 0.0" xyz="-1.5 0.0 0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="black"/>
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </external_part>
+        </base_link>
+
+        <!-- the actual base frame  -->
+        <link name="Base" type="box" physics="submerged">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="Green"/>
+        </link>
+
+
+        <joint name="Joint1" type="fixed">
+            <parent name="Vehicle"/>
+            <child name="Base"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <axis xyz="1.0 0.0 0.0"/>
+        </joint>
+        <!--  -->
+
+         <actuator name="ThrusterSurge" type="thruster">
+                <link name="Base"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.5 0.0 0.0"/>
+                <specs thrust_coeff="1.7568" thrust_coeff_backward="1.0882" torque_coeff="0.01" max_rpm="3000.0"/>
+                <propeller diameter="0.08" right="true">
+                    <origin rpy="1.571 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                    <mesh filename="prop.obj" scale="1.5"/>
+                    <material name="Neutral"/>
+                    <look name="white"/>
+                </propeller>
+                <ros_subscriber topic="/$(arg robot_name)/control/thruster/surge"/>
+            </actuator>
+
+
+        <sensor name="gps" type="gps" rate="1.0">
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 0.0" xyz="-0.7 0.0 -0.3"/>
+            <noise ned_position="0.0"/>
+            <ros_publisher topic="/$(arg robot_name)/gps/fix"/>
+        </sensor>
+
+        <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </robot>
+</scenario>

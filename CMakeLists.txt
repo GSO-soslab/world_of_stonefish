@@ -33,6 +33,16 @@ install(DIRECTORY
 )
 
 install(DIRECTORY 
+  metadata 
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(DIRECTORY 
+  vehicles 
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(DIRECTORY 
   world 
   DESTINATION share/${PROJECT_NAME}
 )
