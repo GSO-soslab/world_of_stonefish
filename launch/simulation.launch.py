@@ -2,6 +2,8 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from ament_index_python.packages import get_package_share_path
+from ament_index_python.packages import get_package_prefix
+from ament_index_python.packages import get_package_share_path
 from launch_ros.actions import Node
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
@@ -22,7 +24,7 @@ def generate_launch_description():
     rendering_quality = LaunchConfiguration('rendering_quality')
 
     world_of_stonefish_path = os.path.join(
-        get_package_share_directory('world_of_stonefish'))       
+        get_package_share_path('world_of_stonefish'))       
 
     simulation_data_arg = DeclareLaunchArgument(
         'simulation_data',

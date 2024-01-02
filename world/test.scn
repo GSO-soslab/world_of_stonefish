@@ -18,7 +18,19 @@
 		<arg name="robot_name" value="test_robot"/>
 	</include>
 
-	
+	<static name="Bottom" type="model">
+        <physical>
+            <mesh filename="objects/flat_terrain.obj" scale="10.0" convex="true"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/flat_terrain.obj" scale="10.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="Gray"/>
+        <world_transform xyz="0.0 0.0 40.0" rpy="0.0 0.0 0.0"/>
+    </static>
 
 
 </scenario>
