@@ -15,6 +15,8 @@ import launch_ros
 import xacro
 
 
+
+
 def generate_launch_description():
     simulation_data = LaunchConfiguration('simulation_data')
     scenario_desc = LaunchConfiguration('scenario_desc')
@@ -25,10 +27,6 @@ def generate_launch_description():
 
     world_of_stonefish_path = os.path.join(
         get_package_share_path('world_of_stonefish'))       
-    
-    mvp_utility_dir = get_package_share_directory('mvp_utility')
-    parameters_file_path = os.path.join(mvp_utility_dir, 'params', 'imu_ned_enu.yaml')
-
 
     simulation_data_arg = DeclareLaunchArgument(
         'simulation_data',
@@ -37,7 +35,7 @@ def generate_launch_description():
 
     scenario_desc_arg = DeclareLaunchArgument(
         'scenario_desc',
-        default_value = os.path.join(world_of_stonefish_path, 'world', 'test.scn')
+        default_value = os.path.join(world_of_stonefish_path, 'world', 'test.scn.xacro')
     )
 
     simulation_rate_arg = DeclareLaunchArgument(
@@ -47,19 +45,22 @@ def generate_launch_description():
 
     window_res_x_arg = DeclareLaunchArgument(
         'window_res_x',
-        default_value = '800'
+        default_value = '600'
     )
 
     window_res_y_arg = DeclareLaunchArgument(
         'window_res_y',
-        default_value = '600'
+        default_value = '400'
     )
 
     rendering_quality_arg = DeclareLaunchArgument(
         'rendering_quality',
         default_value = 'high'
     )
-    
+
+    xacro_file = os.path.join(world_of_stonefish_path, 'world', 'test.scn.xacro') 
+    scenario_description_config = xacro.process_file(xacro_file).toxml()
+    scenario_description = {'scenario_description': scenario_description_config}
 
     stonefish_simulator_node = Node(
             package='stonefish_mvp2',
@@ -68,27 +69,8 @@ def generate_launch_description():
             name='stonefish_simulator',
             arguments=[simulation_data, scenario_desc, simulation_rate, window_res_x, window_res_y, rendering_quality],
             output='screen',
+            parameters=[scenario_description]
     )
-
-    pressure_to_depth_node = Node(
-        package="mvp_utility",
-        executable="pressure_to_depth_node",
-        namespace="test_robot",
-        name="pressure_to_depth_node"
-    )
-
-    imu_ned_enu_node = Node(
-        package="mvp_utility",
-        executable="imu_ned_enu_node",
-        namespace="test_robot",
-        name="imu_ned_enu_node",
-        remappings=[
-                ('imu_in/data', 'imu/stonefish/data'),
-                ('imu_out/data', 'imu/data'),
-        ],
-        parameters=[parameters_file_path]
-    )
-
 
     return LaunchDescription([
         simulation_data_arg,
@@ -97,7 +79,5 @@ def generate_launch_description():
         window_res_x_arg,
         window_res_y_arg,
         rendering_quality_arg,
-        stonefish_simulator_node,
-        pressure_to_depth_node,
-        imu_ned_enu_node
+        stonefish_simulator_node
     ])
