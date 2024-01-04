@@ -14,8 +14,8 @@
 
 	<include file="$(find world_of_stonefish)/metadata/materials.scn"/>
 	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
-	<include file="$(find world_of_stonefish)/vehicles/test_robot.scn">
-		<arg name="robot_name" value="test_robot"/>
+	<include file="$(find world_of_stonefish)/vehicles/mvp2_test_robot.scn">
+		<arg name="robot_name" value="mvp2_test_robot"/>
 	</include>
 
 	<static name="Bottom" type="model">
