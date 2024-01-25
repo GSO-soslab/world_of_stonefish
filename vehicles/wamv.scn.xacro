@@ -16,53 +16,71 @@
         <robot name="${robot_name}" fixed="false" self_collisions="false">
 
            
-            <base_link name="Vehicle" type="compound" physics="submerged">
-                <external_part name="base" type="model" physics="submerged" buoyant="true">
+            <base_link name="Vehicle" type="compound" physics="floating">
+                <external_part name="base" type="model" physics="surface" buoyant="false">
                     <physical>
                         <mesh filename="$(find world_of_stonefish)/data/parts/body/wamv_base.obj" scale="0.0045"/>
-                        <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                        <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0"/>
                     </physical>
                     <visual>
                         <mesh filename="$(find world_of_stonefish)/data/parts/body/wamv_base.obj" scale="0.0045"/>
-                        <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                        <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0"/>
                     </visual>
                     <material name="Vehicle"/>
                     <look name="yellow"/>
-                    <mass value="50"/>
+                    <mass value="0.1"/>
                     <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                    <cg xyz=" 0.0 0 1.0" rpy="0.0 0.0 0.0"/>
+                    <cg xyz=" 0.0 0 0.0" rpy="0.0 0.0 0.0"/>
                 </external_part>
 
-                <external_part name="engine_starboard" type="model" physics="submerged" bouyant="true">
+                <internal_part name="Foam_starboard" type="cylinder" physics="surface" buoyant="true">
+                    <dimensions radius="0.12" height="1.70"/>
+                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <material name="Foam"/>
+                    <mass value="22"/>
+                    <look name="grey"/>
+                    <compound_transform rpy="0.0 1.571 0.0" xyz="0.0 0.5 -0.1"/>
+                </internal_part>
+
+                <internal_part name="Foam_port" type="cylinder" physics="surface" buoyant="true">
+                    <dimensions radius="0.12" height="1.70"/>
+                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <material name="Foam"/>
+                    <mass value="22"/>
+                    <look name="grey"/>
+                    <compound_transform rpy="0.0 1.571 0.0" xyz="0.0 -0.5 -0.1"/>
+                </internal_part>
+
+                <external_part name="engine_starboard" type="model" physics="submerged" buoyant="false">
                     <physical>
                         <mesh filename="$(find world_of_stonefish)/data/parts/body/wamv_engine.obj" scale="0.5"/>
-                        <origin rpy="3.14 0 0" xyz="-1 .45 -.2"/>
+                        <origin rpy="3.14 0 0" xyz="-1.0 .45 -.2"/>
                     </physical>
                     <visual>
                         <mesh filename="$(find world_of_stonefish)/data/parts/body/wamv_engine.obj" scale="0.5"/>
-                        <origin rpy="3.14 0 0" xyz="-1 .45 -.2"/>
+                        <origin rpy="3.14 0 0" xyz="-1.0 .45 -.2"/>
                     </visual>
                     <material name="Vehicle"/>
-                    <look name="yellow"/>
-                    <mass value="10"/>
+                    <look name="black"/>
+                    <mass value="5"/>
                     <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                    <cg xyz=" 0.0 0 1.0" rpy="0.0 0.0 0.0"/>
+                    <cg xyz="0.0 0 0.0" rpy="0.0 0.0 0.0"/>
                 </external_part>
 
-                <external_part name="engine_port" type="model" physics="submerged" bouyant="true">
+                <external_part name="engine_port" type="model" physics="submerged" buoyant="false">
                     <physical>
                         <mesh filename="$(find world_of_stonefish)/data/parts/body/wamv_engine.obj" scale="0.5"/>
-                        <origin rpy="3.14 0 0" xyz="-1 -.45 -.2"/>
+                        <origin rpy="3.14 0 0" xyz="-1.0 -.45 -.2"/>
                     </physical>
                     <visual>
                         <mesh filename="$(find world_of_stonefish)/data/parts/body/wamv_engine.obj" scale="0.5"/>
-                        <origin rpy="3.14 0 0" xyz="-1 -.45 -.2"/>
+                        <origin rpy="3.14 0 0" xyz="-1.0 -.45 -.2"/>
                     </visual>
                     <material name="Vehicle"/>
-                    <look name="yellow"/>
-                    <mass value="10"/>
+                    <look name="black"/>
+                    <mass value="5"/>
                     <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                    <cg xyz=" 0.0 0 1.0" rpy="0.0 0.0 0.0"/>
+                    <cg xyz=" 0.0 0 0.0" rpy="0.0 0.0 0.0"/>
                 </external_part>
 
                 <!-- <external_part name="thrusterPort" type="model" physics="submerged" buoyant="false">
