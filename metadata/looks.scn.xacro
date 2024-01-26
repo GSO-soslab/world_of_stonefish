@@ -21,5 +21,22 @@
         <look name="duct" gray="0.1" roughness="0.4" metalness="0.5"/>
         <look name="manipulator" rgb="0.2 0.15 0.1" roughness="0.6" metalness="0.8"/>
         <look name="ee" rgb="0.59 0.56 0.51" roughness="0.6" metalness="0.8"/>
+        <look name="apriltag0" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00000_1000px.png"/>
+        <look name="apriltag1" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00001_1000px.png"/>
+        <look name="apriltag2" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00002_1000px.png"/>
+        <look name="apriltag3" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00003_1000px.png"/>
+        <look name="apriltag4" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00004_1000px.png"/>
+        <look name="apriltag5" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00005_1000px.png"/>
+        <look name="apriltag6" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00006_1000px.png"/>
+        <look name="apriltag7" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00007_1000px.png"/>
+        <look name="apriltag8" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00008_1000px.png"/>
+        <look name="apriltag9" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00009_1000px.png"/>
+        <look name="apriltag10" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00010_1000px.png"/>
+        <look name="apriltag11" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00011_1000px.png"/>
+        <look name="apriltag12" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00012_1000px.png"/>
+        <look name="apriltag13" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00013_1000px.png"/>
+        <look name="apriltag14" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00014_1000px.png"/>
+        <look name="apriltag15" gray="0.1" roughness="0.1" texture="apriltags/tag36_11_00015_1000px.png"/>
+
     </looks>
 </scenario>
