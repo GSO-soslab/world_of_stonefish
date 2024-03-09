@@ -26,11 +26,11 @@
                 <cg xyz="-0.65 0.0 0.00" rpy="0.0 0.0 0.0"/>
             </external_part>
 
-            <internal_part name="Foam" type="cylinder" physics="surface" buoyant="true">
+            <internal_part name="Foam" type="cylinder" physics="floating" buoyant="true">
                 <dimensions radius="0.12" height="0.68"/>
                 <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 <material name="Foam"/>
-                <mass value="0.1"/>
+                <mass value="0.5"/>
                 <look name="grey"/>
                 <compound_transform rpy="0.0 1.571 0.0" xyz="-0.65 0.0 -0.1"/>
             </internal_part>
@@ -97,42 +97,85 @@
         </actuator>
 
         <actuator name="ThrusterSwayBow" type="thruster">
-                <link name="Base"/>
-                <origin rpy="0.0 0.0 -1.5707963" xyz="-0.2295 0.0 0.0"/>
-                <specs thrust_coeff="0.4472" thrust_coeff_backward="0.3566" torque_coeff="0.01" max_rpm="3000.0"/>
-                <propeller diameter="0.08" right="true">
-                    <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
-                    <material name="Neutral"/>
-                    <look name="white"/>
-                </propeller>
-                <ros_subscriber topic="/$(arg robot_name)/control/thruster/sway_bow"/>
-            </actuator>
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 -1.5707963" xyz="-0.2295 0.0 0.0"/>
+            <specs thrust_coeff="0.4472" thrust_coeff_backward="0.3566" torque_coeff="0.01" max_rpm="3000.0"/>
+            <propeller diameter="0.08" right="true">
+                <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                <material name="Neutral"/>
+                <look name="white"/>
+            </propeller>
+            <ros_subscriber topic="/$(arg robot_name)/control/thruster/sway_bow"/>
+        </actuator>
 
-            <actuator name="ThrusterHeaveStern" type="thruster">
-                <link name="Base"/>
-                <origin rpy="0.0 1.571 0.0" xyz="-1.13 0.0 0.0"/>
-                <specs thrust_coeff="0.4472" thrust_coeff_backward="0.4472" torque_coeff="0.01" max_rpm="3000.0"/>
-                <propeller diameter="0.08" right="true">
-                    <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
-                    <mesh filename="prop.obj" scale="1.0"/>
-                    <material name="Neutral"/>
-                    <look name="white"/>
-                </propeller>
-                <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_stern"/>
-            </actuator>
+        <actuator name="ThrusterHeaveStern" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 1.571 0.0" xyz="-1.13 0.0 0.0"/>
+            <specs thrust_coeff="0.4472" thrust_coeff_backward="0.4472" torque_coeff="0.01" max_rpm="3000.0"/>
+            <propeller diameter="0.08" right="true">
+                <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                <mesh filename="prop.obj" scale="1.0"/>
+                <material name="Neutral"/>
+                <look name="white"/>
+            </propeller>
+            <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_stern"/>
+        </actuator>
 
-            <actuator name="ThrusterHeaveBow" type="thruster">
-                <link name="Base"/>
-                <origin rpy="0.0 1.571 0.0" xyz="-0.3545 0.0 0.0"/>
-                <specs thrust_coeff="0.4472" thrust_coeff_backward="0.4472" torque_coeff="0.01" max_rpm="3000.0"/>
-                <propeller diameter="0.08" right="true">
-                    <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
-                    <mesh filename="prop.obj" scale="1.0"/>
-                    <material name="Neutral"/>
-                    <look name="white"/>
-                </propeller>
-                <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_bow"/>
-            </actuator>
+        <actuator name="ThrusterHeaveBow" type="thruster">
+            <link name="Base"/>
+            <origin rpy="0.0 1.571 0.0" xyz="-0.3545 0.0 0.0"/>
+            <specs thrust_coeff="0.4472" thrust_coeff_backward="0.4472" torque_coeff="0.01" max_rpm="3000.0"/>
+            <propeller diameter="0.08" right="true">
+                <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                <mesh filename="prop.obj" scale="1.0"/>
+                <material name="Neutral"/>
+                <look name="white"/>
+            </propeller>
+            <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_bow"/>
+        </actuator>
+
+        <!-- control_surface_test -->
+        <!-- <link name="rudder_base" type="box" physics="submerged">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="Green"/>
+        </link>
+
+        <joint name="rudder_base_joint" type="fixed">
+            <parent name="Vehicle"/>
+            <child name="rudder_base"/>
+            <origin xyz="1.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
+        </joint>
+
+        <link name="rudder" type="model" physics="submerged">
+            <physical>
+				<mesh filename="parts/others/rudder.obj" scale="0.01"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			</physical>
+			<visual>
+				<mesh filename="parts/others/rudder.obj" scale="0.01"/>
+				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			</visual>
+			<material name="Neutral"/>
+			<look name="red"/>	
+        </link>
+        
+		<joint name="rudder_joint" type="revolute">
+			<parent name="rudder_base"/>
+			<child name="rudder"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<axis xyz="0.0 0.0 1.0"/>
+			<limits min="-1.0" max="1.0"/>
+		</joint>
+
+        <actuator name="rudder_servo" type="servo">
+            <controller position_gain="0.5" velocity_gain="2.0" max_torque="1.0" control_mode = "position"/>
+            <joint name="rudder_joint"/>
+            <initial position="0.0"/>
+        </actuator> -->
+
 
         <!-- sensors -->
         <sensor name="gps" type="gps" rate="1.0">
@@ -162,9 +205,14 @@
             <specs beam_angle="30.0"/>
             <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
             <noise velocity="0.01" altitude="0.001"/>
-            <ros_publisher topic="/$(arg robot_name)/dvl/twist" altitude_topic="/$(arg robot_name)/dvl/altitude"/>
+            <ros_publisher topic="/$(arg robot_name)/dvl/stonefish/twist" altitude_topic="/$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
 
         <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+
+
+        <ros_subscriber thrusters="/mvp2_test_robot/stonefish/thruster_command"/> 
+		<ros_publisher thrusters="/mvp2_test_robot/stonefish/thruster_state"/>
+
     </robot>
 </scenario>
