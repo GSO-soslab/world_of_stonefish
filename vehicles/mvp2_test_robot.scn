@@ -135,7 +135,7 @@
         </actuator>
 
         <!-- control_surface_test -->
-        <!-- <link name="rudder_base" type="box" physics="submerged">
+        <link name="rudder_base" type="box" physics="submerged">
             <dimensions xyz="0.01 0.02 0.01"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <material name="Neutral"/>
@@ -174,7 +174,8 @@
             <controller position_gain="0.5" velocity_gain="2.0" max_torque="1.0" control_mode = "position"/>
             <joint name="rudder_joint"/>
             <initial position="0.0"/>
-        </actuator> -->
+            <ros_subscriber topic="/$(arg robot_name)/control/fin/rudder"/>
+        </actuator>
 
 
         <!-- sensors -->
@@ -211,8 +212,8 @@
         <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
 
-        <ros_subscriber thrusters="/mvp2_test_robot/stonefish/thruster_command"/> 
-		<ros_publisher thrusters="/mvp2_test_robot/stonefish/thruster_state"/>
+        <ros_subscriber thrusters="/mvp2_test_robot/stonefish/thruster_command" servos="/mvp2_test_robot/fins/desired_joint_states"/> 
+		<ros_publisher thrusters="/mvp2_test_robot/stonefish/thruster_state" servos="/mvp2_test_robot/fins/joint_states"/>
 
     </robot>
 </scenario>
