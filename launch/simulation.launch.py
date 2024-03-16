@@ -70,24 +70,24 @@ def generate_launch_description():
             output='screen',
     )
 
-    pressure_to_depth_node = Node(
-        package="mvp_utility",
-        executable="pressure_to_depth_node",
-        namespace="test_robot",
-        name="pressure_to_depth_node"
-    )
+    # pressure_to_depth_node = Node(
+    #     package="mvp_utility",
+    #     executable="pressure_to_depth_node",
+    #     namespace="test_robot",
+    #     name="pressure_to_depth_node"
+    # )
 
-    imu_ned_enu_node = Node(
-        package="mvp_utility",
-        executable="imu_ned_enu_node",
-        namespace="test_robot",
-        name="imu_ned_enu_node",
-        remappings=[
-                ('imu_in/data', 'imu/stonefish/data'),
-                ('imu_out/data', 'imu/data'),
-        ],
-        parameters=[parameters_file_path]
-    )
+    # imu_ned_enu_node = Node(
+    #     package="mvp_utility",
+    #     executable="imu_ned_enu_node",
+    #     namespace="test_robot",
+    #     name="imu_ned_enu_node",
+    #     remappings=[
+    #             ('imu_in/data', 'imu/stonefish/data'),
+    #             ('imu_out/data', 'imu/data'),
+    #     ],
+    #     parameters=[parameters_file_path]
+    # )
 
 
     return LaunchDescription([
@@ -97,7 +97,7 @@ def generate_launch_description():
         window_res_x_arg,
         window_res_y_arg,
         rendering_quality_arg,
-        stonefish_simulator_node,
-        pressure_to_depth_node,
-        imu_ned_enu_node
+        stonefish_simulator_node
+        # pressure_to_depth_node,
+        # imu_ned_enu_node
     ])

@@ -36,6 +36,7 @@ set(library_name ${PROJECT_NAME})
 
 add_library(${library_name} SHARED 
 src/imu_driver.cpp
+src/actuator_driver.cpp
 )
 
 
@@ -55,6 +56,17 @@ ARCHIVE DESTINATION lib
 LIBRARY DESTINATION lib
 RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
+
+add_executable(actuator_driver_node src/actuator_driver_node.cpp)
+target_link_libraries(actuator_driver_node ${library_name})
+ament_target_dependencies(actuator_driver_node ${dependencies})
+
+install(TARGETS actuator_driver_node ${library_name}
+ARCHIVE DESTINATION lib
+LIBRARY DESTINATION lib
+RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+
 
 install(DIRECTORY include/
 DESTINATION include/
