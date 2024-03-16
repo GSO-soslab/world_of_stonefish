@@ -14,9 +14,18 @@
 
 	<include file="$(find world_of_stonefish)/metadata/materials.scn"/>
 	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
+
 	<include file="$(find world_of_stonefish)/vehicles/mvp2_test_robot.scn">
 		<arg name="robot_name" value="mvp2_test_robot"/>
 	</include>
+
+	<!-- <dynamic name="Cyl" type="cylinder" physics="surface" buoyant="true">
+    	  <dimensions radius="1.0" height="2.0"/>
+    	  <origin xyz="4.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    	  <material name="Foam"/>
+    	  <look name="yellow"/>
+    	  <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	</dynamic> -->
 
 	<static name="Bottom" type="model">
         <physical>
