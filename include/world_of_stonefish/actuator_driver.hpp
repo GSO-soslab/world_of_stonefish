@@ -19,25 +19,31 @@ class ActuatorDriver : public rclcpp::Node
         ActuatorDriver(std::string name = "stonefish_actuator_driver");
     
     private:
-        //thrusters
-        std::vector<std::string> thruster_topics;
+        //thrusters topics
+        std::vector<std::string> m_thruster_sub_topics;
+        
+        // total number of thrusters
         int m_thruster_len;
 
-        rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr thruster_pub;
-        
+        //thruster structure
         struct thruster_t
         {
             int index;
             std::string topic_name;
             rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr sub_;
         };
-
-        std_msgs::msg::Float64MultiArray thruster_out;
-
+        
+        // thruster vector
         std::vector<thruster_t> thruster_vector;
 
-        void f_thruster_callback(const std_msgs::msg::Float64::SharedPtr msg, int i);        
+        //thruster command array
+        std_msgs::msg::Float64MultiArray m_thruster_out;
 
+        void f_thruster_callback(const std_msgs::msg::Float64::SharedPtr msg, int i);    
+           
+
+        rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr thruster_pub;
+        std::string m_thruster_pub_topic;
 };
 
 
