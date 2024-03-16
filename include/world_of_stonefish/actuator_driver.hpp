@@ -11,7 +11,7 @@ This node is used to remap MVP actuator topics into stonefish compatible topics.
 #include <functional>
 #include <std_msgs/msg/float64_multi_array.hpp>
 #include <std_msgs/msg/float64.hpp>
-
+#include <std_msgs/msg/string.hpp>
 
 class ActuatorDriver : public rclcpp::Node
 {
@@ -30,14 +30,13 @@ class ActuatorDriver : public rclcpp::Node
             int index;
             std::string topic_name;
             rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr sub_;
-            std_msgs::msg::Float64 data;
         };
 
         std_msgs::msg::Float64MultiArray thruster_out;
 
         std::vector<thruster_t> thruster_vector;
 
-        void f_thruster_callback(const std_msgs::msg::Float64::SharedPtr msg);        
+        void f_thruster_callback(const std_msgs::msg::Float64::SharedPtr msg, int i);        
 
 };
 

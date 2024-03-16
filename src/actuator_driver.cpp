@@ -27,15 +27,18 @@ ActuatorDriver::ActuatorDriver(std::string name) : Node(name)
         thruster_t t;
         t.index = i;
         t.topic_name = thruster_topics[i];
-        t.sub_ = this->create_subscription<std_msgs::msg::Float64>(t.topic_name, 10, 
-                                                                std::bind(&ActuatorDriver::f_thruster_callback, 
-                                                                this, _1));
+        t.sub_ = this->create_subscription<std_msgs::msg::Float64>(t.topic_name, 
+                                                                   10, 
+                                                                   [this, i](const std_msgs::msg::Float64::SharedPtr msg){
+                                                                    this->f_thruster_callback(msg, i);
+                                                                    }
+                                                                    );
+
         thruster_vector.push_back(t);
     }
 }
 
- void ActuatorDriver::f_thruster_callback(const std_msgs::msg::Float64::SharedPtr msg)
+ void ActuatorDriver::f_thruster_callback(const std_msgs::msg::Float64::SharedPtr msg, int i)
  {
-    
-
+    printf("ID=%d, msg=%f\r\n", i, msg->data);
  }
