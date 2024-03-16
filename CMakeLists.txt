@@ -27,6 +27,7 @@ set(dependencies
   std_msgs
   geometry_msgs
   sensor_msgs
+  stonefish_ros2
 )
 
 include_directories(include
@@ -35,8 +36,9 @@ include_directories(include
 set(library_name ${PROJECT_NAME})
 
 add_library(${library_name} SHARED 
-src/imu_driver.cpp
-src/thruster_driver.cpp
+  include/world_of_stonefish/imu_driver.cpp
+  include/world_of_stonefish/thruster_driver.cpp
+  include/world_of_stonefish/dvl_driver.cpp
 )
 
 
@@ -67,6 +69,16 @@ LIBRARY DESTINATION lib
 RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
+
+add_executable(dvl_driver_node src/dvl_driver_node.cpp)
+target_link_libraries(dvl_driver_node ${library_name})
+ament_target_dependencies(dvl_driver_node ${dependencies})
+
+install(TARGETS dvl_driver_node ${library_name}
+ARCHIVE DESTINATION lib
+LIBRARY DESTINATION lib
+RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
 
 install(DIRECTORY include/
 DESTINATION include/

@@ -1,4 +1,4 @@
-#include "world_of_stonefish/thruster_driver.hpp"
+#include "thruster_driver.hpp"
 
 #include <chrono>
 #include <functional>

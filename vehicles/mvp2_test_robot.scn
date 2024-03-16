@@ -206,7 +206,7 @@
             <specs beam_angle="30.0"/>
             <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
             <noise velocity="0.01" altitude="0.001"/>
-            <ros_publisher topic="/$(arg robot_name)/dvl/stonefish/twist" altitude_topic="/$(arg robot_name)/dvl/stonefish/altitude"/>
+            <ros_publisher topic="/$(arg robot_name)/dvl/stonefish/raw" altitude_topic="/$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
 
         <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>

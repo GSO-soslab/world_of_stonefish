@@ -3,7 +3,7 @@
     User can also use it to do other transfer by defining different param values
 */
 
-#include "world_of_stonefish/imu_driver.hpp"
+#include "imu_driver.hpp"
 #include "Eigen/Dense"
 #include "iostream"
 #include "cstdio"
