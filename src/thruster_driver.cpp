@@ -1,4 +1,4 @@
-#include "world_of_stonefish/actuator_driver.hpp"
+#include "world_of_stonefish/thruster_driver.hpp"
 
 #include <chrono>
 #include <functional>
@@ -11,7 +11,7 @@ using std::placeholders::_2;
 using std::placeholders::_3;
 using namespace std::chrono_literals;
 
-ActuatorDriver::ActuatorDriver(std::string name) : Node(name)
+ThrusterDriver::ThrusterDriver(std::string name) : Node(name)
 {
     this->declare_parameter("thruster_length", 0);
     this->get_parameter("thruster_length", m_thruster_len);
@@ -47,7 +47,7 @@ ActuatorDriver::ActuatorDriver(std::string name) : Node(name)
 
 //callback function. the thruster command (array) will publish when the last thruster command was received.
 // such a publishing rate is determined based on the controller.
- void ActuatorDriver::f_thruster_callback(const std_msgs::msg::Float64::SharedPtr msg, int i)
+ void ThrusterDriver::f_thruster_callback(const std_msgs::msg::Float64::SharedPtr msg, int i)
  {
     m_thruster_out.data[i] = msg->data;
 

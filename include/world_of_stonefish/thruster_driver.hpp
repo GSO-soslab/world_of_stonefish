@@ -2,8 +2,8 @@
 This node is used to remap MVP actuator topics into stonefish compatible topics.
 */
 
-#ifndef ACTUATOR_DRIVER_HPP_
-#define ACTUATOR_DRIVER_HPP_
+#ifndef THRUSTER_DRIVER_HPP_
+#define THRUSTER_DRIVER_HPP_
 
 #include "rclcpp/rclcpp.hpp"
 #include <string>
@@ -13,10 +13,10 @@ This node is used to remap MVP actuator topics into stonefish compatible topics.
 #include <std_msgs/msg/float64.hpp>
 #include <std_msgs/msg/string.hpp>
 
-class ActuatorDriver : public rclcpp::Node
+class ThrusterDriver : public rclcpp::Node
 {
     public:
-        ActuatorDriver(std::string name = "stonefish_actuator_driver");
+        ThrusterDriver(std::string name = "stonefish_thruster_driver");
     
     private:
         //thrusters topics
