@@ -39,6 +39,7 @@ add_library(${library_name} SHARED
   include/world_of_stonefish/imu_driver.cpp
   include/world_of_stonefish/thruster_driver.cpp
   include/world_of_stonefish/dvl_driver.cpp
+  include/world_of_stonefish/pressure_sensor_driver.cpp
 )
 
 
@@ -69,7 +70,6 @@ LIBRARY DESTINATION lib
 RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
-
 add_executable(dvl_driver_node src/dvl_driver_node.cpp)
 target_link_libraries(dvl_driver_node ${library_name})
 ament_target_dependencies(dvl_driver_node ${dependencies})
@@ -79,6 +79,20 @@ ARCHIVE DESTINATION lib
 LIBRARY DESTINATION lib
 RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
+
+add_executable(pressure_sensor_node src/pressure_sensor_node.cpp)
+target_link_libraries(pressure_sensor_node ${library_name})
+ament_target_dependencies(pressure_sensor_node ${dependencies})
+
+install(TARGETS pressure_sensor_node ${library_name}
+ARCHIVE DESTINATION lib
+LIBRARY DESTINATION lib
+RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+
+
+
+
 
 install(DIRECTORY include/
 DESTINATION include/

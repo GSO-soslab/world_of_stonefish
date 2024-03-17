@@ -51,10 +51,10 @@ ThrusterDriver::ThrusterDriver(std::string name) : Node(name)
  {
     m_thruster_out.data[i] = msg->data;
 
-    if(i == m_thruster_len-1)
-    {
+    // if(i == m_thruster_len-1)
+    // {
         thruster_pub->publish(m_thruster_out);
-    }
+    // }
 
  }
 
