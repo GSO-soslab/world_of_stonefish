@@ -40,6 +40,7 @@ add_library(${library_name} SHARED
   include/world_of_stonefish/thruster_driver.cpp
   include/world_of_stonefish/dvl_driver.cpp
   include/world_of_stonefish/pressure_sensor_driver.cpp
+  include/world_of_stonefish/servo_driver.cpp
 )
 
 
@@ -91,6 +92,15 @@ RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
 
+add_executable(servo_driver_node src/servo_driver_node.cpp)
+target_link_libraries(servo_driver_node ${library_name})
+ament_target_dependencies(servo_driver_node ${dependencies})
+
+install(TARGETS servo_driver_node ${library_name}
+ARCHIVE DESTINATION lib
+LIBRARY DESTINATION lib
+RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
 
 
 
