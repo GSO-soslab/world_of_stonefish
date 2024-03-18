@@ -135,7 +135,7 @@
         </actuator>
 
         <!-- control_surface_test -->
-        <link name="rudder_base_link" type="box" physics="submerged">
+        <!-- <link name="rudder_base_link" type="box" physics="submerged">
             <dimensions xyz="0.01 0.02 0.01"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <material name="Neutral"/>
@@ -180,7 +180,7 @@
             <controller position_gain="1.0" velocity_gain="1.0" max_torque="1.0"/>
             <joint name="rudder_joint"/>
             <initial position="0.0"/>
-        </actuator>
+        </actuator> -->
 
 
         <!-- sensors -->
