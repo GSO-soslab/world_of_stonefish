@@ -11,7 +11,7 @@
     <xacro:include filename="$(find world_of_stonefish)/metadata/looks.scn.xacro"/>
     <xacro:include filename="$(find world_of_stonefish)/metadata/materials.scn.xacro"/>
 
-    <static name="iceberg" type="model">
+    <!-- <static name="iceberg" type="model">
         <physical>
             <mesh filename="objects/iceberg_01.obj" scale="0.5" convex="false"/>
             <origin xyz="-90 20 0.0" rpy="0.0 0.0 -3.925"/>
@@ -24,25 +24,28 @@
         <look name="ice"/>
         <cg xyz=" 0.0 0 0.0" rpy="0.0 0.0 0.0"/>
         <world_transform xyz="55.0 55.0 0.0" rpy="3.1415926 0.0 0.0"/>
-    </static>
-
-    <!-- <animated name="AnimMesh" type="model" collisions="true">
+    </static> -->
+    
+    <animated name="AnimMesh" type="model" collisions="true">
         <physical>
-            <mesh filename="iceberg_01.obj" scale="0.5" convex="false"/>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mesh filename="objects/iceberg_01.obj" scale="0.5"/>
+            <origin xyz="-45 20 0.0" rpy="3.1415926 0.0 -3.925"/>
         </physical>
         <visual>
-            <mesh filename="iceberg_01.obj" scale="0.5"/>
-            <origin xyz="0.0 0.0 .0" rpy="0.0 0.0 0.0"/>
+            <mesh filename="objects/iceberg_01.obj" scale="0.5"/>
+            <origin xyz="-45 20 0.0" rpy="3.1415926 0.0 -3.925"/>
         </visual>
         <material name="Ice"/>
         <look name="ice"/>
-        <world_transform xyz="100.0 100.0 0.0" rpy="3.1415926 0.0 0.0"/>
-        <trajectory type="spline" playback="boomerang">
-            <keypoint time="0.0" xyz="0.0 60.0 0.0" rpy="3.1415926 0.0 0.0"/>
-            <keypoint time="10.0" xyz="10.0 60.0 0.0" rpy="3.1415926 0.0 0"/>
-            <keypoint time="40.0" xyz="10.0 60.0 0.0" rpy="3.1415926 0.0 0.0"/>
+        <cg xyz=" 0.0 0 0.0" rpy="0.0 0.0 0.0"/>
+        <!-- <world_transform xyz="55.0 55.0 0.0" rpy="3.1415926 0.0 0.0"/> -->
+        <trajectory type="spline" playback="onetime">
+            <keypoint time="0.0" xyz="-30 45 0.0" rpy="3.1415926 0.0 3.925"/>
+            <keypoint time="10.0" xyz="-30 45 0.0" rpy="3.1415926 0.0 3.925"/>
+            <!-- <keypoint time="70.0" xyz="-35 50.0 0.0" rpy="3 0.0 3.925"/> -->
+            <keypoint time="70.0" xyz="-35 50.0 0.0" rpy="3.143 0.0 3.925"/>
+
         </trajectory>
-    </animated> -->
+    </animated>
 
 </scenario>
