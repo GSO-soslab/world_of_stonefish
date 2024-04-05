@@ -93,7 +93,7 @@
                     <material name="Neutral"/>
                     <look name="white"/>
                 </propeller>
-                <ros_subscriber topic="/$(arg robot_name)/control/thruster/surge"/>
+                <!-- <ros_subscriber topic="/$(arg robot_name)/control/thruster/surge"/> -->
         </actuator>
 
         <actuator name="ThrusterSwayBow" type="thruster">
@@ -105,7 +105,7 @@
                 <material name="Neutral"/>
                 <look name="white"/>
             </propeller>
-            <ros_subscriber topic="/$(arg robot_name)/control/thruster/sway_bow"/>
+            <!-- <ros_subscriber topic="/$(arg robot_name)/control/thruster/sway_bow"/> -->
         </actuator>
 
         <actuator name="ThrusterHeaveStern" type="thruster">
@@ -118,7 +118,7 @@
                 <material name="Neutral"/>
                 <look name="white"/>
             </propeller>
-            <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_stern"/>
+            <!-- <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_stern"/> -->
         </actuator>
 
         <actuator name="ThrusterHeaveBow" type="thruster">
@@ -131,7 +131,7 @@
                 <material name="Neutral"/>
                 <look name="white"/>
             </propeller>
-            <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_bow"/>
+            <!-- <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_bow"/> -->
         </actuator>
 
         <!-- control_surface_test -->
