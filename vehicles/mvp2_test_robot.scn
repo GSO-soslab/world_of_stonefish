@@ -193,21 +193,21 @@
 
          <sensor name="imu_sf" type="imu" rate="20.0">
                 <link name="Base"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-0.65 0.0 -0.05"/>
+                <origin rpy="3.1415926 0.0 0.0" xyz="-0.7 0.0 -0.05"/>
                 <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" yaw_drift="0.0001" linear_acceleration="0.0001"/>
                 <ros_publisher topic="/$(arg robot_name)/imu/stonefish/data"/>
         </sensor>
 
         <sensor name="pressure" type="pressure" rate="5.0">
                 <link name="Base"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-1.20 0.0 0.0"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.0 0.0 0.0"/>
                 <noise pressure="2.0"/>
                 <ros_publisher topic="/$(arg robot_name)/pressure"/>
         </sensor>
 
         <sensor name="dvl_sf" type="dvl" rate="5.0">
             <link name="Base"/>
-            <origin rpy="3.1415926 0.0 0.0" xyz="-0.65 0.0 0.1"/>
+            <origin rpy="3.1415926 0.0 0.0" xyz="-0.55 0.0 0.1"/>
             <specs beam_angle="30.0"/>
             <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
             <noise velocity="0.01" altitude="0.001"/>

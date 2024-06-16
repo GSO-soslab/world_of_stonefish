@@ -83,7 +83,7 @@ void IMUDriver::f_imu_callback(const sensor_msgs::msg::Imu::SharedPtr msg)
     m.orientation.z = newq.z();
     m.orientation.w = newq.w();
     m.header.frame_id = m_frame_id;
-    m.linear_acceleration.z = - m.linear_acceleration.z;
+    // m.linear_acceleration.z = - m.linear_acceleration.z;
 
     m_imu_out->publish(m);
 
