@@ -12,7 +12,7 @@ from launch.substitutions import PathJoinSubstitution
 from setuptools import Command
 import launch_ros.descriptions
 import launch_ros
-import xacro
+# import xacro
 
 
 def generate_launch_description():
