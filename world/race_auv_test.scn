@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<scenario>
+	<environment>
+		<ned latitude="41" longitude="-71"/>
+		<ocean>
+			<water density="1023.0" jerlov="0.2"/>
+		</ocean>
+		<atmosphere>
+			<sun azimuth="40.0" elevation="10.0"/>
+		</atmosphere>
+	</environment>
+
+	<!-- <arg name="robot_name" value="race_auv"/>  -->
+	
+	<include file="$(find world_of_stonefish)/metadata/materials.scn"/>
+	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
+	<!-- <include file="$(find world_of_stonefish)/vehicles/race_auv.scn"/> -->
+	<!-- <include file="$(find world_of_stonefish)/data/objects/docking_assy.obj"/> -->
+
+	<include file="$(find world_of_stonefish)/vehicles/race_auv.scn">
+		<arg name="robot_name" value="race_auv"/>
+	</include>
+
+	<static name="Bottom" type="model">
+        <physical>
+            <mesh filename="objects/flat_terrain.obj" scale="10.0" convex="true"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/flat_terrain.obj" scale="10.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="Gray"/>
+        <world_transform xyz="0.0 0.0 40.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+</scenario>
