@@ -9,7 +9,7 @@
 <scenario>
     <robot name="$(arg robot_name)" fixed="false" self_collisions="false">
         <base_link name="Vehicle" type="compound" physics="submerged">
-            <external_part name="Hull" type="model" physics="submerged" buoyant="false">
+            <external_part name="Hull" type="model" physics="floating" buoyant="false">
                 <physical>
                     <mesh filename="parts/body/hull_mk2_reduced.obj" scale="0.001"/>
                     <origin rpy="1.5707 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -45,7 +45,7 @@
                     <origin rpy="-1.571 0.0 1.571" xyz="-1.0 0.0 0.0"/>
                 </visual>
                 <material name="Resin"/>
-                <look name="white"/>
+                <look name="red"/>
                 <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             </external_part>
 
@@ -82,21 +82,21 @@
 
         <!--  -->
         <!-- Thruster -->
-         <actuator name="ThrusterSurge" type="thruster">
+         <actuator name="ThrusterSurge" type="propeller">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0.0" xyz="-1.5 0.0 0.0"/>
-                <specs thrust_coeff="1.7568" thrust_coeff_backward="1.0882" torque_coeff="0.01" max_rpm="3000.0"/>
-                <propeller diameter="0.08" right="true">
+                <specs thrust_coeff="100.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                 <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
+                <propeller diameter="0.1145" right="true">
                     <origin rpy="1.571 0.0 0.0" xyz="0.0 0.0 0.0"/>
                     <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
                     <mesh filename="prop.obj" scale="1.5"/>
                     <material name="Neutral"/>
-                    <look name="white"/>
+                    <look name="red"/>
                 </propeller>
-                <!-- <ros_subscriber topic="/$(arg robot_name)/control/thruster/surge"/> -->
         </actuator>
 
-        <actuator name="ThrusterSwayBow" type="thruster">
+        <actuator name="ThrusterSwayBow" type="propeller">
             <link name="Base"/>
             <origin rpy="0.0 0.0 -1.5707963" xyz="-0.2295 0.0 0.0"/>
             <specs thrust_coeff="0.4472" thrust_coeff_backward="0.3566" torque_coeff="0.01" max_rpm="3000.0"/>
@@ -105,10 +105,9 @@
                 <material name="Neutral"/>
                 <look name="white"/>
             </propeller>
-            <!-- <ros_subscriber topic="/$(arg robot_name)/control/thruster/sway_bow"/> -->
         </actuator>
 
-        <actuator name="ThrusterHeaveStern" type="thruster">
+        <actuator name="ThrusterHeaveStern" type="propeller">
             <link name="Base"/>
             <origin rpy="0.0 1.571 0.0" xyz="-1.13 0.0 0.0"/>
             <specs thrust_coeff="0.4472" thrust_coeff_backward="0.4472" torque_coeff="0.01" max_rpm="3000.0"/>
@@ -118,10 +117,9 @@
                 <material name="Neutral"/>
                 <look name="white"/>
             </propeller>
-            <!-- <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_stern"/> -->
         </actuator>
 
-        <actuator name="ThrusterHeaveBow" type="thruster">
+        <actuator name="ThrusterHeaveBow" type="propeller">
             <link name="Base"/>
             <origin rpy="0.0 1.571 0.0" xyz="-0.3545 0.0 0.0"/>
             <specs thrust_coeff="0.4472" thrust_coeff_backward="0.4472" torque_coeff="0.01" max_rpm="3000.0"/>
@@ -131,56 +129,7 @@
                 <material name="Neutral"/>
                 <look name="white"/>
             </propeller>
-            <!-- <ros_subscriber topic="/$(arg robot_name)/control/thruster/heave_bow"/> -->
         </actuator>
-
-        <!-- control_surface_test -->
-        <!-- <link name="rudder_base_link" type="box" physics="submerged">
-            <dimensions xyz="0.01 0.02 0.01"/>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <material name="Neutral"/>
-            <look name="Green"/>
-        </link>
-
-        <joint name="rudder_base_joint" type="fixed">
-            <parent name="Vehicle"/>
-            <child name="rudder_base_link"/>
-            <origin xyz="1.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <axis xyz="0.0 0.0 0.0"/>
-        </joint>
-
-        <link name="rudder_link" type="box" physics="submerged">
-            <dimensions xyz="0.01 0.02 0.01"/>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <material name="Neutral"/>
-            <look name="Green"/>
-        </link>
-
-		<joint name="rudder_joint" type="revolute">
-			<parent name="rudder_base_link"/>
-			<child name="rudder_link"/>
-			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-			<axis xyz="0.0 0.0 1.0"/>
-			<limits min="-1.0" max="1.0"/>
-		</joint>
-        
-         <actuator name="rudder" type="rudder">
-            <specs lift_coeff="0.5" drag_coeff="0.1" max_angle="1.0" area="0.05" stall_angle="0.9" inverted="false"/>
-                <visual>
-                    <mesh filename="parts/others/rudder.obj" scale="0.01"/>
-                    <material name="Neutral"/>
-                    <look name="Red"/>
-                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                </visual>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <link name="rudder_link"/>
-        </actuator>
-
-        <actuator name="rudder_servo" type="servo">
-            <controller position_gain="1.0" velocity_gain="1.0" max_torque="1.0"/>
-            <joint name="rudder_joint"/>
-            <initial position="0.0"/>
-        </actuator> -->
 
 
         <!-- sensors -->
@@ -217,8 +166,9 @@
         <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
 
-        <ros_subscriber thrusters="/mvp2_test_robot/stonefish/thruster_command" servos="/mvp2_test_robot/fins/desired_joint_states"/> 
-		<ros_publisher thrusters="/mvp2_test_robot/stonefish/thruster_state" servos="/mvp2_test_robot/fins/joint_states"/>
-
+        <!-- <ros_subscriber thrusters="/mvp2_test_robot/stonefish/thruster_command" servos="/mvp2_test_robot/fins/desired_joint_states"/>  -->
+		<!-- <ros_publisher thrusters="/mvp2_test_robot/stonefish/thruster_state" servos="/mvp2_test_robot/fins/joint_states"/> -->
+        <ros_subscriber propellers="/mvp2_test_robot/stonefish/thruster_command"/> 
+		<ros_publisher propellers="/mvp2_test_robot/stonefish/thruster_state"/>
     </robot>
 </scenario>
