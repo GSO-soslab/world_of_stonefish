@@ -18,7 +18,7 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(tf2_eigen REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
-
+find_package(mvp_acomm_interfaces REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -30,6 +30,7 @@ set(dependencies
   sensor_msgs
   stonefish_ros2
   nav_msgs
+  mvp_acomm_interfaces
 )
 
 include_directories(include
@@ -43,6 +44,7 @@ add_library(${library_name} SHARED
   include/world_of_stonefish/dvl_driver.cpp
   include/world_of_stonefish/pressure_sensor_driver.cpp
   include/world_of_stonefish/servo_driver.cpp
+  include/world_of_stonefish/usbl_driver.cpp
 )
 
 
@@ -104,7 +106,15 @@ LIBRARY DESTINATION lib
 RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
+add_executable(usbl_driver_node src/usbl_driver_node.cpp)
+target_link_libraries(usbl_driver_node ${library_name})
+ament_target_dependencies(usbl_driver_node ${dependencies})
 
+install(TARGETS usbl_driver_node ${library_name}
+ARCHIVE DESTINATION lib
+LIBRARY DESTINATION lib
+RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
 
 install(DIRECTORY include/
 DESTINATION include/

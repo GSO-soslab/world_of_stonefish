@@ -163,7 +163,7 @@
             <ros_publisher topic="$(arg robot_name)/dvl/stonefish/raw" altitude_topic="$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
 
-        <comm name="USBL" device_id="1" type="usbl">
+        <comm name="usbl" device_id="1" type="usbl">
             <specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
             <connect device_id="2" occlusion_test="false"/>
             <autoping rate="1.0"/>

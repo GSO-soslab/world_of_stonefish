@@ -33,12 +33,12 @@
         <comm name="Modem" device_id="2" type="acoustic_modem">
             <specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
             <connect device_id="1" occlusion_test="false"/>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 3.0 0.0" rpy="0.0 0.0 0.0"/>
             <link name="Base"/>
             <ros_publisher topic="buoy/modem"/>
         </comm>
 
-        <world_transform xyz="20.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <world_transform xyz="5.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         
     </robot>
 </scenario>
