@@ -137,21 +137,21 @@
             <link name="Base"/>
             <origin rpy="0.0 0.0 0.0" xyz="-0.7 0.0 -0.3"/>
             <noise ned_position="0.0"/>
-            <ros_publisher topic="/$(arg robot_name)/gps/fix"/>
+            <ros_publisher topic="$(arg robot_name)/gps/fix"/>
         </sensor>
 
          <sensor name="imu_sf" type="imu" rate="20.0">
                 <link name="Base"/>
                 <origin rpy="3.1415926 0.0 0.0" xyz="-0.7 0.0 -0.05"/>
                 <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" yaw_drift="0.0001" linear_acceleration="0.0001"/>
-                <ros_publisher topic="/$(arg robot_name)/imu/stonefish/data"/>
+                <ros_publisher topic="$(arg robot_name)/imu/stonefish/data"/>
         </sensor>
 
         <sensor name="pressure" type="pressure" rate="5.0">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0.0" xyz="-1.0 0.0 0.0"/>
                 <noise pressure="2.0"/>
-                <ros_publisher topic="/$(arg robot_name)/pressure"/>
+                <ros_publisher topic="$(arg robot_name)/pressure"/>
         </sensor>
 
         <sensor name="dvl_sf" type="dvl" rate="5.0">
@@ -160,15 +160,26 @@
             <specs beam_angle="30.0"/>
             <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
             <noise velocity="0.01" altitude="0.001"/>
-            <ros_publisher topic="/$(arg robot_name)/dvl/stonefish/raw" altitude_topic="/$(arg robot_name)/dvl/stonefish/altitude"/>
+            <ros_publisher topic="$(arg robot_name)/dvl/stonefish/raw" altitude_topic="$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
+
+        <comm name="USBL" device_id="1" type="usbl">
+            <specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
+            <connect device_id="2" occlusion_test="false"/>
+            <autoping rate="1.0"/>
+            <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
+            <resolution range="0.1" angle="0.1"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
+        </comm>
 
         <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
 
         <!-- <ros_subscriber thrusters="/mvp2_test_robot/stonefish/thruster_command" servos="/mvp2_test_robot/fins/desired_joint_states"/>  -->
 		<!-- <ros_publisher thrusters="/mvp2_test_robot/stonefish/thruster_state" servos="/mvp2_test_robot/fins/joint_states"/> -->
-        <ros_subscriber propellers="/mvp2_test_robot/stonefish/thruster_command"/> 
-		<ros_publisher propellers="/mvp2_test_robot/stonefish/thruster_state"/>
+        <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/> 
+		<ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/>
     </robot>
 </scenario>

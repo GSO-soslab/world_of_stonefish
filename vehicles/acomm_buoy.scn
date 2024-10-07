@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<scenario>
+    <robot name="buoy" fixed="false" self_collisions="false">
+        <base_link name="Vehicle" type="compound" physics="submerged">
+
+            <external_part name="Foam" type="cylinder" physics="floating" buoyant="true">
+                <dimensions radius="0.12" height="0.68"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <material name="Foam"/>
+                <!-- <mass value="0.5"/> -->
+                <look name="grey"/>
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </external_part>
+        </base_link>
+
+        <!-- the actual base frame  -->
+        <link name="Base" type="box" physics="submerged">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="Green"/>
+        </link>
+
+
+        <joint name="Joint1" type="fixed">
+            <parent name="Vehicle"/>
+            <child name="Base"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <axis xyz="1.0 0.0 0.0"/>
+        </joint>
+
+        <comm name="Modem" device_id="2" type="acoustic_modem">
+            <specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
+            <connect device_id="1" occlusion_test="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="buoy/modem"/>
+        </comm>
+
+        <world_transform xyz="20.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        
+    </robot>
+</scenario>
