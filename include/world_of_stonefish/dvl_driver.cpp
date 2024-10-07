@@ -26,6 +26,20 @@ DVLDriver::DVLDriver(std::string name) : Node(name)
                                                                 this, _1));
 }
 
+DVLDriver::~DVLDriver() 
+{
+    RCLCPP_INFO(this->get_logger(), "Shutting down DVLDriver node...");
+}
+
+void DVLDriver::shutdown_node() 
+{
+    RCLCPP_INFO(this->get_logger(), "Cleaning up resources...");
+    // Add any custom cleanup logic here
+    dvl_pub.reset();  // Clean up publisher
+    dvl_sub.reset();  // Clean up subscription
+}
+
+
 void DVLDriver::f_dvl_callback(const stonefish_ros2::msg::DVL::SharedPtr msg)
 {
     geometry_msgs::msg::TwistWithCovarianceStamped pub_msg;

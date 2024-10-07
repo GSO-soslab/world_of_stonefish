@@ -9,8 +9,14 @@ int main(int argc, char ** argv)
 
   std::shared_ptr<DVLDriver> node = std::make_shared<DVLDriver>();
 
+  rclcpp::on_shutdown([node](){
+    node->shutdown_node();
+  });
+
   rclcpp::spin(node);
 
   rclcpp::shutdown();
+
+  
   return 0;
 }

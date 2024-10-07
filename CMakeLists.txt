@@ -11,6 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(stonefish_ros2 REQUIRED)
 find_package(Stonefish REQUIRED 1.3.0)
 find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(tf2 REQUIRED)
@@ -28,6 +29,7 @@ set(dependencies
   geometry_msgs
   sensor_msgs
   stonefish_ros2
+  nav_msgs
 )
 
 include_directories(include

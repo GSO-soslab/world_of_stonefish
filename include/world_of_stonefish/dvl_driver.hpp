@@ -10,7 +10,8 @@ class DVLDriver : public rclcpp::Node
 {
     public:
         DVLDriver(std::string name = "stonefish_dvl_driver");
-
+        ~DVLDriver();
+        void shutdown_node(); // Shutdown function
     private:
         std::string m_dvl_in;
         std::string m_dvl_out;
@@ -18,6 +19,7 @@ class DVLDriver : public rclcpp::Node
         rclcpp::Subscription<stonefish_ros2::msg::DVL>::SharedPtr dvl_sub;
         rclcpp::Publisher<geometry_msgs::msg::TwistWithCovarianceStamped>::SharedPtr dvl_pub;
         void f_dvl_callback(const stonefish_ros2::msg::DVL::SharedPtr msg);
+        
 };
 
 
