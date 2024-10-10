@@ -12,7 +12,7 @@ USBLDriver::USBLDriver(std::string name) : Node(name)
     this->get_parameter("sound_speed",m_sound_speed);
     //topic with namespace
     // _publisher = this->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("depth", 10);
-    _publisher = this->create_publisher<mvp_acomm_interfaces::msg::UsblData>("usbl_data", 10);
+    _publisher = this->create_publisher<acomms_msgs::msg::UsblData>("usbl_data", 10);
     //topci without namespace
     _subscriber = this->create_subscription<stonefish_ros2::msg::BeaconInfo>("stonefish/usbl/beacon_info", 10, 
                                                                 std::bind(&USBLDriver::f_sf_usbl, 

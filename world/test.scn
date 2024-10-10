@@ -19,7 +19,7 @@
 		<arg name="robot_name" value="mvp2_test_robot"/>
 	</include>
 
-	<include file="$(find world_of_stonefish)/vehicles/acomm_buoy.scn" />
+	<!-- <include file="$(find world_of_stonefish)/vehicles/acomm_buoy.scn" /> -->
 
 	<!-- <dynamic name="Cyl" type="cylinder" physics="surface" buoyant="true">
     	  <dimensions radius="1.0" height="2.0"/>
