@@ -26,7 +26,7 @@
                 <cg xyz="-0.65 0.0 0.00" rpy="0.0 0.0 0.0"/>
             </external_part>
 
-            <internal_part name="Foam" type="cylinder" physics="floating" buoyant="true">
+            <internal_part name="Foam" type="cylinder" physics="submerged" buoyant="true">
                 <dimensions radius="0.112" height="0.68"/>
                 <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 <material name="Foam"/>

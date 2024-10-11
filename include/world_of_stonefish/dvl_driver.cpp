@@ -18,8 +18,14 @@ DVLDriver::DVLDriver(std::string name) : Node(name)
     this->declare_parameter("dvl_out", "");
     this->get_parameter("dvl_out", m_dvl_out);
 
+    this->declare_parameter("dvl_alt_out", "");
+    this->get_parameter("dvl_alt_out", m_dvl_altitude_out);
+
     //topic with namespace
     dvl_pub = this->create_publisher<geometry_msgs::msg::TwistWithCovarianceStamped>(m_dvl_out, 10);
+    
+    dvl_altitude_pub = this->create_publisher<geometry_msgs::msg::PointStamped>(m_dvl_altitude_out, 10);
+
     //topci without namespace
     dvl_sub = this->create_subscription<stonefish_ros2::msg::DVL>(m_dvl_in, 10, 
                                                                 std::bind(&DVLDriver::f_dvl_callback, 
@@ -44,6 +50,8 @@ void DVLDriver::f_dvl_callback(const stonefish_ros2::msg::DVL::SharedPtr msg)
 {
     geometry_msgs::msg::TwistWithCovarianceStamped pub_msg;
 
+    geometry_msgs::msg::PointStamped alt_msg;
+
     pub_msg.header.stamp = msg->header.stamp;
     pub_msg.header.frame_id = msg->header.frame_id;
     pub_msg.twist.twist.linear.x = msg->velocity.x;
@@ -52,5 +60,14 @@ void DVLDriver::f_dvl_callback(const stonefish_ros2::msg::DVL::SharedPtr msg)
     pub_msg.twist.covariance[0] = msg->velocity_covariance[0];
     pub_msg.twist.covariance[4] = msg->velocity_covariance[4];
     pub_msg.twist.covariance[8] = msg->velocity_covariance[8];
+
+    alt_msg.header.stamp = msg->header.stamp;
+    alt_msg.header.frame_id = msg->header.frame_id;
+    alt_msg.point.x = 0;
+    alt_msg.point.y = 0;
+    alt_msg.point.z = -msg->altitude;  //postive value but dvl frame has z pointing upward
+
+
     dvl_pub->publish(pub_msg);
+    dvl_altitude_pub->publish(alt_msg);
 }
