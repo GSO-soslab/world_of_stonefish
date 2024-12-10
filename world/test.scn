@@ -5,6 +5,11 @@
 		<ned latitude="41" longitude="-71"/>
 		<ocean>
 			<water density="1023.0" jerlov="0.2"/>
+			<!-- <waves height="1.5"/> -->
+			<particles enabled="true"/>
+			<current type="uniform">
+				<velocity xyz="0.0 0.0 0.0"/>
+			</current>
 		</ocean>
 		<atmosphere>
 			<sun azimuth="40.0" elevation="10.0"/>
