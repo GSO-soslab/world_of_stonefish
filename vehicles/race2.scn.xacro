@@ -4,8 +4,8 @@
     This file is part of RACE AUV project.
     Author: Farhang Naderi,Mingxi Zhou
     Email: farhang.nba@gmail.com,farhang.naderi@uri.edu,mzhou@uri.edu
-    Year: 2023
-    Copyright (C) 2023 Smart Ocean Systems Laboratory
+    Year: 2024
+    Copyright (C) 2024 Smart Ocean Systems Laboratory
 -->
 
 <scenario xmlns:xacro="http://ros.org/wiki/xacro">
@@ -29,14 +29,15 @@
                     <material name="Neutral"/>
                     <look name="yellow"/>
                     <mass value="25.0"/>
-                    <!-- <inertia xyz="1.0 10.0 10.0"/> -->
+                    <!-- disable for stonefish to determine it -->
+                    <!-- <inertia xyz="5.0 10.0 10.0"/>  -->
                     <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                    <cg xyz="-0.456 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                    <cg xyz="-0.456 0.0 -0.1" rpy="0.0 0.0 0.0"/>
                 </external_part>
 
                 <internal_part name="Foam" type="box" physics="surface" buoyant="true">
                     <dimensions xyz="0.8 0.21 0.15"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="-0.456 0.0 -0.1"/>
+                    <origin rpy="0.0 0.0 0.0" xyz="-0.456 0.0 -0.2"/>
                     <material name="Foam"/>
                     <mass value="0.15"/>
                     <look name="grey"/>
@@ -53,6 +54,19 @@
                 <look name="Green"/>
             </link>
 
+            <!-- <link name="Base2" type="box" physics="submerged">
+                <dimensions xyz="0.01 0.02 0.01"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <material name="Neutral"/>
+                <look name="Green"/>
+            </link>
+
+            <joint name="Joint1" type="fixed">
+                <parent name="Base"/>
+                <child name="Base2"/>
+                <origin xyz="0.2 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <axis xyz="1.0 0.0 0.0"/>
+            </joint> -->
 
             <joint name="Joint1" type="fixed">
                 <parent name="Vehicle"/>
@@ -148,7 +162,8 @@
             <joint name="surge_port_servo_joint" type="fixed">
                 <parent name="Vehicle"/>
                 <child name="surge_port_servo_link"/>
-                <origin rpy="1.571 1.78 -0.52" xyz="-0.86 -0.125 -0.05485"/>
+                <!-- <origin rpy="1.571 1.78 -0.52" xyz="-0.86 -0.125 -0.05485"/> -->
+                <origin rpy="1.571 0.21 -0.52" xyz="-0.86 -0.125 -0.05485"/>  <!-- passing the servo rotation mount as 1.57-1.78 = 0.21 -->
                 <axis xyz="1.0 0.0 0.0"/>
             </joint>
 
@@ -158,7 +173,7 @@
                 <child name="surge_port_duct_link"/>
                 <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 <axis xyz="0.0 0.0 1.0"/>
-                <limits min="-3.14" max="3.14"/>    
+                <limits min="-3.1000000" max="3.1000000"/>    
             </joint>
             
                 <!-- fixed joint between thruster and duct -->
@@ -172,14 +187,14 @@
                 <!-- attached servo to the joint between servo and duct  -->
             <actuator name="surge_port_servo" type="servo"> 
                 <joint name="surge_port_servo2duct_joint"/> 
-                <controller position_gain="0.03" velocity_gain="1.0" max_torque="0.2"/>
+                <controller position_gain="0.1" velocity_gain="0.5" max_torque="1.2"/>
             </actuator> 
 
                 <!-- attach thruster/propeller at the thruster link -->
             <actuator name="ThrusterSurgePort" type="thruster">
                 <link name="surge_port_thruster_link"/>
                 <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                <specs thrust_coeff="0.4472" thrust_coeff_backward="0.3566" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="0.4472" thrust_coeff_backward="0.4472" torque_coeff="0.01" max_rpm="3000.0"/>
                 <propeller diameter="0.08" right="true">
                     <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
                     <material name="Neutral"/>
@@ -227,7 +242,8 @@
             <joint name="surge_starboard_servo_joint" type="fixed">
                 <parent name="Vehicle"/>
                 <child name="surge_starboard_servo_link"/>
-                <origin rpy="-1.571 -1.78 0.52" xyz="-0.86 0.125 -0.05485"/>
+                <!-- <origin rpy="-1.571 -1.78 0.52" xyz="-0.86 0.125 -0.05485"/> -->
+                <origin rpy="-1.571 -0.21 0.52" xyz="-0.86 0.125 -0.05485"/> 
                 <axis xyz="1.0 0.0 0.0"/>
             </joint>
 
@@ -237,7 +253,7 @@
                 <child name="surge_starboard_duct_link"/>
                 <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 <axis xyz="0.0 0.0 1.0"/>
-                <limits min="-3.14" max="3.14"/>    
+                <limits min="-3.1000000" max="3.1000000"/>    
             </joint>
             
                 <!-- fixed joint between thruster and duct -->
@@ -251,14 +267,14 @@
                 <!-- attached servo to the joint between servo and duct  -->
             <actuator name="surge_starboard_servo" type="servo"> 
                 <joint name="surge_starboard_servo2duct_joint"/> 
-                <controller position_gain="0.03" velocity_gain="1.0" max_torque="0.2"/>
+                <controller position_gain="0.1" velocity_gain="0.5" max_torque="1.2"/>
             </actuator> 
 
                 <!-- attach thruster/propeller at the thruster link -->
             <actuator name="ThrusterSurgeStarbrd" type="thruster">
                 <link name="surge_starboard_thruster_link"/>
                 <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                <specs thrust_coeff="0.4472" thrust_coeff_backward="0.3566" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="0.4472" thrust_coeff_backward="0.4472" torque_coeff="0.01" max_rpm="3000.0"/>
                 <propeller diameter="0.08" right="true">
                     <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
                     <material name="Neutral"/>
@@ -281,7 +297,7 @@
                 <origin rpy="3.1415926 0.0 0.0" xyz="-0.5 0.0 0.0"/>
                 <specs beam_angle="30.0"/>
                 <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
-                <noise velocity="0.01" altitude="0.001"/>
+                <noise velocity="0.005" altitude="0.001"/>
                 <ros_publisher topic="/${robot_name}/dvl/twist" altitude_topic="/${robot_name}/dvl/altitude"/>
             </sensor>
 
@@ -294,7 +310,7 @@
 
             <sensor name="gps" type="gps" rate="1.0">
                 <link name="Base"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-0.5 0.0 -0.18"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-0.5 0.0 -0.3"/>
                 <noise ned_position="0.0"/>
                 <ros_publisher topic="/${robot_name}/gps/fix"/>
             </sensor>
