@@ -82,7 +82,7 @@
 
         <!--  -->
         <!-- Thruster -->
-         <actuator name="ThrusterSurge" type="propeller">
+        <actuator name="ThrusterSurge" type="propeller">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0.0" xyz="-1.5 0.0 0.0"/>
                 <specs thrust_coeff="278.0" torque_coeff="0.01" max_rpm="3000.0"/>
