@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<scenario>
+    <robot name="$(arg robot_name)" fixed="false" self_collisions="false">
+        <base_link name="Vehicle" type="compound" physics="submerged">
+            <external_part name="Hull" type="model" physics="submerged" buoyant="false">
+                <physical>
+                    <mesh filename="parts/body/narwhal_hull.obj" scale="0.001"/>
+                    <origin rpy="3.1415926 0.0 0.0" xyz="-0.5 0.0 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/body/narwhal_hull.obj" scale="0.001"/>
+                    <origin rpy="3.1415926 0.0 0.0" xyz="-0.5 0.0 0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="yellow"/>
+                <mass value="20.5"/>
+                <compound_transform rpy="0.0 0.0 3.1415926" xyz="0.0 0.0 0.0"/>
+                <cg xyz="0.0 0.0 0.00" rpy="0.0 0.0 0.0"/>
+            </external_part>
+
+            <internal_part name="Foam" type="cylinder" physics="floating" buoyant="true">
+                <dimensions radius="0.10795" height="0.57"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <material name="Foam"/>
+                <mass value="0.2"/>
+                <look name="grey"/>
+                <compound_transform rpy="0.0 1.571 0.0" xyz="0.0 0.0 0.0"/>
+            </internal_part>
+
+
+            <external_part name="docking_nose" type="model" physics="submerged">
+                <physical>
+                    <mesh filename="parts/others/front_nose.obj" scale="0.001"/>
+                    <origin rpy="0.0 -1.5717 0.0"  xyz="-0.45 0.0 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/others/front_nose.obj" scale="0.001"/>
+                    <origin rpy="0.0 -1.5717 0.0" xyz="-0.45 0.0 0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="red"/>
+                <compound_transform rpy="0.0 0.0 3.1415926" xyz="0.0 0.0 0.0"/>
+            </external_part>
+
+
+        </base_link>
+        
+        <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+
+        <!-- <ros_subscriber thrusters="/mvp2_test_robot/stonefish/thruster_command" servos="/mvp2_test_robot/fins/desired_joint_states"/>  -->
+		<!-- <ros_publisher thrusters="/mvp2_test_robot/stonefish/thruster_state" servos="/mvp2_test_robot/fins/joint_states"/> -->
+        <!-- <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/>  -->
+		<!-- <ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/> -->
+    </robot>
+</scenario>
