@@ -53,11 +53,11 @@
     </static>
 
 	<static name="Rod" type="cylinder">
-        <dimensions radius="0.0254" height="5.0"/>
+        <dimensions radius="0.0254" height="10.0"/>
 		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 		<material name="Aluminium"/>
 		<look name="red"/>
-		<world_transform xyz="0.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
+		<world_transform xyz="0.0 0.0 4.0" rpy="0.0 0.0 0.0"/>
     </static>
 
 
