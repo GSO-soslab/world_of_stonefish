@@ -84,7 +84,8 @@
                 <mass value="2.85"/>
 
                 <cg xyz="0.125 0.0 0.05" rpy="0.0 0.0 0.0"/>
-                <compound_transform rpy="0.0 0.0 0.0" xyz="-0.1 0.0 0.0"/>
+                <!-- <compound_transform rpy="0.0 0.0 0.0" xyz="-0.1 0.0 0.0"/> -->
+                <compound_transform rpy="0.0 0.0 0.0" xyz="-0.25 0.0 0.0"/>
             </external_part>
         </link>
 
@@ -158,10 +159,14 @@
 
         <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
-        <ros_subscriber servos="$(arg robot_name)/stonefish/servo/desired_joint_states"/> 
-		<ros_publisher  servos="$(arg robot_name)/stonefish/servo/joint_states"/>
+        <ros_subscriber 
+            servos="$(arg robot_name)/stonefish/servo/desired_joint_states" 
+            propellers="$(arg robot_name)/stonefish/thruster_command"
+        /> 
+		<ros_publisher  
+            servos="$(arg robot_name)/stonefish/servo/joint_states" 
+            propellers="$(arg robot_name)/stonefish/thruster_state"
+        />
         
-        <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/> 
-		<ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/>
     </robot>
 </scenario>
