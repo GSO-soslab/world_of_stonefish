@@ -5,15 +5,14 @@
 		<ned latitude="41" longitude="-71"/>
 		<ocean>
 			<water density="1023.0" jerlov="0.2"/>
-			<!-- <waves height="1.5"/> -->
 			<particles enabled="true"/>
 			<current type="uniform">
 				<velocity xyz="0.05 0.0 0.0"/>
 			</current>
-			<waves height="0.5"/>
+			<!-- <waves height="0.5"/> -->
 		</ocean>
 		<atmosphere>
-			<sun azimuth="40.0" elevation="10.0"/>
+			<sun azimuth="40.0" elevation="60.0"/>
 		</atmosphere>
 	</environment>
 
@@ -37,6 +36,28 @@
         <material name="Rock"/>
         <look name="Gray"/>
         <world_transform xyz="0.0 0.0 20.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+	<static name="Ice" type="model">
+        <physical>
+            <mesh filename="objects/ice_cover.obj" scale="1.0" convex="true"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/ice_cover.obj" scale="1.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Ice"/>
+        <look name="ice"/>
+        <world_transform xyz="0.0 0.0 -0.2" rpy="0.0 0.0 0.0"/>
+    </static>
+
+	<static name="Rod" type="cylinder">
+        <dimensions radius="0.0254" height="5.0"/>
+		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		<material name="Aluminium"/>
+		<look name="red"/>
+		<world_transform xyz="0.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
     </static>
 
 
