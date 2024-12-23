@@ -189,6 +189,14 @@
             <ros_publisher topic="$(arg robot_name)/dvl/stonefish/raw" altitude_topic="$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
 
+
+        <sensor name="Camera" rate="10.0" type="camera">
+            <specs resolution_x="800" resolution_y="600" horizontal_fov="120.0"/>
+            <origin xyz="0.6 0.0 0.0" rpy="2.3557 0.0 1.5707"/>
+            <link name="Vehicle"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/camera"/>
+        </sensor>
+
         <world_transform xyz="2.0 2.0 4.0" rpy="0.0 0.0 0.0"/>
 
         <ros_subscriber 
