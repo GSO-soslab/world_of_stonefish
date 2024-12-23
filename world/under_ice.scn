@@ -38,7 +38,7 @@
         <world_transform xyz="0.0 0.0 20.0" rpy="0.0 0.0 0.0"/>
     </static>
 
-	<static name="Ice" type="model">
+	<!-- <static name="Ice" type="model">
         <physical>
             <mesh filename="objects/ice_cover.obj" scale="1.0" convex="true"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -50,7 +50,7 @@
         <material name="Ice"/>
         <look name="ice"/>
         <world_transform xyz="0.0 0.0 -0.2" rpy="0.0 0.0 0.0"/>
-    </static>
+    </static> -->
 
 	<static name="Rod" type="cylinder">
         <dimensions radius="0.0254" height="10.0"/>

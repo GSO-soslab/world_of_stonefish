@@ -159,12 +159,12 @@
         
 
         <!-- sensors -->
-        <!-- <sensor name="gps" type="gps" rate="1.0">
+        <sensor name="gps" type="gps" rate="1.0">
             <link name="Vehicle"/>
-            <origin rpy="0.0 0.0 0.0" xyz="-0.7 0.0 -0.3"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.5 0.0 -0.1"/>
             <noise ned_position="0.0"/>
             <ros_publisher topic="$(arg robot_name)/gps/fix"/>
-        </sensor> -->
+        </sensor>
 
          <sensor name="imu_sf" type="imu" rate="20.0">
                 <link name="Vehicle"/>
