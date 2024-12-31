@@ -85,9 +85,9 @@
 
                 <cg xyz="0.125 0.0 0.05" rpy="0.0 0.0 0.0"/>
                 <!-- <compound_transform rpy="0.0 0.0 0.0" xyz="-0.1 0.0 0.0"/> -->
-                <compound_transform rpy="0.0 0.0 0.0" xyz="-0.12 0.0 0.0"/>
+                <!-- <compound_transform rpy="0.0 0.0 0.0" xyz="-0.12 0.0 0.0"/> -->
                 <!-- <compound_transform rpy="0.0 0.0 0.0" xyz="-0.05 0.0 0.0"/> -->
-                <!-- <compound_transform rpy="0.0 0.0 0.0" xyz="-0.25 0.0 0.0"/> -->
+                <compound_transform rpy="0.0 0.0 0.0" xyz="-0.25 0.0 0.0"/>
             </external_part>
         </link>
 
