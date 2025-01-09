@@ -31,7 +31,7 @@
     	  <origin xyz="4.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     	  <material name="Foam"/>
     	  <look name="yellow"/>
-    	  <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    	  <world_transform xyz="10.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 	</dynamic> -->
 
 	<static name="Bottom" type="model">
