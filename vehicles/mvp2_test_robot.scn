@@ -20,22 +20,22 @@
                 </visual>
                 <material name="Vehicle"/>
                 <look name="yellow"/>
-                <mass value="24.0"/>
+                <mass value="26.0"/>
                 <!-- <inertia xyz="1.0 8.0 8.0"/> -->
                 <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 <cg xyz="-0.65 0.0 0.00" rpy="0.0 0.0 0.0"/>
             </external_part>
 
-            <external_part name="Foam" type="cylinder" physics="surface" buoyant="true">
+            <internal_part name="Foam" type="cylinder" physics="floating" buoyant="true">
                 <dimensions radius="0.112" height="0.68"/>
                 <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 <material name="Foam"/>
                 <mass value="0.5"/>
                 <look name="grey"/>
                 <compound_transform rpy="0.0 1.571 0.0" xyz="-0.65 0.0 -0.1"/>
-            </external_part>
+            </internal_part>
 
-            <external_part name="Mast" type="model" physics="submerged" buoyant="true">
+            <external_part name="Mast" type="model" physics="submerged" buoyant="true ">
                 <physical>
                     <mesh filename="parts/others/mast.obj" scale="0.001"/>
                     <origin rpy="-1.571 0.0 1.571"  xyz="-1.0 0.0 0.0"/>

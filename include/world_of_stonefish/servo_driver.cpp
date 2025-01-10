@@ -28,6 +28,9 @@ ServoDriver::ServoDriver(std::string name) : Node(name)
     // create publisher
     servo_pub = this->create_publisher<sensor_msgs::msg::JointState>(m_servo_pub_topic, 10);
 
+    m_servo_out.name.resize(m_servo_len);
+    m_servo_out.position.resize(m_servo_len);
+
     // create subscribers
     for (int i =0; i< m_servo_len; i++)
     {
@@ -43,10 +46,10 @@ ServoDriver::ServoDriver(std::string name) : Node(name)
                                                                     );
 
         servo_vector.push_back(t);
+        m_servo_out.name[i] = m_servo_joints[i];
     }
 
-    m_servo_out.name.resize(m_servo_len);
-    m_servo_out.position.resize(m_servo_len);
+    
 }
 
 

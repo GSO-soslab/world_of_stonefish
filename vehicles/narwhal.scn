@@ -87,22 +87,44 @@
                 <!-- <compound_transform rpy="0.0 0.0 0.0" xyz="-0.1 0.0 0.0"/> -->
                 <!-- <compound_transform rpy="0.0 0.0 0.0" xyz="-0.12 0.0 0.0"/> -->
                 <!-- <compound_transform rpy="0.0 0.0 0.0" xyz="-0.05 0.0 0.0"/> -->
-                <compound_transform rpy="0.0 0.0 0.0" xyz="-0.25 0.0 0.0"/>
+                <!-- <compound_transform rpy="0.0 0.0 0.0" xyz="-0.25 0.0 0.0"/> -->
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             </external_part>
         </link>
 
-         <joint name="adjustable_weight_joint" type="revolute">
+        <link name="lead_screw_nut" type="box" physics="surface">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="Green"/>
+        </link>
+
+        <joint name="lead_screw_joint" type="prismatic">
             <parent name="Vehicle"/>
+            <child name="lead_screw_nut"/>
+            <origin rpy="0.0 0.0 0.0" xyz="-0.25 0.0 0.0"/>
+            <axis xyz="1.0 0.0 0.0"/>
+            <limits min="0.0" max="0.15"/>    
+        </joint>
+
+        <actuator name="Servo" type="servo">
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="30.0" max_velocity="10.0"/>
+            <joint name="lead_screw_joint"/>
+            <initial position="0.0"/>
+        </actuator>
+
+         <joint name="revolute_servo_joint" type="revolute">
+            <parent name="lead_screw_nut"/>
             <child name="adjustable_weight_link"/>
             <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
             <axis xyz="1.0 0.0 0.0"/>
             <limits min="-3.1400000" max="3.1400000"/>    
         </joint>
 
-   
+    
         <actuator name="Servo" type="servo">
             <controller position_gain="1.0" velocity_gain="1.0" max_torque="30.0" max_velocity="10.0"/>
-            <joint name="adjustable_weight_joint"/>
+            <joint name="revolute_servo_joint"/>
             <initial position="0.0"/>
         </actuator>
         
