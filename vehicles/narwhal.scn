@@ -99,21 +99,21 @@
             <look name="Green"/>
         </link>
 
-        <joint name="lead_screw_joint" type="prismatic">
+        <joint name="shifting_mass_linear_joint" type="prismatic">
             <parent name="Vehicle"/>
             <child name="lead_screw_nut"/>
-            <origin rpy="0.0 0.0 0.0" xyz="-0.25 0.0 0.0"/>
+            <origin rpy="0.0 0.0 0.0" xyz="-0.1 0.0 0.0"/>
             <axis xyz="1.0 0.0 0.0"/>
-            <limits min="0.0" max="0.15"/>    
+            <limits min="-0.15" max="0.0"/>    
         </joint>
 
         <actuator name="Servo" type="servo">
             <controller position_gain="1.0" velocity_gain="1.0" max_torque="30.0" max_velocity="10.0"/>
-            <joint name="lead_screw_joint"/>
+            <joint name="shifting_mass_linear_joint"/>
             <initial position="0.0"/>
         </actuator>
 
-         <joint name="revolute_servo_joint" type="revolute">
+         <joint name="shifting_mass_revolute_joint" type="revolute">
             <parent name="lead_screw_nut"/>
             <child name="adjustable_weight_link"/>
             <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -124,7 +124,7 @@
     
         <actuator name="Servo" type="servo">
             <controller position_gain="1.0" velocity_gain="1.0" max_torque="30.0" max_velocity="10.0"/>
-            <joint name="revolute_servo_joint"/>
+            <joint name="shifting_mass_revolute_joint"/>
             <initial position="0.0"/>
         </actuator>
         
