@@ -20,8 +20,7 @@
                 </visual>
                 <material name="Vehicle"/>
                 <look name="yellow"/>
-                <mass value="24.6"/>
-                <!-- <mass value="24"/> -->
+                <mass value="25"/>
                 <!-- <inertia xyz="1.0 10.0 10.0"/> -->
                 <compound_transform rpy="3.1415926 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 <cg xyz="-0.456 0.0 0.0" rpy="0.0 0.0 0.0"/>
