@@ -21,6 +21,7 @@
                 <material name="Vehicle"/>
                 <look name="yellow"/>
                 <mass value="24.6"/>
+                <!-- <mass value="24"/> -->
                 <!-- <inertia xyz="1.0 10.0 10.0"/> -->
                 <compound_transform rpy="3.1415926 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 <cg xyz="-0.456 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -131,7 +132,7 @@
                 <child name="surge_port_thruster_link"/>
                 <origin rpy="1.571 0.0 -0.52" xyz="-0.86 -0.125 -0.05485"/> 
                 <axis xyz="0.0 0.0 1.0"/>
-                <limits min="-1.57100000" max="1.5710000"/>   
+                <limits min="-3.14" max="3.14"/>   
         </joint>
 
         
@@ -140,7 +141,7 @@
                 <child name="surge_starboard_thruster_link"/>
                 <origin rpy="-1.571 0.0 0.52" xyz="-0.86 0.125 -0.05485"/> 
                 <axis xyz="0.0 0.0 1.0"/>
-                <limits min="-1.57100000" max="1.5710000"/>   
+                <limits min="-3.14" max="3.14"/>   
         </joint>
 
         
