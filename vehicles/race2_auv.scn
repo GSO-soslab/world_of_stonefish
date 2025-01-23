@@ -69,9 +69,9 @@
 
 
         <!-- Thruster -->
-        <actuator name="ThrusterSwayStern" type="propeller">
+        <actuator name="ThrusterHeaveStern" type="propeller">
             <link name="Base"/>
-            <origin rpy="0.0 0.0 1.5707" xyz="-0.66635 0.0 -0.07535"/>
+            <origin rpy="0.0 -1.5707 0.0" xyz="-0.66635 0.0 -0.07535"/>
             <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/>
             <propeller diameter="0.08" right="true">
                 <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
@@ -131,7 +131,7 @@
                 <child name="surge_port_thruster_link"/>
                 <origin rpy="1.571 0.0 -0.52" xyz="-0.86 -0.125 -0.05485"/> 
                 <axis xyz="0.0 0.0 1.0"/>
-                <limits min="-3.14" max="3.14"/>   
+                <limits min="-3.0" max="3.0"/>   
         </joint>
 
         
@@ -140,7 +140,7 @@
                 <child name="surge_starboard_thruster_link"/>
                 <origin rpy="-1.571 0.0 0.52" xyz="-0.86 0.125 -0.05485"/> 
                 <axis xyz="0.0 0.0 1.0"/>
-                <limits min="-3.14" max="3.14"/>   
+                <limits min="-3.0" max="3.0"/>   
         </joint>
 
         
