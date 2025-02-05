@@ -107,95 +107,147 @@
         <!-- ################################################################### -->
         <!-- surge port thruster -->
         <link name="surge_starboard_thruster_link" type="model" physics="submerged" buoyant="true">
-                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                 <physical>
-                    <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                </physical>
-                <visual>
-                    <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                </visual>
-                <material name="Resin"/>
-                <look name="red"/>
-                <mass value="0.1"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <physical>
+                <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </physical>
+            <visual>
+                <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </visual>
+            <material name="Resin"/>
+            <look name="red"/>
+            <mass value="0.1"/>
 
         </link>
 
 
         <link name="surge_port_thruster_link" type="model" physics="submerged" buoyant="true">
-                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-                 <physical>
-                    <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                </physical>
-                <visual>
-                    <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                </visual>
-                <material name="Resin"/>
-                <look name="red"/>
-                <mass value="0.1"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <physical>
+                <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </physical>
+            <visual>
+                <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </visual>
+            <material name="Resin"/>
+            <look name="red"/>
+            <mass value="0.1"/>
         </link>
         
        
         <joint name="surge_port_servo_joint" type="revolute">
-                <parent name="Base"/>
-                <child name="surge_port_thruster_link"/>
-                <origin rpy="1.571 0.0 -0.52" xyz="-0.86 -0.125 -0.05485"/> 
-                <axis xyz="0.0 0.0 1.0"/>
-                <limits min="-3.14" max="3.14"/>   
+            <parent name="Base"/>
+            <child name="surge_port_thruster_link"/>
+            <origin rpy="1.571 0.0 -0.52" xyz="-0.86 -0.125 -0.05485"/> 
+            <axis xyz="0.0 0.0 1.0"/>
+            <limits min="-3.14" max="3.14"/>   
         </joint>
 
         
         <joint name="surge_starboard_servo_joint" type="revolute">
-                <parent name="Base"/>
-                <child name="surge_starboard_thruster_link"/>
-                <origin rpy="-1.571 0.0 0.52" xyz="-0.86 0.125 -0.05485"/> 
-                <axis xyz="0.0 0.0 1.0"/>
-                <limits min="-3.14" max="3.14"/>   
+            <parent name="Base"/>
+            <child name="surge_starboard_thruster_link"/>
+            <origin rpy="-1.571 0.0 0.52" xyz="-0.86 0.125 -0.05485"/> 
+            <axis xyz="0.0 0.0 1.0"/>
+            <limits min="-3.14" max="3.14"/>   
         </joint>
 
         
         <actuator name="surge_port_servo" type="servo"> 
-                <joint name="surge_port_servo_joint"/> 
-                <controller position_gain="1.0" velocity_gain="1.0" max_torque="3.0" max_velocity="1.0"/>
-                <initial position="0.0"/>
+            <joint name="surge_port_servo_joint"/> 
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="3.0" max_velocity="1.0"/>
+            <initial position="0.0"/>
         </actuator> 
 
         <actuator name="surge_starboard_servo" type="servo"> 
-                <joint name="surge_starboard_servo_joint"/> 
-                <controller position_gain="1.0" velocity_gain="1.0" max_torque="3.0" max_velocity="1.0"/>
-                <initial position="0.0"/>
+            <joint name="surge_starboard_servo_joint"/> 
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="3.0" max_velocity="1.0"/>
+            <initial position="0.0"/>
         </actuator> 
 
          <actuator name="ThrusterSurgePort" type="propeller">
-                <link name="surge_port_thruster_link"/>
-                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
-                <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
+            <link name="surge_port_thruster_link"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
+            <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
 
-                <propeller diameter="0.08" right="true">
-                    <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
-                    <material name="Resin"/>
-                    <look name="red"/>
-                </propeller>
-                <mass value="0.1"/>
+            <propeller diameter="0.08" right="true">
+                <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                <material name="Resin"/>
+                <look name="red"/>
+            </propeller>
+            <mass value="0.1"/>
         </actuator>
 
         <actuator name="ThrusterSurgeStarboard" type="propeller">
-                <link name="surge_starboard_thruster_link"/>
-                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
-                <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
+            <link name="surge_starboard_thruster_link"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
+            <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
 
-                <propeller diameter="0.08" right="true">
-                    <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
-                    <material name="Resin"/>
-                    <look name="red"/>
-                </propeller>
-                <mass value="0.1"/>
+            <propeller diameter="0.08" right="true">
+                <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                <material name="Resin"/>
+                <look name="red"/>
+            </propeller>
+            <mass value="0.1"/>
         </actuator>
+
+        <!-- rudders -->
+        <!-- option1: using servo motor -->
+        <link name="stern_rudder_link" type="box" physics="submerged">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="Green"/>
+        </link>
+
+         <actuator name="RudderStern" type="rudder">
+            <specs lift_coeff="0.5" drag_coeff="0.1" max_angle="3.0" area="0.1" stall_angle="0.9" max_angular_rate="2.0" inverted="false"/>
+            <visual>
+                <mesh filename="parts/others/rudder.obj" scale="0.008"/>
+                <material name="Neutral"/>
+                <look name="red"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </visual>
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/> 
+            <link name="stern_rudder_link"/>
+        </actuator>
+
+
+        <joint name="stern_rudder_servo_joint" type="revolute">
+            <parent name="Base"/>
+            <child name="stern_rudder_link"/>
+            <origin rpy="0.0 0.0 0.0" xyz="-0.86 0.0 0.0"/> 
+            <axis xyz="0.0 0.0 1.0"/>
+            <limits min="-3.14" max="3.14"/>   
+        </joint>
+
+        
+        <actuator name="stern_rudder_servo" type="servo"> 
+            <joint name="stern_rudder_servo_joint"/> 
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="2.0" max_velocity="0.5"/>
+            <initial position="0.0"/>
+        </actuator> 
+        
+
+        <!-- option2: using actuator -->
+
+        <!-- <actuator name="stern_rudder_joint" type="rudder">
+            <specs lift_coeff="0.5" drag_coeff="0.1" max_angle="3.0" area="0.05" stall_angle="0.9" max_angular_rate="2.0" inverted="false"/>
+            <visual>
+                <mesh filename="parts/others/rudder.obj" scale="0.008"/>
+                <material name="Neutral"/>
+                <look name="red"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </visual>
+            <origin rpy="3.1415926 0.0 0.0" xyz="-0.86 0.0 0.1"/> 
+            <link name="Base"/>
+        </actuator> -->
 
 
         <!-- ################################################################### -->
@@ -242,6 +294,8 @@
             servos="$(arg robot_name)/stonefish/servo/joint_states" 
             propellers="$(arg robot_name)/stonefish/thruster_state"
         />
+            <!-- rudders = "$(arg robot_name)/stonefish/rudder/desired_joint_states" -->
+            <!-- rudders = "$(arg robot_name)/stonefish/rudder/joint_state" -->
 
     </robot>
 </scenario>
