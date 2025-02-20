@@ -20,7 +20,7 @@
                 </visual>
                 <material name="Vehicle"/>
                 <look name="yellow"/>
-                <mass value="25"/>
+                <mass value="25.2"/>
                 <!-- <inertia xyz="1.0 10.0 10.0"/> -->
                 <compound_transform rpy="3.1415926 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 <cg xyz="-0.456 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -144,7 +144,9 @@
             <child name="surge_port_thruster_link"/>
             <origin rpy="1.571 0.0 -0.52" xyz="-0.86 -0.125 -0.05485"/> 
             <axis xyz="0.0 0.0 1.0"/>
-            <limits min="-3.14" max="3.14"/>   
+            <!-- <limits min="-0.7854" max="0.7854"/>    -->
+            <!-- <limits min="-1.5708" max="1.5708"/>    -->
+            <limits min="-2.356" max="2.356"/>   
         </joint>
 
         
@@ -153,7 +155,9 @@
             <child name="surge_starboard_thruster_link"/>
             <origin rpy="-1.571 0.0 0.52" xyz="-0.86 0.125 -0.05485"/> 
             <axis xyz="0.0 0.0 1.0"/>
-            <limits min="-3.14" max="3.14"/>   
+            <!-- <limits min="-0.7854" max="0.7854"/>    -->
+            <!-- <limits min="-1.5708" max="1.5708"/>    -->
+            <limits min="-2.356" max="2.356"/>   
         </joint>
 
         
@@ -197,9 +201,108 @@
             <mass value="0.1"/>
         </actuator>
 
+        <!-- mid section port and startboar  -->
+
+        <link name="mid_starboard_thruster_link" type="model" physics="submerged" buoyant="true">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <physical>
+                <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </physical>
+            <visual>
+                <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </visual>
+            <material name="Resin"/>
+            <look name="red"/>
+            <mass value="0.1"/>
+
+        </link>
+
+
+        <link name="mid_port_thruster_link" type="model" physics="submerged" buoyant="true">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <physical>
+                <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </physical>
+            <visual>
+                <mesh filename="parts/thruster/duct_sim.obj" scale="0.001"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </visual>
+            <material name="Resin"/>
+            <look name="red"/>
+            <mass value="0.1"/>
+        </link>
+        
+       
+        <joint name="mid_port_servo_joint" type="revolute">
+            <parent name="Base"/>
+            <child name="mid_port_thruster_link"/>
+            <origin rpy="1.571 0.0 0.0" xyz="-0.4 -0.24 -0.05485"/> 
+            <axis xyz="0.0 0.0 1.0"/>
+            <!-- <limits min="-0.7854" max="0.7854"/>    -->
+            <!-- <limits min="-1.5708" max="1.5708"/>    -->
+            <limits min="-2.356" max="2.356"/>   
+        </joint>
+
+        <joint name="mid_starboard_servo_joint" type="revolute">
+            <parent name="Base"/>
+            <child name="mid_starboard_thruster_link"/>
+            <origin rpy="-1.571 0.0 0.0" xyz="-0.4 0.24 -0.05485"/> 
+            <axis xyz="0.0 0.0 1.0"/>
+            <!-- <limits min="-0.7854" max="0.7854"/>    -->
+            <!-- <limits min="-1.5708" max="1.5708"/>    -->
+            <limits min="-2.356" max="2.356"/>   
+        </joint>
+
+        
+        <actuator name="mid_port_servo" type="servo"> 
+            <joint name="mid_port_servo_joint"/> 
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="3.0" max_velocity="1.0"/>
+            <initial position="0.0"/>
+        </actuator> 
+
+        <actuator name="mid_starboard_servo" type="servo"> 
+            <joint name="mid_starboard_servo_joint"/> 
+            <controller position_gain="1.0" velocity_gain="1.0" max_torque="3.0" max_velocity="1.0"/>
+            <initial position="0.0"/>
+        </actuator> 
+
+         <actuator name="ThrusterMidPort" type="propeller">
+            <link name="mid_port_thruster_link"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
+            <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
+
+            <propeller diameter="0.08" right="true">
+                <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                <material name="Resin"/>
+                <look name="red"/>
+            </propeller>
+            <mass value="0.1"/>
+        </actuator>
+
+        <actuator name="ThrusterMidStarboard" type="propeller">
+            <link name="mid_starboard_thruster_link"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
+            <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
+
+            <propeller diameter="0.08" right="true">
+                <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                <material name="Resin"/>
+                <look name="red"/>
+            </propeller>
+            <mass value="0.1"/>
+        </actuator>
+
+
+
+
         <!-- rudders -->
         <!-- option1: using servo motor -->
-        <link name="stern_rudder_link" type="box" physics="submerged">
+        <!-- <link name="stern_rudder_link" type="box" physics="submerged">
             <dimensions xyz="0.01 0.02 0.01"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <material name="Neutral"/>
@@ -232,7 +335,7 @@
             <joint name="stern_rudder_servo_joint"/> 
             <controller position_gain="1.0" velocity_gain="1.0" max_torque="2.0" max_velocity="0.5"/>
             <initial position="0.0"/>
-        </actuator> 
+        </actuator>  -->
         
 
         <!-- option2: using actuator -->
@@ -279,11 +382,11 @@
             <origin rpy="3.1415926 0.0 0.0" xyz="-0.5 0.0 0.0"/>
             <specs beam_angle="30.0"/>
             <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
-            <noise velocity="0.01" altitude="0.001"/>
+            <noise velocity="0.0" altitude="0.00"/>
             <ros_publisher topic="/$(arg robot_name)/dvl/stonefish/raw" altitude_topic="/$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
 
-        <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <world_transform xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
 
 
         <ros_subscriber 
