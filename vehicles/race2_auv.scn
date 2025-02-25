@@ -144,9 +144,7 @@
             <child name="surge_port_thruster_link"/>
             <origin rpy="1.571 0.0 -0.52" xyz="-0.86 -0.125 -0.05485"/> 
             <axis xyz="0.0 0.0 1.0"/>
-            <!-- <limits min="-0.7854" max="0.7854"/>    -->
-            <!-- <limits min="-1.5708" max="1.5708"/>    -->
-            <limits min="-2.356" max="2.356"/>   
+            <limits min= "$(arg servo_min_ang)" max="$(arg servo_max_ang)"/>   
         </joint>
 
         
@@ -155,9 +153,7 @@
             <child name="surge_starboard_thruster_link"/>
             <origin rpy="-1.571 0.0 0.52" xyz="-0.86 0.125 -0.05485"/> 
             <axis xyz="0.0 0.0 1.0"/>
-            <!-- <limits min="-0.7854" max="0.7854"/>    -->
-            <!-- <limits min="-1.5708" max="1.5708"/>    -->
-            <limits min="-2.356" max="2.356"/>   
+            <limits min= "$(arg servo_min_ang)" max="$(arg servo_max_ang)"/>   
         </joint>
 
         
@@ -176,7 +172,6 @@
          <actuator name="ThrusterSurgePort" type="propeller">
             <link name="surge_port_thruster_link"/>
             <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
             <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
 
             <propeller diameter="0.08" right="true">
@@ -190,9 +185,7 @@
         <actuator name="ThrusterSurgeStarboard" type="propeller">
             <link name="surge_starboard_thruster_link"/>
             <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
             <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
-
             <propeller diameter="0.08" right="true">
                 <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
                 <material name="Resin"/>
@@ -241,9 +234,7 @@
             <child name="mid_port_thruster_link"/>
             <origin rpy="1.571 0.0 0.0" xyz="-0.4 -0.24 -0.05485"/> 
             <axis xyz="0.0 0.0 1.0"/>
-            <!-- <limits min="-0.7854" max="0.7854"/>    -->
-            <!-- <limits min="-1.5708" max="1.5708"/>    -->
-            <limits min="-2.356" max="2.356"/>   
+            <limits min= "$(arg servo_min_ang)" max="$(arg servo_max_ang)"/>   
         </joint>
 
         <joint name="mid_starboard_servo_joint" type="revolute">
@@ -251,9 +242,7 @@
             <child name="mid_starboard_thruster_link"/>
             <origin rpy="-1.571 0.0 0.0" xyz="-0.4 0.24 -0.05485"/> 
             <axis xyz="0.0 0.0 1.0"/>
-            <!-- <limits min="-0.7854" max="0.7854"/>    -->
-            <!-- <limits min="-1.5708" max="1.5708"/>    -->
-            <limits min="-2.356" max="2.356"/>   
+            <limits min= "$(arg servo_min_ang)" max="$(arg servo_max_ang)"/>   
         </joint>
 
         
@@ -272,7 +261,6 @@
          <actuator name="ThrusterMidPort" type="propeller">
             <link name="mid_port_thruster_link"/>
             <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
             <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
 
             <propeller diameter="0.08" right="true">
@@ -286,9 +274,7 @@
         <actuator name="ThrusterMidStarboard" type="propeller">
             <link name="mid_starboard_thruster_link"/>
             <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-            <!-- <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/> -->
             <specs thrust_coeff="350.0" torque_coeff="0.01" max_rpm="4000.0"/>
-
             <propeller diameter="0.08" right="true">
                 <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
                 <material name="Resin"/>
