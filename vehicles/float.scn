@@ -17,39 +17,29 @@
         <!-- ================================================================================ -->
 
         <base_link name="Vehicle" type="compound" physics="submerged">
-            <external_part name="Hull" type="model" physics="submerged" buoyant="true">
+            <external_part name="Hull" type="model" physics="submerged" buoyant="false">
                 <physical>
                     <mesh filename="parts/body/float_body.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
                 </physical>
                 <visual>
                     <mesh filename="parts/body/float_body.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 </visual>
-                <material name="Vehicle"/>
+                <material name="Neutral"/>
                 <look name="yellow"/>
-                <!-- TODO: mass ? -->
-                <!-- <mass value="25"/> -->
+                <mass value="4.9"/> 
                 <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                <cg xyz="0.0 0.0 0.0" rpy="1.5707 0.0 0.0"/>
+                <cg xyz="0.065 0.0 0.0" rpy="0.0 0.0 0.0"/>
             </external_part>
 
             <internal_part name="Foam" type="cylinder" physics="floating" buoyant="true">
-                <dimensions radius="0.1" height="0.2"/>
-                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <dimensions radius="0.057" height="0.5"/>
+                <origin rpy="0.0 1.5707 0.0" xyz="0.0 0.0 0.0"/>
                 <material name="Foam"/>
-                <mass value="2.15"/>
+                <mass value="0.1"/>
                 <look name="grey"/>
-                <compound_transform rpy="0.0 0.0 0.0" xyz="-0.2 0.0 0.0"/>
-            </internal_part>
-
-            <internal_part name="Aluminium" type="cylinder" physics="floating" buoyant="true">
-                <dimensions radius="0.1" height="0.075"/>
-                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-                <material name="Aluminium"/>
-                <inertia xyz="0.065 0.205 0.205"/>
-                <look name="grey"/>
-                <compound_transform rpy="0.0 0.0 0.0" xyz="0.2 0.0 0.0"/>
+                <compound_transform xyz="-0.25 0.0 0.0" rpy="0.0 0.0 0.0" />
             </internal_part>
             
         <!-- ================================================================================ -->
@@ -58,29 +48,29 @@
             <external_part name="ThrusterDuctPort" type="model" physics="submerged" buoyant="true">
                 <physical>
                     <mesh filename="parts/thruster/duct_reduced.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 </physical>
                 <visual>
                     <mesh filename="parts/thruster/duct.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 </visual>
                 <material name="Neutral"/>
                 <look name="black"/>
-                <compound_transform rpy="0.0 -1.57 0.0" xyz="-0.1 -0.11 0.0"/>
+                <compound_transform xyz="-0.1 -0.11 0.0" rpy="0.0 -1.57 0.0"/>
             </external_part>
 
             <external_part name="ThrusterDuctStbd" type="model" physics="submerged" buoyant="true">
                 <physical>
                     <mesh filename="parts/thruster/duct_reduced.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 </physical>
                 <visual>
                     <mesh filename="parts/thruster/duct.obj" scale="0.001"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 </visual>
                 <material name="Neutral"/>
                 <look name="black"/>
-                <compound_transform rpy="0.0 -1.57 0.0" xyz="-0.1 0.11 0.0"/>
+                <compound_transform xyz="-0.1 0.11 0.0" rpy="0.0 -1.57 0.0"/>
             </external_part>
 
         </base_link>
@@ -100,13 +90,13 @@
         <joint name="Joint1" type="fixed">
             <parent name="Vehicle"/>
             <child name="Base"/>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707963 0.0"/>
             <axis xyz="1.0 0.0 0.0"/>
         </joint>
 
         <actuator name="ThrusterPort" type="propeller">
             <link name="Base"/>
-            <origin rpy="0.0 0.0 0.0" xyz="-0.1 -0.11 0.0"/>
+            <origin xyz="0.0 -0.11 -0.08" rpy="0.0 1.5707963 0.0" />            
             <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/>
             <propeller diameter="0.08" right="true">
                 <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
@@ -117,7 +107,7 @@
 
         <actuator name="ThrusterStbd" type="propeller">
             <link name="Base"/>
-            <origin rpy="0.0 0.0 0.0" xyz="-0.1 0.11 0.0"/>
+            <origin xyz="0.0 0.11 -0.08" rpy="0.0 1.5707963 0.0"/>            
             <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/>
             <propeller diameter="0.08" right="true">
                 <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
@@ -128,14 +118,15 @@
 
         <sensor name="imu_sf" type="imu" rate="100.0">
             <link name="Base"/>
-            <origin rpy="0.0 1.5707 0.0" xyz="-0.17 0.0 0.0"/>
-            <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" yaw_drift="0.0001" linear_acceleration="0.0001"/>
+            <origin xyz="0.0 0.0 -0.17" rpy="3.1415926 0.0 0.0"/>
+            <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" 
+                   yaw_drift="0.0001" linear_acceleration="0.0001"/>
             <ros_publisher topic="$(arg robot_name)/imu/stonefish/data"/>
         </sensor>
 
         <sensor name="dvl_sf" type="dvl" rate="5.0">
             <link name="Base"/>
-            <origin rpy="0.0 -1.5707963 0.0" xyz="0.05 0.0 0.0"/>
+            <origin rpy="3.1415926 0.0 0.0" xyz="0.0 0.0 0.06"/>
             <specs beam_angle="30.0"/>
             <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
             <noise velocity="0.00" altitude="0.001"/>
@@ -144,14 +135,14 @@
 
         <sensor name="pressure" type="pressure" rate="5.0">
             <link name="Base"/>
-            <origin rpy="0.0 0.0 0.0" xyz="0.05 0.0 0.0"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.02"/>
             <noise pressure="2.0"/>
             <ros_publisher topic="$(arg robot_name)/pressure"/>
         </sensor>
 
         <sensor name="gps" type="gps" rate="1.0">
             <link name="Base"/>
-            <origin rpy="0.0 0.0 0.0" xyz="-0.63 0.0 -0.1"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.075 0.0 -0.635"/>
             <noise ned_position="0.0"/>
             <ros_publisher topic="$(arg robot_name)/gps/fix"/>
         </sensor>
