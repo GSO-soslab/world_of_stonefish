@@ -165,7 +165,8 @@
         <!-- Additional -->
         <!-- ================================================================================ --> 
 
-        <world_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+        <world_transform xyz="$(arg position_x) $(arg position_y) $(arg position_z)" 
+                         rpy="0.0 0.0 0.0" />
         <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/> 
 		<ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/>
 
