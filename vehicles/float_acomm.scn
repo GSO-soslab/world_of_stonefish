@@ -147,7 +147,7 @@
             <ros_publisher topic="$(arg robot_name)/gps/fix"/>
         </sensor>
 
-        <comm name="usbl" device_id="$(arg comm_device_id)" type="usbl">
+        <!-- <comm name="usbl" device_id="$(arg comm_device_id)" type="usbl">
             <specs min_vertical_fov="0.0" max_vertical_fov="300.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id)" occlusion_test="false"/>
             <autoping rate="1.0"/>
@@ -156,6 +156,14 @@
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
             <link name="Base"/>
             <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
+        </comm> -->
+
+        <comm name="Modem" device_id="$(arg comm_device_id)" type="acoustic_modem">
+            <specs min_vertical_fov="0.0" max_vertical_fov="300.0" range="1000.0"/>
+            <connect device_id="$(arg comm_connect_id)" occlusion_test="false"/>
+            <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/modem"/>
         </comm>
 
         <!-- TODO: add odometry -->

@@ -21,18 +21,37 @@
 	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
 
 	<include file="$(find world_of_stonefish)/vehicles/float.scn">
-		<arg name="robot_name" value="float_rise_1"/>
-		<arg name="position_x" value="0.0"/>
-		<arg name="position_y" value="0.0"/>
-		<arg name="position_z" value="0.0"/>
+		<arg name="robot_name"      value="float_rise_1"/>
+
+		<arg name="comm_device_id"  value="1"/>
+		<arg name="comm_connect_id" value="2"/>
+
+		<arg name="position_x"      value="0.0"/>
+		<arg name="position_y"      value="0.0"/>
+		<arg name="position_z"      value="0.0"/>
 	</include>
 
-	<include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<include file="$(find world_of_stonefish)/vehicles/float_acomm.scn">
 		<arg name="robot_name" value="float_rise_2"/>
+
+		<arg name="comm_device_id"  value="2"/>
+		<arg name="comm_connect_id" value="1"/>
+
 		<arg name="position_x" value="5.0"/>
 		<arg name="position_y" value="-2.0"/>
 		<arg name="position_z" value="0.0"/>
 	</include>
+
+	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
+		<arg name="robot_name" value="float_rise_2"/>
+
+		<arg name="comm_device_id"  value="2"/>
+		<arg name="comm_connect_id" value="1"/>
+
+		<arg name="position_x" value="5.0"/>
+		<arg name="position_y" value="-2.0"/>
+		<arg name="position_z" value="0.0"/>
+	</include> -->
 
 	<static name="Bottom" type="model">
         <physical>
