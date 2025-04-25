@@ -19,88 +19,27 @@
 
 	<include file="$(find world_of_stonefish)/metadata/materials.scn"/>
 	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
+    <include file="$(find world_of_stonefish)/world/tank_targets.scn" />
+    <include file="$(find world_of_stonefish)/world/tank_ladder.scn" />
+    <include file="$(find world_of_stonefish)/world/tank_revolving_plate.scn" />
+
 
 	<include file="$(find world_of_stonefish)/vehicles/mvp2_test_robot.scn">
 		<arg name="robot_name" value="mvp2_test_robot"/>
 	</include>
 
-	<!-- <include file="$(find world_of_stonefish)/vehicles/acomm_buoy.scn" /> -->
 
-	<!-- <dynamic name="Cyl" type="cylinder" physics="surface" buoyant="true">
-    	  <dimensions radius="1.0" height="2.0"/>
-    	  <origin xyz="4.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-    	  <material name="Foam"/>
-    	  <look name="yellow"/>
-    	  <world_transform xyz="10.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-	</dynamic> -->
-
-	<static name="Bottom" type="model">
+    <static name="tank" type="model">
         <physical>
-            <mesh filename="objects/flat_terrain.obj" scale="10.0" convex="true"/>
+            <mesh filename="objects/tank.obj" scale="1.0" convex="false"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </physical>
         <visual>
-            <mesh filename="objects/flat_terrain.obj" scale="10.0"/>
+            <mesh filename="objects/tank.obj" scale="1.0"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </visual>
         <material name="Rock"/>
         <look name="gray"/>
-        <world_transform xyz="0.0 0.0 20.0" rpy="0.0 0.0 0.0"/>
+        <world_transform xyz="0.0 0.0 8.0" rpy="3.1415926 0.0 0.0"/>
     </static>
-
-	<!-- <static name="wall" type="box">
-        <dimensions xyz="1.0 5.0 10.0"/>
-		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-        <material name="Rock"/>
-        <look name="yellow"/>
-        <world_transform xyz="5.0 0.0 1.0" rpy="0.0 0.0 0.0"/>
-    </static> -->
-
-    <!-- <static name="rod" type="cylinder">
-        <dimensions radius="1.0" height="5.0"/>
-		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-        <material name="Rock"/>
-        <look name="yellow"/>
-        <world_transform xyz="5.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
-    </static> -->
-
-    <!-- <static name="pipe" type="cylinder">
-        <dimensions radius="1.0" height="5.0"/>
-		<origin xyz="0.0 0.0 0.0" rpy="0.0 1.5708 0.0"/>
-        <material name="Rock"/>
-        <look name="yellow"/>
-        <world_transform xyz="5.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
-    </static> -->
-
-
-    <!-- <animated name="ball_moving" type="sphere" collisions="false">
-        <dimensions radius="5.0"/>
-        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-        <material name="Rock"/>
-        <look name="yellow"/>
-        <trajectory type="spline" playback="repeat">
-            <keypoint time="0.0"  xyz="10.0 -20.0 2.0" rpy="0.0 0.0 0.0"/>
-            <keypoint time="30.0" xyz="10.0  20.0 2.0" rpy="0.0 0.0 0.0"/>
-        </trajectory>
-
-    </animated> -->
-
-    <animated name="wall_moving" type="box" collisions="true">
-       <dimensions xyz="1.0 5.0 10.0"/>
-		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-        <material name="Rock"/>
-        <look name="yellow"/>
-        <!-- trajectory definition (look up) -->
-        <trajectory type="spline" playback="repeat">
-            <keypoint time="0.0"  xyz="20.0 -20.0 2.0" rpy="0.0 0.0 0.0"/>
-            <keypoint time="30.0" xyz="20.0  0.0 2.0" rpy="0.0 0.0 0.0"/>
-            <keypoint time="60.0" xyz="10.0  0.0 2.0" rpy="0.0 0.0 0.0"/>
-            <keypoint time="90.0" xyz="20.0  0.0 2.0" rpy="0.0 0.0 0.0"/>
-
-
-        </trajectory>
-
-    </animated>
-
-
 </scenario>
