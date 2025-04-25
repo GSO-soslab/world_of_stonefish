@@ -72,12 +72,35 @@
         <world_transform xyz="5.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
     </static> -->
 
-    <static name="Ball" type="sphere">
+
+    <!-- <animated name="ball_moving" type="sphere" collisions="false">
         <dimensions radius="5.0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <material name="Rock"/>
         <look name="yellow"/>
-        <world_transform xyz="15.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
-    </static>
+        <trajectory type="spline" playback="repeat">
+            <keypoint time="0.0"  xyz="10.0 -20.0 2.0" rpy="0.0 0.0 0.0"/>
+            <keypoint time="30.0" xyz="10.0  20.0 2.0" rpy="0.0 0.0 0.0"/>
+        </trajectory>
+
+    </animated> -->
+
+    <animated name="wall_moving" type="box" collisions="true">
+       <dimensions xyz="1.0 5.0 10.0"/>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <material name="Rock"/>
+        <look name="yellow"/>
+        <!-- trajectory definition (look up) -->
+        <trajectory type="spline" playback="repeat">
+            <keypoint time="0.0"  xyz="20.0 -20.0 2.0" rpy="0.0 0.0 0.0"/>
+            <keypoint time="30.0" xyz="20.0  0.0 2.0" rpy="0.0 0.0 0.0"/>
+            <keypoint time="60.0" xyz="10.0  0.0 2.0" rpy="0.0 0.0 0.0"/>
+            <keypoint time="90.0" xyz="20.0  0.0 2.0" rpy="0.0 0.0 0.0"/>
+
+
+        </trajectory>
+
+    </animated>
 
 
 </scenario>

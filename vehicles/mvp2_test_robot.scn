@@ -175,9 +175,9 @@
             <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
         </comm> -->
 
-        <sensor name="fls_link_sf" rate="1.0" type="fls">
+        <sensor name="fls_link_sf" rate="2.0" type="fls">
                 <specs beams="512" bins="250" horizontal_fov="10.0" vertical_fov="20.0"/>
-                <settings range_min="0.5" range_max="40.0" gain="1.5"/>
+                <settings range_min="0.5" range_max="50.0" gain="1.5"/>
                 <noise multiplicative="0.01" additive="0.02"/>
                 <display colormap="hot"/>
                 <origin xyz="0.0 0.0 0.0" rpy="1.22 0.0 1.5707963"/>
@@ -185,9 +185,9 @@
                 <ros_publisher topic="$(arg robot_name)/fls/data"/>
         </sensor>
 
-        <sensor name="mbes_link_sf" rate="1.0" type="multibeam">
+        <sensor name="mbes_link_sf" rate="2.0" type="multibeam">
                 <specs fov="20.0" steps="128"/>
-                <range distance_min="0.5" distance_max="40.0"/>
+                <range distance_min="0.5" distance_max="50.0"/>
                 <noise distance="0.0"/>
                 <history samples="1"/>
                 <origin xyz="0.0 0.0 0.0" rpy="-1.5708 -0.349 0.0"/>
