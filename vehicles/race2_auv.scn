@@ -195,7 +195,7 @@
         </actuator>
 
         <!-- mid section port and startboar  -->
-
+<!-- 
         <link name="mid_starboard_thruster_link" type="model" physics="submerged" buoyant="true">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <physical>
@@ -281,7 +281,7 @@
                 <look name="red"/>
             </propeller>
             <mass value="0.1"/>
-        </actuator>
+        </actuator> -->
 
 
 

@@ -164,7 +164,7 @@
             <ros_publisher topic="$(arg robot_name)/dvl/stonefish/raw" altitude_topic="$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
 
-        <comm name="usbl" device_id="1" type="usbl">
+        <!-- <comm name="usbl" device_id="1" type="usbl">
             <specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
             <connect device_id="2" occlusion_test="false"/>
             <autoping rate="1.0"/>
@@ -173,7 +173,27 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <link name="Base"/>
             <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
-        </comm>
+        </comm> -->
+
+        <sensor name="fls_link_sf" rate="1.0" type="fls">
+                <specs beams="512" bins="250" horizontal_fov="10.0" vertical_fov="20.0"/>
+                <settings range_min="0.5" range_max="40.0" gain="1.5"/>
+                <noise multiplicative="0.01" additive="0.02"/>
+                <display colormap="hot"/>
+                <origin xyz="0.0 0.0 0.0" rpy="1.22 0.0 1.5707963"/>
+                <link name="Base"/>
+                <ros_publisher topic="$(arg robot_name)/fls/data"/>
+        </sensor>
+
+        <sensor name="mbes_link_sf" rate="1.0" type="multibeam">
+                <specs fov="20.0" steps="128"/>
+                <range distance_min="0.5" distance_max="40.0"/>
+                <noise distance="0.0"/>
+                <history samples="1"/>
+                <origin xyz="0.0 0.0 0.0" rpy="-1.5708 -0.349 0.0"/>
+                <link name="Base"/>
+                <ros_publisher topic="$(arg robot_name)/mbes/data"/>
+        </sensor>
 
         <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 

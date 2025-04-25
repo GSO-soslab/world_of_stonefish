@@ -48,5 +48,36 @@
         <world_transform xyz="0.0 0.0 20.0" rpy="0.0 0.0 0.0"/>
     </static>
 
+	<!-- <static name="wall" type="box">
+        <dimensions xyz="1.0 5.0 10.0"/>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <material name="Rock"/>
+        <look name="yellow"/>
+        <world_transform xyz="5.0 0.0 1.0" rpy="0.0 0.0 0.0"/>
+    </static> -->
+
+    <!-- <static name="rod" type="cylinder">
+        <dimensions radius="1.0" height="5.0"/>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <material name="Rock"/>
+        <look name="yellow"/>
+        <world_transform xyz="5.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
+    </static> -->
+
+    <!-- <static name="pipe" type="cylinder">
+        <dimensions radius="1.0" height="5.0"/>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 1.5708 0.0"/>
+        <material name="Rock"/>
+        <look name="yellow"/>
+        <world_transform xyz="5.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
+    </static> -->
+
+    <static name="Ball" type="sphere">
+        <dimensions radius="5.0"/>
+        <material name="Rock"/>
+        <look name="yellow"/>
+        <world_transform xyz="15.0 0.0 2.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
 
 </scenario>
