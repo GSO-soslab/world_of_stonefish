@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+    This file is part of ALPHA AUV project.
+    Author: Tony Jacob
+    Email: tony.jacob@uri.edu
+    Year: 2023
+    Copyright (C) 2022 Smart Ocean Systems Laboratory
+-->
+<scenario>
+
+    <include file="$(find world_of_stonefish)/metadata/looks.scn"/>
+    <include file="$(find world_of_stonefish)/metadata/materials.scn"/>
+
+    <!-- <static name="iceberg" type="model">
+        <physical>
+            <mesh filename="objects/iceberg_01.obj" scale="0.5" convex="false"/>
+            <origin xyz="-90 20 0.0" rpy="0.0 0.0 -3.925"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/iceberg_01.obj" scale="0.5"/>
+            <origin xyz="-90 20 0.0" rpy="0.0 0.0 -3.925"/>
+        </visual>
+        <material name="Ice"/>
+        <look name="ice"/>
+        <cg xyz=" 0.0 0 0.0" rpy="0.0 0.0 0.0"/>
+        <world_transform xyz="55.0 55.0 0.0" rpy="3.1415926 0.0 0.0"/>
+    </static> -->
+    
+    <animated name="AnimMesh" type="model" collisions="true">
+        <physical>
+            <mesh filename="objects/iceberg_01.obj" scale="0.5"/>
+            <origin xyz="35 35 0.0" rpy="3.14 0.0 0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/iceberg_01.obj" scale="0.5"/>
+            <origin xyz="35 35 0.0" rpy="3.14 0.0 0"/>
+        </visual>
+        <material name="Ice"/>
+        <look name="ice"/>
+        <trajectory type="spline" playback="onetime">
+        <!--x = 3 m/min, y= 1.2 m/min roll= 0.03 rad/min.-->
+            <keypoint time="0.0" xyz="35 35 0.0" rpy="3.14 0.0 0"/>
+            <keypoint time="10.0" xyz="35 35 0.0" rpy="3.14 0.0 0"/>
+            <keypoint time="60.0" xyz="38 36.2 0.0" rpy="3.14 0.0 0.03"/>
+            <keypoint time="120.0" xyz="41 37.4 0.0" rpy="3.14 0.0 0.06"/>
+            <keypoint time="180.0" xyz="44 39.6 0.0" rpy="3.14 0.0 0.09"/>
+            <keypoint time="240.0" xyz="47 41.8 0.0" rpy="3.14 0.0 0.12"/>
+            <keypoint time="300.0" xyz="50 43.0 0.0" rpy="3.14 0.0 0.15"/>
+            <keypoint time="360.0" xyz="53 44.2 0.0" rpy="3.14 0.0 0.18"/>
+            <keypoint time="420.0" xyz="56 44.4 0.0" rpy="3.14 0.0 0.21"/>
+            <keypoint time="480.0" xyz="56 45.6 0.0" rpy="3.14 0.0 0.24"/>
+            <keypoint time="540.0" xyz="59 46.8 0.0" rpy="3.14 0.0 0.27"/>
+            <keypoint time="600.0" xyz="62 48 0.0" rpy="3.14 0.0 0.3"/>
+            <keypoint time="660.0" xyz="65 49.2 0.0" rpy="3.14 0.0 0.33"/>
+            <keypoint time="720.0" xyz="68 50.4 0.0" rpy="3.14 0.0 0.36"/>
+            <keypoint time="780.0" xyz="71 51.6 0.0" rpy="3.14 0.0 0.39"/>
+            <keypoint time="840.0" xyz="74 52.8 0.0" rpy="3.14 0.0 0.42"/>
+            <keypoint time="900.0" xyz="77 54 0.0" rpy="3.14 0.0 0.45"/>
+            <keypoint time="960.0" xyz="80 55.2 0.0" rpy="3.14 0.0 0.48"/>
+            <keypoint time="1020.0" xyz="83 56.4 0.0" rpy="3.14 0.0 0.51"/>
+            <keypoint time="1080.0" xyz="86 59.6 0.0" rpy="3.14 0.0 0.54"/>
+            <keypoint time="1140.0" xyz="89 60.8 0.0" rpy="3.14 0.0 0.57"/>
+            <keypoint time="1200.0" xyz="92 62 0.0" rpy="3.14 0.0 0.6"/>
+            <keypoint time="1260.0" xyz="95 63.2 0.0" rpy="3.14 0.0 0.63"/>
+            <keypoint time="1320.0" xyz="98 64.4 0.0" rpy="3.14 0.0 0.66"/>
+            <keypoint time="1380.0" xyz="101 65.6 0.0" rpy="3.14 0.0 0.69"/>
+            <keypoint time="1440.0" xyz="104 66.8 0.0" rpy="3.14 0.0 0.72"/>
+            <keypoint time="1500.0" xyz="107 69 0.0" rpy="3.14 0.0 0.75"/>
+            <keypoint time="1560.0" xyz="110 70.2 0.0" rpy="3.14 0.0 0.78"/>
+            <keypoint time="1620.0" xyz="113 71.4 0.0" rpy="3.14 0.0 0.81"/>
+            <keypoint time="1680.0" xyz="116 72.6 0.0" rpy="3.14 0.0 0.84"/>
+            <keypoint time="1740.0" xyz="119 73.8 0.0" rpy="3.14 0.0 0.87"/>
+            <keypoint time="1800.0" xyz="121 75 0.0" rpy="3.14 0.0 0.90"/>
+            <keypoint time="1860.0" xyz="124 76.2 0.0" rpy="3.14 0.0 0.93"/>
+            <keypoint time="1920.0" xyz="127 77.4 0.0" rpy="3.14 0.0 0.96"/>
+            <keypoint time="1980.0" xyz="130 78.6 0.0" rpy="3.14 0.0 0.99"/>
+            <keypoint time="2040.0" xyz="133 79.8 0.0" rpy="3.14 0.0 1.02"/>
+        </trajectory>
+    </animated>
+
+</scenario>
