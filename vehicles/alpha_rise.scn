@@ -198,7 +198,7 @@
             <display colormap="hot"/>
             <origin xyz="0.0 0.0 0.0" rpy="1.57 0 1.57"/> 
             <!-- <origin xyz="0.0 0.0 0.0" rpy="1.57 3.14 4.71"/> -->
-            <ros_publisher topic="$(arg robot_name)/msis/stonefish/data"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/msis/data"/>
             <link name="Base"/>
         </sensor>
 
