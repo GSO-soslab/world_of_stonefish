@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<!--
+    This file is part of RISE project.
+
+    Author: Lin Zhao, linzhao@uri.edu
+    Author: Mingxi Zhou, mzhou@uri.edu
+    Year: 2025
+
+    Copyright (C) 2022 Smart Ocean Systems Laboratory
+-->
+<scenario>
+
+    <robot name="$(arg robot_name)" fixed="false" self_collisions="false">
+
+        <!-- ================================================================================ -->
+        <!-- Body -->
+        <!-- ================================================================================ -->
+
+        <base_link name="Vehicle" type="compound" physics="submerged">
+            <external_part name="Hull" type="model" physics="submerged" buoyant="false">
+                <physical>
+                    <mesh filename="parts/body/float_body.obj" scale="0.001"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+                </physical>
+                <visual>
+                    <mesh filename="parts/body/float_body.obj" scale="0.001"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="yellow"/>
+                <mass value="4.9"/> 
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <cg xyz="0.065 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </external_part>
+
+            <internal_part name="Foam" type="cylinder" physics="floating" buoyant="true">
+                <dimensions radius="0.057" height="0.5"/>
+                <origin rpy="0.0 1.5707 0.0" xyz="0.0 0.0 0.0"/>
+                <material name="Foam"/>
+                <mass value="0.1"/>
+                <look name="grey"/>
+                <compound_transform xyz="-0.25 0.0 0.0" rpy="0.0 0.0 0.0" />
+            </internal_part>
+            
+        <!-- ================================================================================ -->
+        <!-- thruster duct -->
+        <!-- ================================================================================ -->            
+            <external_part name="ThrusterDuctPort" type="model" physics="submerged" buoyant="true">
+                <physical>
+                    <mesh filename="parts/thruster/duct_reduced.obj" scale="0.001"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/thruster/duct.obj" scale="0.001"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="black"/>
+                <compound_transform xyz="-0.1 -0.11 0.0" rpy="0.0 -1.57 0.0"/>
+            </external_part>
+
+            <external_part name="ThrusterDuctStbd" type="model" physics="submerged" buoyant="true">
+                <physical>
+                    <mesh filename="parts/thruster/duct_reduced.obj" scale="0.001"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/thruster/duct.obj" scale="0.001"/>
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="black"/>
+                <compound_transform xyz="-0.1 0.11 0.0" rpy="0.0 -1.57 0.0"/>
+            </external_part>
+
+        </base_link>
+
+        <!-- ================================================================================ -->
+        <!-- sensors -->
+        <!-- ================================================================================ --> 
+
+        <!-- TODO: the imu not on the vehilce frame even on "0", maybe the obj file issue -->
+        <link name="Base" type="box" physics="submerged">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="Green"/>
+        </link>
+
+        <joint name="Joint1" type="fixed">
+            <parent name="Vehicle"/>
+            <child name="Base"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707963 0.0"/>
+            <axis xyz="1.0 0.0 0.0"/>
+        </joint>
+
+        <actuator name="ThrusterPort" type="propeller">
+            <link name="Base"/>
+            <origin xyz="0.0 -0.11 -0.08" rpy="0.0 1.5707963 0.0" />            
+            <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/>
+            <propeller diameter="0.08" right="true">
+                <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                <material name="Neutral"/>
+                <look name="white"/>
+            </propeller>
+        </actuator>
+
+        <actuator name="ThrusterStbd" type="propeller">
+            <link name="Base"/>
+            <origin xyz="0.0 0.11 -0.08" rpy="0.0 1.5707963 0.0"/>            
+            <specs thrust_coeff="286.7" torque_coeff="0.01" max_rpm="3000.0"/>
+            <propeller diameter="0.08" right="true">
+                <mesh filename="parts/thruster/prop.obj" scale="1.0"/>
+                <material name="Neutral"/>
+                <look name="white"/>
+            </propeller>
+        </actuator>
+
+        <sensor name="imu_sf" type="imu" rate="100.0">
+            <link name="Base"/>
+            <origin xyz="0.0 0.0 -0.17" rpy="3.1415926 0.0 0.0"/>
+            <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" 
+                   yaw_drift="0.0001" linear_acceleration="0.0001"/>
+            <ros_publisher topic="$(arg robot_name)/imu/stonefish/data"/>
+        </sensor>
+
+        <!-- <sensor name="dvl_sf" type="dvl" rate="5.0">
+            <link name="Base"/>
+            <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0" />
+            <specs beam_angle="30.0"/>
+            <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
+            <noise velocity="0.00" altitude="0.001"/>
+            <ros_publisher topic="$(arg robot_name)/dvl/stonefish/raw" altitude_topic="$(arg robot_name)/dvl/stonefish/altitude"/>
+        </sensor> -->
+
+        <sensor name="pressure" type="pressure" rate="5.0">
+            <link name="Base"/>
+            <origin xyz="0.0 0.0 0.02" rpy="0.0 0.0 0.0"/>
+            <noise pressure="2.0"/>
+            <ros_publisher topic="$(arg robot_name)/pressure"/>
+        </sensor>
+
+        <sensor name="gps" type="gps" rate="1.0">
+            <link name="Base"/>
+            <origin xyz="0.075 0.0 -0.635" rpy="0.0 0.0 0.0"/>
+            <noise ned_position="0.0"/>
+            <ros_publisher topic="$(arg robot_name)/gps/fix"/>
+        </sensor>
+
+        <!-- <comm name="usbl" device_id="$(arg comm_device_id)" type="usbl">
+            <specs min_vertical_fov="0.0" max_vertical_fov="300.0" range="1000.0"/>
+            <connect device_id="$(arg comm_connect_id)" occlusion_test="false"/>
+            <autoping rate="1.0"/>
+            <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
+            <resolution range="0.1" angle="0.1"/>
+            <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
+        </comm> -->
+
+        <!-- TODO: add odometry -->
+
+        <!-- ================================================================================ -->
+        <!-- Additional -->
+        <!-- ================================================================================ --> 
+
+        <world_transform xyz="$(arg position_x) $(arg position_y) $(arg position_z)" 
+                         rpy="0.0 0.0 0.0" />
+        <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/> 
+		<ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/>
+
+    </robot>
+
+</scenario>

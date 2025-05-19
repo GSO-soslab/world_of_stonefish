@@ -20,7 +20,7 @@
 	<include file="$(find world_of_stonefish)/metadata/materials.scn"/>
 	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
 
-	<include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<include file="$(find world_of_stonefish)/vehicles/float_1.scn">
 		<arg name="robot_name" value="float_rise"/>
 
 		<arg name="comm_device_id"  value="1"/>
