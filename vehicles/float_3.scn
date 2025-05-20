@@ -158,7 +158,13 @@
             <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
         </comm> -->
 
-        <!-- TODO: add odometry -->
+        <sensor name="odometry_sf" type="odometry" rate="10.0">
+            <link name="Base"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <noise position="0.00" velocity="0.00" angle="0.00" angular_velocity="0.00"/>
+            <history samples="1"/>
+            <ros_publisher topic="$(arg robot_name)/odometry_sf"/>
+        </sensor>
 
         <!-- ================================================================================ -->
         <!-- Additional -->
