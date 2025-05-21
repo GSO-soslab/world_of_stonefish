@@ -175,7 +175,7 @@
             <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
         </comm>
 
-        <sensor name="FLS" type="fls">
+        <sensor name="fls_link_sf" type="fls">
             <!--Low Mode-->
             <!-- <specs beams="512" bins="667" horizontal_fov="130.0" vertical_fov="20.0"/>
             <settings range_min="0.1" range_max="120.0" gain="1.5"/> -->
@@ -191,7 +191,7 @@
             <ros_publisher topic="$(arg robot_name)/stonefish/fls/data"/>
         </sensor>
 
-        <sensor name="MSIS" type="msis">
+        <sensor name="ping360_link_sf" type="msis">
             <specs step="0.9" bins="100" horizontal_beam_width="2.0" vertical_beam_width="10.0"/>
             <settings range_min="0.5" range_max="50.0" rotation_min="-30.0" rotation_max="135.0" gain="1.5"/>
             <noise multiplicative="0.002" additive="0.003"/>
