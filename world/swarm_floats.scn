@@ -23,8 +23,21 @@
 	<include file="$(find world_of_stonefish)/vehicles/float_1.scn">
 		<arg name="robot_name"      value="float_rise_1"/>
 
-		<arg name="comm_device_id"  value="1"/>
-		<arg name="comm_connect_id" value="2"/>
+		<!-- float 1 (USBL) and float 2 (Acomm) -->
+		<arg name="comm_device_id_1"  value="1"/>
+		<arg name="comm_connect_id_1" value="2"/>
+
+		<!-- float 1 (USBL) and float 3 (Acomm) -->
+		<arg name="comm_device_id_2"  value="3"/>
+		<arg name="comm_connect_id_2" value="4"/>
+
+		<!-- float 2 (USBL) and float 1 (Acomm) -->
+		<arg name="comm_device_id_3"  value="6"/>
+		<arg name="comm_connect_id_3" value="5"/>
+
+		<!-- float 3 (USBL) and float 1 (Acomm) -->
+		<arg name="comm_device_id_4"  value="10"/>
+		<arg name="comm_connect_id_4" value="9"/>
 
 		<arg name="position_x"      value="0.0"/>
 		<arg name="position_y"      value="0.0"/>
@@ -34,8 +47,21 @@
 	<include file="$(find world_of_stonefish)/vehicles/float_2.scn">
 		<arg name="robot_name" value="float_rise_2"/>
 
-		<arg name="comm_device_id"  value="2"/>
-		<arg name="comm_connect_id" value="1"/>
+		<!-- float 1 (USBL) and float 2 (Acomm) -->
+		<arg name="comm_device_id_1"  value="2"/>
+		<arg name="comm_connect_id_1" value="1"/>
+
+		<!-- float 2 (USBL) and float 1 (Acomm) -->
+		<arg name="comm_device_id_2"  value="5"/>
+		<arg name="comm_connect_id_2" value="6"/>
+
+		<!-- float 2 (USBL) and float 3 (Acomm) -->
+		<arg name="comm_device_id_3"  value="7"/>
+		<arg name="comm_connect_id_3" value="8"/>
+
+		<!-- float 3 (USBL) and float 2 (Acomm) -->
+		<arg name="comm_device_id_4"  value="12"/>
+		<arg name="comm_connect_id_4" value="11"/>
 
 		<arg name="position_x" value="5.0"/>
 		<arg name="position_y" value="-2.0"/>
@@ -45,11 +71,24 @@
 	<include file="$(find world_of_stonefish)/vehicles/float_3.scn">
 		<arg name="robot_name" value="float_rise_3"/>
 
-		<!-- <arg name="comm_device_id"  value="2"/>
-		<arg name="comm_connect_id" value="1"/> -->
+		<!-- float 1 (USBL) and float 3 (Acomm) -->
+		<arg name="comm_device_id_1"  value="4"/>
+		<arg name="comm_connect_id_1" value="3"/>
+				
+		<!-- float 2 (USBL) and float 3 (Acomm) -->
+		<arg name="comm_device_id_2"  value="8"/>
+		<arg name="comm_connect_id_2" value="7"/>
+
+		<!-- float 3 (USBL) and float 1 (Acomm) -->
+		<arg name="comm_device_id_3"  value="9"/>
+		<arg name="comm_connect_id_3" value="10"/>
+
+		<!-- float 3 (USBL) and float 2 (Acomm) -->
+		<arg name="comm_device_id_4"  value="11"/>
+		<arg name="comm_connect_id_4" value="12"/>
 
 		<arg name="position_x" value="-5.0"/>
-		<arg name="position_y" value="2.0"/>
+		<arg name="position_y" value="-4.0"/>
 		<arg name="position_z" value="0.0"/>
 	</include>	
 

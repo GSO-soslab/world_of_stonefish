@@ -147,16 +147,43 @@
             <ros_publisher topic="$(arg robot_name)/gps/fix"/>
         </sensor>
 
-        <!-- <comm name="usbl" device_id="$(arg comm_device_id)" type="usbl">
-            <specs min_vertical_fov="0.0" max_vertical_fov="300.0" range="1000.0"/>
-            <connect device_id="$(arg comm_connect_id)" occlusion_test="false"/>
+        <comm name="modem_13" device_id="$(arg comm_device_id_1)" type="acoustic_modem">
+            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
+            <connect device_id="$(arg comm_connect_id_1)" occlusion_test="false"/>
+            <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/modem_13"/>
+        </comm>
+
+        <comm name="modem_23" device_id="$(arg comm_device_id_2)" type="acoustic_modem">
+            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
+            <connect device_id="$(arg comm_connect_id_2)" occlusion_test="false"/>
+            <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/modem_23"/>
+        </comm>
+
+        <comm name="usbl_31" device_id="$(arg comm_device_id_3)" type="usbl">
+            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
+            <connect device_id="$(arg comm_connect_id_3)" occlusion_test="false"/>
             <autoping rate="1.0"/>
             <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
             <resolution range="0.1" angle="0.1"/>
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
             <link name="Base"/>
-            <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
-        </comm> -->
+            <ros_publisher topic="$(arg robot_name)/stonefish/usbl_31"/>
+        </comm>
+
+        <comm name="usbl_32" device_id="$(arg comm_device_id_4)" type="usbl">
+            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
+            <connect device_id="$(arg comm_connect_id_4)" occlusion_test="false"/>
+            <autoping rate="1.0"/>
+            <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
+            <resolution range="0.1" angle="0.1"/>
+            <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/usbl_32"/>
+        </comm>
 
         <sensor name="odometry_sf" type="odometry" rate="10.0">
             <link name="Base"/>
