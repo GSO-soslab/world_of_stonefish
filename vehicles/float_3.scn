@@ -166,7 +166,7 @@
         <comm name="usbl_31" device_id="$(arg comm_device_id_3)" type="usbl">
             <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_3)" occlusion_test="false"/>
-            <autoping rate="1.0"/>
+            <autoping rate="10.0"/>
             <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
             <resolution range="0.1" angle="0.1"/>
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
@@ -177,7 +177,7 @@
         <comm name="usbl_32" device_id="$(arg comm_device_id_4)" type="usbl">
             <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_4)" occlusion_test="false"/>
-            <autoping rate="1.0"/>
+            <autoping rate="10.0"/>
             <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
             <resolution range="0.1" angle="0.1"/>
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
