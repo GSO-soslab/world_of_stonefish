@@ -197,7 +197,7 @@
         </sensor> -->
 
         <!-- <world_transform xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/> -->
-
+            <!-- vhfdb -->
         <world_transform xyz="$(arg position_x) $(arg position_y) $(arg position_z)" 
                          rpy="0.0 0.0 0.0" />
                          
