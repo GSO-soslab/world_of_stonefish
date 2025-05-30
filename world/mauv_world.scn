@@ -54,7 +54,7 @@
 		<arg name="comm_connect_id" value="2"/> -->
 
 		<arg name="position_x"      value="-5.0"/>
-		<arg name="position_y"      value="-2.0"/>
+		<arg name="position_y"      value="-1.0"/>
 		<arg name="position_z"      value="0.0"/>
 
 	</include>
