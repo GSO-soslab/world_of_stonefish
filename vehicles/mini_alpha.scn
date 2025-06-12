@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!--
+    This file is part of ALPHA AUV project.
+    Author: Emir Cem Gezer
+    Email: emircem@uri.edu;emircem.gezer@gmail.com
+    Year: 2022
+    Copyright (C) 2022 Smart Ocean Systems Laboratory
+-->
+<scenario>
+    <robot name="$(arg robot_name)" fixed="false" self_collisions="false">
+        <base_link name="Vehicle" type="compound" physics="submerged">
+            <external_part name="Hull" type="model" physics="submerged" buoyant="true">
+                <physical>
+                    <mesh filename="parts/body/mini_tube.obj" scale="0.001"/>
+                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/body/mini_tube.obj" scale="0.001"/>
+                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                </visual>
+                <material name="Mini_alpha_body"/>
+                <look name="yellow"/>
+                <!-- <mass value="6.0"/> -->
+                <!-- <inertia xyz="1.0 8.0 8.0"/> -->
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <!-- <cg xyz="-0.65 0.0 0.00" rpy="0.0 0.0 0.0"/> -->
+            </external_part>
+
+            <internal_part name="Foam" type="cylinder" physics="floating" buoyant="false">
+                <dimensions radius="0.112" height="0.68"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <material name="Aluminium"/>
+                <mass value="0.8"/>
+                <look name="grey"/>
+                <compound_transform rpy="0.0 0.0.0 0.0" xyz="-0.3 0.0 0.1"/>
+            </internal_part>
+
+
+            <external_part name="SurgePortDuct" type="model" physics="submerged" buoyant="true">
+                <physical>
+                    <mesh filename="parts/thruster/mini_thruster_duct.obj" scale="0.001"/>
+                    <origin rpy="-1.5717 0.0 1.5717" xyz="-0.516 -0.11 -0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/thruster/mini_thruster_duct.obj" scale="0.001"/>
+                    <origin rpy="-1.5717 0.0 1.5717" xyz="-0.516 -0.11 -0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="black"/>
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </external_part>
+
+            <external_part name="SurgeStbdDuct" type="model" physics="submerged" buoyant="true">
+                <physical>
+                    <mesh filename="parts/thruster/mini_thruster_duct.obj" scale="0.001"/>
+                    <origin rpy="1.5717 0.0 -1.5717" xyz="-0.516 0.11 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/thruster/mini_thruster_duct.obj" scale="0.001"/>
+                    <origin rpy="1.5717 0.0 -1.5717" xyz="-0.516 0.11 0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="black"/>
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </external_part>
+
+            <external_part name="HeavePortDuct" type="model" physics="submerged" buoyant="true">
+                <physical>
+                    <mesh filename="parts/thruster/mini_thruster_duct.obj" scale="0.001"/>
+                    <origin rpy="3.1415 0.0 1.5717" xyz="-0.381 -0.11 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/thruster/mini_thruster_duct.obj" scale="0.001"/>
+                    <origin rpy="3.1415 0.0 1.5717" xyz="-0.381 -0.11 0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="black"/>
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </external_part>
+
+            <external_part name="HeaveStbdDuct" type="model" physics="submerged" buoyant="true">
+                <physical>
+                    <mesh filename="parts/thruster/mini_thruster_duct.obj" scale="0.001"/>
+                    <origin rpy="3.1415 0.0 -1.5717" xyz="-0.381 0.11 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/thruster/mini_thruster_duct.obj" scale="0.001"/>
+                    <origin rpy="3.1415 0.0 -1.5717" xyz="-0.381 0.11 0.0"/>
+                </visual>
+                <material name="Neutral"/>
+                <look name="black"/>
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            </external_part>
+
+
+        </base_link>
+
+        <!-- the actual base frame  -->
+        <link name="Base" type="box" physics="submerged">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="Green"/>
+        </link>
+
+
+        <joint name="Joint1" type="fixed">
+            <parent name="Vehicle"/>
+            <child name="Base"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <axis xyz="1.0 0.0 0.0"/>
+        </joint>
+
+        <!-- Thruster -->
+        <actuator name="ThrusterSurgePort" type="propeller">
+                <link name="Base"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-0.53 -0.11 -0.0"/>
+                <specs thrust_coeff="200.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                 <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
+                <propeller diameter="0.10" right="true">
+                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <mesh filename="parts/thruster/prop.obj" scale="0.5"/>
+                    <mesh filename="prop.obj" scale="1.5"/>
+                    <material name="Neutral"/>
+                    <look name="red"/>
+                </propeller>
+        </actuator>
+
+        <actuator name="ThrusterSurgeStbd" type="propeller">
+                <link name="Base"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-0.53 0.11 -0.0"/>
+                <specs thrust_coeff="200.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                 <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
+                <propeller diameter="0.10" right="true">
+                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <mesh filename="parts/thruster/prop.obj" scale="0.5"/>
+                    <mesh filename="prop.obj" scale="1.5"/>
+                    <material name="Neutral"/>
+                    <look name="red"/>
+                </propeller>
+        </actuator>
+
+        <actuator name="ThrusterHeavePort" type="propeller">
+                <link name="Base"/>
+                <origin rpy="0.0 -1.5717 0.0" xyz="-0.381 -0.11 -0.0"/>
+                <specs thrust_coeff="200.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                 <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
+                <propeller diameter="0.10" right="true">
+                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <mesh filename="parts/thruster/prop.obj" scale="0.5"/>
+                    <mesh filename="prop.obj" scale="1.5"/>
+                    <material name="Neutral"/>
+                    <look name="red"/>
+                </propeller>
+        </actuator>
+
+         <actuator name="ThrusterHeaveStbd" type="propeller">
+                <link name="Base"/>
+                <origin rpy="0.0 -1.5717 0.0" xyz="-0.381 0.11 -0.0"/>
+                <specs thrust_coeff="200.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                <propeller diameter="0.10" right="true">
+                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <mesh filename="parts/thruster/prop.obj" scale="0.5"/>
+                    <mesh filename="prop.obj" scale="1.5"/>
+                    <material name="Neutral"/>
+                    <look name="red"/>
+                </propeller>
+        </actuator>
+
+        <world_transform xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+
+
+        <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/> 
+		<ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/>
+        
+    </robot>
+</scenario>
