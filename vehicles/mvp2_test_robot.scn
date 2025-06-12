@@ -175,7 +175,7 @@
             <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
         </comm> -->
 
-        <sensor name="fls_link_sf" rate="2.0" type="fls">
+        <!-- <sensor name="fls_link_sf" rate="2.0" type="fls">
                 <specs beams="512" bins="250" horizontal_fov="10.0" vertical_fov="20.0"/>
                 <settings range_min="0.5" range_max="40.0" gain="1.5"/>
                 <noise multiplicative="0.01" additive="0.02"/>
@@ -193,7 +193,7 @@
                 <origin xyz="0.0 0.0 0.0" rpy="-1.5708 -0.349 0.0"/>
                 <link name="Base"/>
                 <ros_publisher topic="$(arg robot_name)/mbes/data"/>
-        </sensor>
+        </sensor> -->
 
         <world_transform xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
 
@@ -202,5 +202,6 @@
 		<!-- <ros_publisher thrusters="/mvp2_test_robot/stonefish/thruster_state" servos="/mvp2_test_robot/fins/joint_states"/> -->
         <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/> 
 		<ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/>
+        
     </robot>
 </scenario>
