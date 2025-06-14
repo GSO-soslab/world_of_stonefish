@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<scenario>
+
+    <animated name="turning_wall" type="box" collisions="true">
+       <dimensions xyz="1.0 5.0 10.0"/>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <material name="Rock"/>
+        <look name="yellow"/>
+        <!-- trajectory definition (look up) -->
+        <trajectory type="spline" playback="repeat">
+            <keypoint time="0.0"  xyz="-10.0 -20.0 2.0" rpy="0.0 0.0 0.0"/>
+            <keypoint time="30.0" xyz="-10.0 -20.0 2.0" rpy="0.0 0.0 3.1415926"/>
+            <keypoint time="60.0" xyz="-10.0 -20.0 2.0" rpy="0.0 0.0 6.28"/>
+        </trajectory>
+    </animated>
+
+    <animated name="turning_wall" type="box" collisions="true">
+       <dimensions xyz="5.0 1.0 5.0"/>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <material name="Rock"/>
+        <look name="yellow"/>
+        <!-- trajectory definition (look up) -->
+        <trajectory type="spline" playback="repeat">
+            <keypoint time="0.0"  xyz="0.0 -20.0 3.0" rpy="0.0 0.0 0.0"/>
+            <keypoint time="30.0" xyz="0.0 -20.0 3.0" rpy="3.1415926 0.0 0.0"/>
+            <keypoint time="60.0" xyz="0.0 -20.0 3.0" rpy="0.0 6.28 0.0"/>
+        </trajectory>
+    </animated>
+
+
+
+</scenario>
