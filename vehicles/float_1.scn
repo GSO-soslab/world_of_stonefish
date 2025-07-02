@@ -116,22 +116,20 @@
             </propeller>
         </actuator>
 
-        <!-- <sensor name="dvl_sf" type="dvl" rate="5.0">
+        <sensor name="dvl_sf" type="dvl" rate="5.0">
             <link name="Base"/>
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0" />
             <specs beam_angle="30.0"/>
             <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
             <noise velocity="0.00" altitude="0.001"/>
             <ros_publisher topic="$(arg robot_name)/dvl/stonefish/raw" altitude_topic="$(arg robot_name)/dvl/stonefish/altitude"/>
-        </sensor> -->
+        </sensor>
 
         <sensor name="imu_sf" type="imu" rate="100.0">
             <link name="Base"/>
             <origin xyz="0.0 0.0 -0.17" rpy="3.1415926 0.0 0.0"/>
-            <!-- <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" 
-                   yaw_drift="0.0001" linear_acceleration="0.0001"/> -->
-            <noise angle="0.01 0.01 0.01" angular_velocity="0.01" 
-                   yaw_drift="0.01" linear_acceleration="0.01"/>                   
+            <noise angle="0.00 0.00 0.00" angular_velocity="0.01" 
+                   yaw_drift="0.0" linear_acceleration="0.01"/>                   
             <ros_publisher topic="$(arg robot_name)/imu/stonefish/data"/>
         </sensor>
 
@@ -150,7 +148,7 @@
         </sensor>
 
         <comm name="usbl_12" device_id="$(arg comm_device_id_1)" type="usbl">
-            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="10.0"/>
+            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_1)" occlusion_test="false"/>
             <autoping rate="10.0"/>
             <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
@@ -161,7 +159,7 @@
         </comm>
 
         <comm name="usbl_13" device_id="$(arg comm_device_id_2)" type="usbl">
-            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="10.0"/>
+            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_2)" occlusion_test="false"/>
             <autoping rate="10.0"/>
             <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
@@ -172,7 +170,7 @@
         </comm>
 
         <comm name="modem_21" device_id="$(arg comm_device_id_3)" type="acoustic_modem">
-            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="10.0"/>
+            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_3)" occlusion_test="false"/>
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
             <link name="Base"/>
@@ -180,14 +178,15 @@
         </comm>
 
         <comm name="modem_31" device_id="$(arg comm_device_id_4)" type="acoustic_modem">
-            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="10.0"/>
+            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_4)" occlusion_test="false"/>
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
             <link name="Base"/>
             <ros_publisher topic="$(arg robot_name)/stonefish/modem_31"/>
         </comm>
 
-        <sensor name="odometry_sf" type="odometry" rate="10.0">
+        <!-- The max is 100hz -->
+        <sensor name="odometry_sf" type="odometry" rate="100.0">
             <link name="Base"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <noise position="0.00" velocity="0.00" angle="0.00" angular_velocity="0.00"/>
