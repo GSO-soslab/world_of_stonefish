@@ -26,17 +26,17 @@
 
 
 
-    <!-- <static name="tank" type="model">
+    <static name="tank" type="model">
         <physical>
-            <mesh filename="objects/tank.obj" scale="1.0" convex="false"/>
+            <mesh filename="objects/tank.obj" scale="0.2" convex="false"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </physical>
         <visual>
-            <mesh filename="objects/tank.obj" scale="1.0"/>
+            <mesh filename="objects/tank.obj" scale="0.2"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </visual>
         <material name="Rock"/>
         <look name="gray"/>
-        <world_transform xyz="0.0 0.0 8.0" rpy="3.1415926 0.0 0.0"/>
-    </static> -->
+        <world_transform xyz="0.0 0.0 3.75" rpy="3.1415926 0.0 0.0"/>
+    </static>
 </scenario>

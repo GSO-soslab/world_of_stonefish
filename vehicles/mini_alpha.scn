@@ -115,7 +115,7 @@
         <actuator name="ThrusterSurgePort" type="propeller">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0.0" xyz="-0.53 -0.11 -0.0"/>
-                <specs thrust_coeff="95.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="250.0" torque_coeff="0.01" max_rpm="6000.0"/>
                  <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
                 <propeller diameter="0.05" right="true">
                     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -129,7 +129,7 @@
         <actuator name="ThrusterSurgeStbd" type="propeller">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0.0" xyz="-0.53 0.11 -0.0"/>
-                <specs thrust_coeff="95.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="250.0" torque_coeff="0.01" max_rpm="6000.0"/>
                  <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
                 <propeller diameter="0.05" right="true">
                     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -143,7 +143,7 @@
         <actuator name="ThrusterHeavePort" type="propeller">
                 <link name="Base"/>
                 <origin rpy="0.0 -1.5717 0.0" xyz="-0.381 -0.11 -0.0"/>
-                <specs thrust_coeff="95.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="250.0" torque_coeff="0.01" max_rpm="6000.0"/>
                  <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
                 <propeller diameter="0.05" right="true">
                     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
@@ -157,7 +157,7 @@
          <actuator name="ThrusterHeaveStbd" type="propeller">
                 <link name="Base"/>
                 <origin rpy="0.0 -1.5717 0.0" xyz="-0.381 0.11 -0.0"/>
-                <specs thrust_coeff="95.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="250.0" torque_coeff="0.01" max_rpm="6000.0"/>
                 <propeller diameter="0.05" right="true">
                     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
                     <mesh filename="parts/thruster/prop.obj" scale="0.5"/>
@@ -177,13 +177,13 @@
 
         <sensor name="pressure" type="pressure" rate="5.0">
                 <link name="Base"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-1.0 0.0 0.0"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-0.6 0.0 0.0"/>
                 <noise pressure="0.0"/>
                 <ros_publisher topic="$(arg robot_name)/pressure"/>
         </sensor>
 
 
-        <world_transform xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+        <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
 
         <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/> 
