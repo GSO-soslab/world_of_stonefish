@@ -182,17 +182,17 @@
                 <ros_publisher topic="$(arg robot_name)/pressure"/>
         </sensor>
 
-        <sensor name="cam" rate="5.0" type="camera">
+        <sensor name="cam" rate="10.0" type="camera">
                 <link name="Base"/>
                 <specs resolution_x="640" resolution_y="480" horizontal_fov="120.0"/>
                 <origin xyz="-0.3 0.0 0.0" rpy="0.0 0.0 1.5707"/>
                 <ros_publisher topic="$(arg robot_name)/explorHD/image"/>
         </sensor> 
 
-        <sensor name="cam" rate="5.0" type="camera">
+        <sensor name="cam" rate="10.0" type="camera">
                 <link name="Base"/>
                 <specs resolution_x="640" resolution_y="480" horizontal_fov="60.0"/>
-                <origin xyz="0.0 0.0 0.0" rpy="1.5707 0.0 1.5707"/>
+                <origin xyz="0.1 0.0 0.0" rpy="1.5707 0.0 1.5707"/>
                 <ros_publisher topic="$(arg robot_name)/usbpcb/image"/>
         </sensor> 
 
