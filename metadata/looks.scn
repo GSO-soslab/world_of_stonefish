@@ -21,5 +21,10 @@
         <look name="duct" gray="0.1" roughness="0.4" metalness="0.5"/>
         <look name="manipulator" rgb="0.2 0.15 0.1" roughness="0.6" metalness="0.8"/>
         <look name="ee" rgb="0.59 0.56 0.51" roughness="0.6" metalness="0.8"/>
+        <look name="apriltag0" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00000.png"/>
+        <look name="apriltag1" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00001.png"/>
+        <look name="apriltag2" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00002.png"/>
+        <look name="apriltag3" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00003.png"/>
+
     </looks>
 </scenario>
