@@ -40,7 +40,64 @@
         <world_transform xyz="0.0 0.0 3.75" rpy="3.1415926 0.0 0.0"/>
     </static>
 
-	<static name="cube" type="box">
+    <static name="gate1" type="model">
+        <physical>
+            <mesh filename="objects/gate.obj" scale="0.5" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/gate.obj" scale="0.5"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="gray"/>
+        <world_transform xyz="-1.0 0.0 1.5" rpy="1.5708 0.0 0.0"/>
+    </static>
+
+    <static name="gate12" type="model">
+        <physical>
+            <mesh filename="objects/gate.obj" scale="0.5" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/gate.obj" scale="0.5"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="gray"/>
+        <world_transform xyz="1.5 -4.0 1.5" rpy="1.5708 0.0 0.0"/>
+    </static>
+
+
+     <static name="gate2" type="model">
+        <physical>
+            <mesh filename="objects/gate.obj" scale="0.5" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/gate.obj" scale="0.5"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="red"/>
+        <world_transform xyz="-1.5 -3.0 3.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="gate3" type="model">
+        <physical>
+            <mesh filename="objects/gate.obj" scale="0.5" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/gate.obj" scale="0.5"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="red"/>
+        <world_transform xyz="1.0 3.0 3.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+	<!-- <static name="gate1" type="box">
         <dimensions xyz="0.5 1.0 0.5"/>
         <material name="Rock"/>
         <look name="black"/>
@@ -59,9 +116,8 @@
         <dimensions xyz="0.3 0.3 0.0001"/>
         <material name="Steel"/>
         <look name="apriltag0" uv_mode="1"/>
-        <!-- <world_transform xyz="3.75 -1.0 0.5" rpy="0.0 1.5708 3.1415"/> -->
         <world_transform xyz="-1.5 -1.0 3.0" rpy="0.0 0.0 0.0"/>
-    </static>
+    </static> -->
 
 
 </scenario>
