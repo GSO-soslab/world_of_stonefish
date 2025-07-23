@@ -51,7 +51,7 @@
         </visual>
         <material name="Rock"/>
         <look name="gray"/>
-        <world_transform xyz="-1.0 0.0 1.5" rpy="1.5708 0.0 0.0"/>
+        <world_transform xyz="-1.0 0.0 2.0" rpy="1.5708 0.0 0.0"/>
     </static>
 
     <static name="gate12" type="model">
@@ -65,7 +65,7 @@
         </visual>
         <material name="Rock"/>
         <look name="gray"/>
-        <world_transform xyz="1.5 -4.0 1.5" rpy="1.5708 0.0 0.0"/>
+        <world_transform xyz="1.5 -4.0 2.0" rpy="1.5708 0.0 0.0"/>
     </static>
 
 
