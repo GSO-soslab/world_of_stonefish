@@ -45,60 +45,60 @@
 	</include>
 
 	<!-- No. 2 -->
-	<include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_2"/>
 		<arg name="position_x" value="5.0"/>
 		<arg name="position_y" value="0.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include>
+	</include> -->
 
 	<!-- No. 3 -->
-	<include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_3"/>
 		<arg name="position_x" value="0.0"/>
 		<arg name="position_y" value="-5.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include>
+	</include> -->
 
 	<!-- No. 4 -->
-	<include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_4"/>
 		<arg name="position_x" value="-5.0"/>
 		<arg name="position_y" value="0.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include>
+	</include> -->
 
 	<!-- No. 5 -->
-	<include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_5"/>
 		<arg name="position_x" value="0.0"/>
 		<arg name="position_y" value="5.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include>
+	</include> -->
 
 	<!-- No. 6 -->
-	<include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_6"/>
 		<arg name="position_x" value="0.0"/>
 		<arg name="position_y" value="-10.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include>
+	</include> -->
 
 	<!-- No. 7 -->
-	<include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_7"/>
 		<arg name="position_x" value="7.071"/>
 		<arg name="position_y" value="7.071"/>
 		<arg name="position_z" value="0.0"/>
-	</include>
+	</include> -->
 
 	<!-- No. 8 -->
-	<include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_8"/>
 		<arg name="position_x" value="10.0"/>
 		<arg name="position_y" value="0.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include>
+	</include> -->
 
 	<!-- No. 9 -->
 	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">

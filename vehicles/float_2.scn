@@ -148,7 +148,7 @@
         </sensor>
 
         <comm name="modem_12" device_id="$(arg comm_device_id_1)" type="acoustic_modem">
-            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
+            <specs min_vertical_fov="0.0" max_vertical_fov="359.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_1)" occlusion_test="false"/>
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
             <link name="Base"/>
@@ -156,7 +156,7 @@
         </comm>
 
         <comm name="usbl_21" device_id="$(arg comm_device_id_2)" type="usbl">
-            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
+            <specs min_vertical_fov="0.0" max_vertical_fov="359.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_2)" occlusion_test="false"/>
             <autoping rate="10.0"/>
             <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
@@ -167,7 +167,7 @@
         </comm>
 
         <comm name="usbl_23" device_id="$(arg comm_device_id_3)" type="usbl">
-            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
+            <specs min_vertical_fov="0.0" max_vertical_fov="359.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_3)" occlusion_test="false"/>
             <autoping rate="10.0"/>
             <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
@@ -178,7 +178,7 @@
         </comm>
 
         <comm name="modem_32" device_id="$(arg comm_device_id_4)" type="acoustic_modem">
-            <specs min_vertical_fov="0.0" max_vertical_fov="180.0" range="1000.0"/>
+            <specs min_vertical_fov="0.0" max_vertical_fov="359.0" range="1000.0"/>
             <connect device_id="$(arg comm_connect_id_4)" occlusion_test="false"/>
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0"/>
             <link name="Base"/>
