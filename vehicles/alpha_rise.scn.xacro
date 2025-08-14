@@ -86,7 +86,7 @@
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <axis xyz="1.0 0.0 0.0"/>
             </joint>
-            <!--  -->
+            
 
             <actuator name="ThrusterSwayBow" type="thruster">
                 <link name="Base"/>
@@ -139,23 +139,6 @@
                 </propeller>
                 <ros_subscriber topic="/${robot_name}/control/thruster/surge"/>
             </actuator>
-<!-- 
-            <actuator name="Rudder" type="rudder">
-                <link name="Base"/> -->
-
-            <!-- <actuator name="Rudder" type="rudder">
-                <link name="Base"/> -->
-                <!-- a manual angle -->
-                <!-- <origin rpy="0.0 0.0 0.2" xyz="0.0 0.0 0.0"/>  -->
-                <!-- <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/> 
-                <specs drag_coeff="1.0" lift_coeff="3.0" max_angle="0.6" inverted="false" area="0.06"/>
-                <visual>
-                    <mesh filename="parts/others/rudder.obj" scale="0.002"/>
-                    <material name="Neutral"/>
-                    <look name="black"/>
-                    <origin rpy="-1.571 1.571 0.3" xyz="-1.2 0.0 0.2"/>
-                </visual>
-            </actuator> -->
 
             <sensor name="pressure" type="pressure" rate="5.0">
                 <link name="Base"/>
@@ -166,26 +149,52 @@
 
             <sensor name="dvl_sf" type="dvl" rate="5.0">
                 <link name="Base"/>
-                <origin rpy="3.1415926 0.0 0.0" xyz="-0.65 0.0 0.1"/>
+                <origin rpy="3.1415926 0.0 0.0" xyz="-0.21 0.0 0.1"/>
                 <specs beam_angle="30.0"/>
                 <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
-                <noise velocity="0.01" altitude="0.001"/>
+                <noise velocity="0.00" altitude="0.000"/>
                 <ros_publisher topic="/${robot_name}/dvl/twist" altitude_topic="/${robot_name}/dvl/altitude"/>
             </sensor>
 
             <sensor name="imu_sf" type="imu" rate="20.0">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0.0" xyz="-0.65 0.0 -0.05"/>
-                <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" yaw_drift="0.0001" linear_acceleration="0.0001"/>
+                <noise angle="0.0000 0.0000 0.0000" angular_velocity="0.0000" yaw_drift="0.0000" linear_acceleration="0.0000"/>
                 <ros_publisher topic="/${robot_name}/imu/stonefish/data"/>
             </sensor>
 
-            <sensor name="gps" type="gps" rate="1.0">
+            <sensor name="gps" type="gps" rate="50.0">
                 <link name="Base"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-0.7 0.0 -0.3"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-0.65 0.0 -0.3"/>
                 <noise ned_position="0.0"/>
                 <ros_publisher topic="/${robot_name}/gps/fix"/>
             </sensor>
+
+            <sensor name="optic_modem_vis" type="camera">
+                <link name="Base"/>
+                <origin xyz="-0.5 0.15 0.15" rpy="-2.35619 0.0 0.0"/>
+                <specs horizontal_fov="60.0" resolution_x="1000" resolution_y="1000"/>
+            </sensor>
+
+            <comm name="optic_modem_vis" device_id="4" type="acoustic_modem">
+                <link name="Base"/>
+                <origin xyz="-0.5 0.00 -0.15" rpy="0.5236 0.0 0.0"/>
+                <specs min_vertical_fov="0.0" max_vertical_fov="60" range="50.0"/>
+                <connect device_id="3" occlusion_test="false"/>
+                <!-- <autoping rate="10.0"/> -->
+                <!-- <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.2"/> -->
+                <!-- <resolution range="0.1" angle="0.1"/> -->
+                <ros_publisher topic="/${robot_name}/comms/optical_modem"/>
+            </comm>
+
+            <!-- https://www.blueprintsubsea.com/seatrac/seatrac-lightweight [SeaTrac X010] -->
+            <!-- <comm name="aco_modem" device_id="1" type="acoustic_modem">
+                <link name="Base"/>
+                <origin xyz="0.15 0.00 0.15" rpy="3.1415926 0.0 0.0"/>
+                <specs min_vertical_fov="0.0" max_vertical_fov="220.0" range="1000.0"/>
+                <connect device_id="2" occlusion_test="false"/>
+                <ros_publisher topic="/${robot_name}/comms/usbl_transp"/>
+            </comm> -->
 
             <!-- <sensor name="odom" rate="10.0" type="odometry">
                 <noise position="0.00" velocity="0.00" angle="0.0" angular_velocity="0.00"/>
@@ -193,8 +202,8 @@
                 <origin xyz="0.0 0.0 0.0" rpy="3.1415926 0.0 -1.5707963"/>
                 <link name="Base"/>
                 <ros_publisher topic="/${robot_name}/sf/odometry"/>
-            </sensor> -->
-
+            </sensor>
+ -->
 
             <!-- perception sensors -->
             <!-- <sensor name="mss" rate="5.0" type="profiler">

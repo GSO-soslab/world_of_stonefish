@@ -34,22 +34,51 @@
                 </external_part>
 
                 <internal_part name="Foam_starboard" type="cylinder" physics="surface" buoyant="true">
-                    <dimensions radius="0.12" height="1.70"/>
-                    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <dimensions radius="0.10" height="1.80"/>
+                    <origin rpy="0.0 1.571 0.0" xyz="-0.2 0.5 -0.1"/>
                     <material name="Foam"/>
-                    <mass value="22"/>
+                    <!-- prev. 22 -->
+                    <mass value="20"/>
                     <look name="grey"/>
-                    <compound_transform rpy="0.0 1.571 0.0" xyz="0.0 0.5 -0.1"/>
+                    <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
                 </internal_part>
 
                 <internal_part name="Foam_port" type="cylinder" physics="surface" buoyant="true">
-                    <dimensions radius="0.12" height="1.70"/>
+                    <dimensions radius="0.10" height="1.80"/>
+                    <origin rpy="0.0 1.571 0.0" xyz="-0.2 -0.5 -0.1"/>
+                    <material name="Foam"/>
+                    <mass value="20"/>
+                    <look name="grey"/>
+                    <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                </internal_part>
+
+                <!-- <external_part name="om_cone" type="model" physics="surface" buoyant="false">
+                    <physical>
+                        <mesh filename="$(find world_of_stonefish)/data/parts/others/unit_cone.obj" scale="0.0045"/>
+                        <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0"/>
+                    </physical>
+                    <visual>
+                        <mesh filename="$(find world_of_stonefish)/data/parts/others/unit_cone.obj" scale="0.0045"/>
+                        <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0"/>
+                    </visual>
+                    <material name="Vehicle"/>
+                    <look name="yellow"/>
+                    <mass value="0.0"/>
+                    <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <cg xyz=" 0.0 0 0.0" rpy="0.0 0.0 0.0"/>
+                </external_part> -->
+
+                <!-- <external_part name="opticalmodem_FOV_wamv" type="model" physics="surface" buoyant="false">
+                    <visual>
+                        <mesh filename="$(find world_of_stonefish)/data/parts/others/unit_cone.obj" scale="0.0045"/>
+                        <origin rpy="3.14 0 0" xyz="-1.0 .45 -.2"/>
+                    </visual>
                     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
                     <material name="Foam"/>
-                    <mass value="22"/>
-                    <look name="grey"/>
-                    <compound_transform rpy="0.0 1.571 0.0" xyz="0.0 -0.5 -0.1"/>
-                </internal_part>
+                    <mass value="0.0"/>
+                    <look name="blue"/>
+                    <compound_transform rpy="0.0 1.571 0.0" xyz="-0.2 -0.5 -0.1"/>
+                </external_part> -->
 
                 <external_part name="engine_starboard" type="model" physics="submerged" buoyant="false">
                     <physical>
@@ -115,7 +144,7 @@
             <!-- the actual base frame  -->
             <link name="Base" type="box" physics="submerged">
                 <dimensions xyz="0.01 0.02 0.01"/>
-                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <origin xyz="0.1 0.0 0.0" rpy="0.0 0.0 0.0"/>
                 <material name="Neutral"/>
                 <look name="Green"/>
             </link>
@@ -130,7 +159,7 @@
             <actuator name="ThrusterPort" type="thruster">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0" xyz="-1.1 -.45 0.08"/>
-                <specs thrust_coeff="1" thrust_coeff_backward="0.3404" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="1.5" thrust_coeff_backward="0.3404" torque_coeff="0.01" max_rpm="3000.0"/>
                 <propeller diameter="0.08" right="true">
                     <mesh filename="$(find world_of_stonefish)/data/parts/thruster/wamv_propeller.obj" scale="0.5"/>
                     <material name="Neutral"/>
@@ -142,7 +171,7 @@
             <actuator name="ThrusterStarboard" type="thruster">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0" xyz="-1.1 .45 0.08"/>
-                <specs thrust_coeff="1" thrust_coeff_backward="0.3404" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="1.5" thrust_coeff_backward="0.3404" torque_coeff="0.01" max_rpm="3000.0"/>
                 <propeller diameter="0.08" right="true">
                     <mesh filename="$(find world_of_stonefish)/data/parts/thruster/wamv_propeller.obj" scale="0.5"/>
                     <material name="Neutral"/>
@@ -161,7 +190,7 @@
                 <ros_publisher topic="/${robot_name}/multibeam_sonar/stonefish/data"/>
             </sensor>
 
-            <sensor name="laserscanner_1" rate="10" type="multibeam">
+            <!-- <sensor name="laserscanner_1" rate="10" type="multibeam">
                 <specs fov="45" steps="64"/>
                 <range distance_min="0.5" distance_max="100.0"/>
                 <noise distance="0.1"/>
@@ -209,11 +238,21 @@
                 <origin xyz="0.0 0.0 -0.6" rpy="3.14 0.3490659 -4.712389"/>
                 <link name="Base"/>
                 <ros_publisher topic="/${robot_name}/laserscanner_9/stonefish/data"/>
+            </sensor> -->
+
+            <sensor name="vlp16" rate="1" type="multibeam">
+                <specs fov="360" steps="500"/>
+                <range distance_min="0.5" distance_max="100.0"/>
+                <noise distance="0.1"/>
+                <history samples="1"/>
+                <origin xyz="0.0 0.0 -1.0" rpy="0.00 0.00 0.00"/>
+                <link name="Base"/>
+                <ros_publisher topic="/${robot_name}/vlp16/stonefish/data"/>
             </sensor>
 
             <sensor name="imu" type="imu" rate="20.0">
                 <link name="Base"/>
-                <origin rpy="3.1415926 0.0 0.0" xyz="0 0.0 -0.05"/>
+                <origin rpy="3.1415926 0.0 0.0" xyz="0 0.0 -0.00"/>
                 <!-- <noise angle="0.01 0.01 0.05" angular_velocity="0.05" yaw_drift="0.001" linear_acceleration="0.1"/> -->
                 <noise angle="0.0 0.0 0.0" angular_velocity="0.0" yaw_drift="0.00" linear_acceleration="0.0"/>
                 
@@ -222,16 +261,54 @@
 
             <sensor name="gps" type="gps" rate="1.0">
                 <link name="Base"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-0.7 0.0 -0.3"/>
-                <!-- <noise ned_position="0.1"/> -->
-                
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.3"/>
                 <noise ned_position="0.0"/>
                 <ros_publisher topic="/${robot_name}/gps/fix"/>
             </sensor>
 
+            <!-- <sensor name="optic_modem_vis" type="camera">
+                <link name="Base"/>
+                <origin xyz="0.0 0.0 -0.5" rpy="0.78539 0.0 0.0"/>
+                <specs horizontal_fov="60.0" resolution_x="1000" resolution_y="1000"/>
+            </sensor> -->
+
+            <comm name="optic_modem_vis" device_id="3" type="acoustic_modem">
+                <link name="Base"/>
+                <origin xyz="0.0 0.0 -0.5" rpy="3.6652 0.0 0.0"/>
+                <specs min_vertical_fov="0.0" max_vertical_fov="60" range="50.0"/>
+                <connect device_id="4" occlusion_test="false"/>
+                <!-- <autoping rate="1.0"/> -->
+                <!-- <autoping rate="10.0"/> -->
+                <!-- <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.2"/> -->
+                <!-- <resolution range="0.1" angle="0.1"/> -->
+                <ros_publisher topic="/${robot_name}/comms/optical_modem"/>
+            </comm>
+
+            <sensor name="dvl_sf" type="dvl" rate="5.0">
+                <link name="Base"/>
+                <origin rpy="3.1415926 0.0 0.0" xyz="-0.65 0.0 -0.1"/>
+                <specs beam_angle="30.0"/>
+                <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
+                <noise velocity="0.01" altitude="0.001"/>
+                <ros_publisher topic="/${robot_name}/dvl/twist" altitude_topic="/${robot_name}/dvl/altitude"/>
+            </sensor>
+
+            <comm name="USBL" device_id="2" type="usbl">
+                <link name="Base"/>
+                <!-- <origin xyz="-0.1 0.0 -10" rpy="3.1415926 0.0 0.0"/> -->
+                <origin xyz="-0.1 0.0 0.5" rpy="3.1415926 3.1415926 3.1415926"/>
+                <specs min_vertical_fov="0.0" max_vertical_fov="220" range="1000.0"/>
+                <connect device_id="1" occlusion_test="false"/>
+                <autoping rate="1.0"/>
+                <!-- <autoping rate="1.0"/> -->
+                <noise range="0.00" horizontal_angle="0.0" vertical_angle="0.0"/>
+                <resolution range="0.1" angle="0.1"/>
+                <ros_publisher topic="/${robot_name}/comms/usbl"/>
+            </comm>
+
             <!-- <sensor name="MSIS" type="msis">
                 <specs step="1" bins="100" horizontal_beam_width="2.0" vertical_beam_width="30.0"/>
-                <settings range_min="0.5" range_max="50.0" rotation_min="-50.0" rotation_max="50.0" gain="1.5"/>
+                <settings range_min="0.5" range_max="50.0" rotation_min="-50.0"- rotation_max="50.0" gain="1.5"/>
                 <noise multiplicative="0.02" additive="0.03"/>
                 <display colormap="hot"/>
                 <origin xyz="0.0 0.0 0.0" rpy="-1.57 3.14 4.71"/>
@@ -239,7 +316,7 @@
                 <link name="Base"/>
             </sensor> -->
 
-            <sensor name="Cam" rate="10.0" type="camera">
+            <!-- <sensor name="Cam" rate="10.0" type="camera">
                 <specs resolution_x="800" resolution_y="600" horizontal_fov="120.0"/>
                 <origin xyz="0.0 0.0 -1" rpy="-1.57 3.14 0"/>
                 <link name="Base"/>
@@ -251,7 +328,7 @@
                 <origin xyz="-1. 0.0 -1" rpy="-1.57 3.14 4.71"/>
                 <link name="Base"/>
                 <ros_publisher topic="/${robot_name}/camera/stonefish/front/data"/>
-            </sensor>
+            </sensor> -->
 
             <world_transform rpy="${rpy}" xyz="${xyz}"/>
 
