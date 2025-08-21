@@ -129,6 +129,16 @@ LIBRARY DESTINATION lib
 RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
+add_executable(modem_driver_node src/modem_driver_node.cpp)
+target_link_libraries(modem_driver_node ${library_name})
+ament_target_dependencies(modem_driver_node ${dependencies})
+
+install(TARGETS modem_driver_node ${library_name}
+ARCHIVE DESTINATION lib
+LIBRARY DESTINATION lib
+RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+
 install(DIRECTORY include/
 DESTINATION include/
 )
