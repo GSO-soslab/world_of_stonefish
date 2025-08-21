@@ -31,11 +31,12 @@
         </joint>
 
         <comm name="Modem" device_id="2" type="acoustic_modem">
-            <specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
+            <specs min_vertical_fov="0.0" max_vertical_fov="220.0" range="1000.0"/>
             <connect device_id="1" occlusion_test="false"/>
             <origin xyz="0.0 3.0 0.0" rpy="0.0 0.0 0.0"/>
             <link name="Base"/>
-            <ros_publisher topic="buoy/modem"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/modem_rx"/>
+            <ros_subscriber topic="$(arg robot_name)/stonefish/modem_tx"/>
         </comm>
 
         <world_transform xyz="0.0 100.0 0.0" rpy="0.0 0.0 0.0"/>
