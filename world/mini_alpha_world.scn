@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+
+<scenario>
+	<environment>
+		<ned latitude="41" longitude="-71"/>
+		<ocean>
+			<water density="1023.0" jerlov="0.2"/>
+			<!-- <waves height="1.5"/> -->
+			<particles enabled="true"/>
+			<current type="uniform">
+				<velocity xyz="0.0 0.0 0.0"/>
+			</current>
+		</ocean>
+		<atmosphere>
+			<sun azimuth="40.0" elevation="10.0"/>
+		</atmosphere>
+	</environment>
+
+
+	<include file="$(find world_of_stonefish)/metadata/materials.scn"/>
+	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
+
+	<include file="$(find world_of_stonefish)/vehicles/mini_alpha.scn">
+		<arg name="robot_name" value="mini_alpha"/>
+	</include>
+
+
+
+    <static name="tank" type="model">
+        <physical>
+            <mesh filename="objects/tank.obj" scale="0.2" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/tank.obj" scale="0.2"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="gray"/>
+        <world_transform xyz="0.0 0.0 3.75" rpy="3.1415926 0.0 0.0"/>
+    </static>
+
+    <static name="gate1" type="model">
+        <physical>
+            <mesh filename="objects/gate.obj" scale="0.5" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/gate.obj" scale="0.5"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="gray"/>
+        <world_transform xyz="-1.0 0.0 2.0" rpy="1.5708 0.0 0.0"/>
+    </static>
+
+    <static name="gate12" type="model">
+        <physical>
+            <mesh filename="objects/gate.obj" scale="0.5" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/gate.obj" scale="0.5"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="gray"/>
+        <world_transform xyz="1.5 -4.0 2.0" rpy="1.5708 0.0 0.0"/>
+    </static>
+
+
+     <static name="gate2" type="model">
+        <physical>
+            <mesh filename="objects/gate.obj" scale="0.5" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/gate.obj" scale="0.5"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="red"/>
+        <world_transform xyz="-1.5 -3.0 3.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="gate3" type="model">
+        <physical>
+            <mesh filename="objects/gate.obj" scale="0.5" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/gate.obj" scale="0.5"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="red"/>
+        <world_transform xyz="1.0 3.0 3.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+	<!-- <static name="gate1" type="box">
+        <dimensions xyz="0.5 1.0 0.5"/>
+        <material name="Rock"/>
+        <look name="black"/>
+        <world_transform xyz="1.0 -3.0 3.5" rpy="0.0 0.0 0.0"/>
+    </static>
+
+	<static name="cube" type="box">
+        <dimensions xyz="0.5 1.0 0.5"/>
+        <material name="Rock"/>
+        <look name="black"/>
+        <world_transform xyz="-1.0 -3.0 3.5" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    
+    <static name="apriltag0" type="box">
+        <dimensions xyz="0.3 0.3 0.0001"/>
+        <material name="Steel"/>
+        <look name="apriltag0" uv_mode="1"/>
+        <world_transform xyz="-1.5 -1.0 3.0" rpy="0.0 0.0 0.0"/>
+    </static> -->
+
+
+</scenario>
