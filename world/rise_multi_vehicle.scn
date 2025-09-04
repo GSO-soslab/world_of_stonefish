@@ -29,13 +29,16 @@
 	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
 
     <!-- <include file="$(find world_of_stonefish)/world/iceberg.scn"/> -->
-    <!-- <include file="$(find world_of_stonefish)/vehicles/alpha_rise.scn">
+    <include file="$(find world_of_stonefish)/vehicles/alpha_rise.scn">
         <arg name="robot_name" value="alpha_rise"/>
-	</include> -->
+	</include>
 
     <!--include file="$(find world_of_stonefish)/vehicles/wamv.scn"/> -->
     <include file="$(find world_of_stonefish)/vehicles/wamv_rise.scn">
         <arg name="robot_name" value="wamv_rise"/>
+        <arg name="xyz" value="0.0 10.0 0.0"/>
+        <arg name="rpy" value="0.0 0.0 0.0"/>
+
 	</include>
 
 
