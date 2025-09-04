@@ -82,7 +82,7 @@
         <actuator name="ThrusterPort" type="propeller">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0.0" xyz="-1.25 -.5 0.05"/>
-                <specs thrust_coeff="100.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="150.0" torque_coeff="0.01" max_rpm="3000.0"/>
                  <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
                 <propeller diameter="0.16" right="true">
                     <!-- <origin rpy="1.571 0.0 0.0" xyz="0.0 0.0 0.0"/> -->
@@ -96,7 +96,7 @@
         <actuator name="ThrusterStarboard" type="propeller">
                 <link name="Base"/>
                 <origin rpy="0.0 0.0 0.0" xyz="-1.25 0.5 0.05"/>
-                <specs thrust_coeff="100.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                <specs thrust_coeff="150.0" torque_coeff="0.01" max_rpm="3000.0"/>
                  <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
                 <propeller diameter="0.16" right="true">
                     <!-- <origin rpy="1.571 0.0 0.0" xyz="0.0 0.0 0.0"/> -->
