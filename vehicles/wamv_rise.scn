@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!--
+    This file is part of ALPHA AUV project.
+    Author: Emir Cem Gezer
+    Email: emircem@uri.edu;emircem.gezer@gmail.com
+    Year: 2022
+    Copyright (C) 2022 Smart Ocean Systems Laboratory
+-->
+<scenario>
+    <robot name="$(arg robot_name)" fixed="false" self_collisions="false">
+        <base_link name="Vehicle" type="compound" physics="floating">
+            <external_part name="base" type="model" physics="floating" buoyant="true">
+                <physical>
+                    <mesh filename="parts/body/wamv_base.obj" scale="0.005"/>
+                    <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0.0"/>  
+                </physical>
+                <visual>
+                    <mesh filename="parts/body/wamv_base.obj" scale="0.005"/>
+                    <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0.0"/>  
+                </visual>
+                <material name="Vehicle"/>
+                <look name="yellow"/>
+                <mass value="110.0"/>
+                <!-- <inertia xyz="1.0 8.0 8.0"/> -->
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <cg xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </external_part>
+
+            <!-- engine pods -->
+            <external_part name="engine_starboard" type="model" physics="floating" bouyant="true">
+                    <physical>
+                        <mesh filename="parts/body/wamv_engine.obj" scale="0.5"/>
+                        <origin rpy="3.14 0 0" xyz="-1.1 .5 -.2"/>
+                    </physical>
+                    <visual>
+                        <mesh filename="parts/body/wamv_engine.obj" scale="0.5"/>
+                        <origin rpy="3.14 0 0" xyz="-1.1 .5 -.2"/>
+                    </visual>
+                    <material name="Vehicle"/>
+                    <look name="gray"/>
+                    <mass value="5"/>
+                    <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <cg xyz=" 0.0 0 1.0" rpy="0.0 0.0 0.0"/>
+            </external_part>
+
+            <external_part name="engine_port" type="model" physics="floating" bouyant="true">
+                <physical>
+                    <mesh filename="parts/body/wamv_engine.obj" scale="0.5"/>
+                    <origin rpy="3.14 0 0" xyz="-1.1 -.5 -.2"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/body/wamv_engine.obj" scale="0.5"/>
+                    <origin rpy="3.14 0 0" xyz="-1.1 -.5 -.2"/>
+                </visual>
+                <material name="Vehicle"/>
+                <look name="gray"/>
+                <mass value="5"/>
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <cg xyz=" 0.0 0 1.0" rpy="0.0 0.0 0.0"/>
+            </external_part>
+    
+
+        </base_link>
+
+
+         <link name="Base" type="box" physics="submerged">
+                <dimensions xyz="0.01 0.02 0.01"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <material name="Neutral"/>
+                <look name="Green"/>
+        </link>
+        
+        <joint name="Joint1" type="fixed">
+                <parent name="Vehicle"/>
+                <child name="Base"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <axis xyz="1.0 0.0 0.0"/>
+        </joint>
+
+
+        <!-- thrusters  -->
+        <actuator name="ThrusterPort" type="propeller">
+                <link name="Base"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.25 -.5 0.05"/>
+                <specs thrust_coeff="100.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                 <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
+                <propeller diameter="0.16" right="true">
+                    <!-- <origin rpy="1.571 0.0 0.0" xyz="0.0 0.0 0.0"/> -->
+                    <mesh filename="parts/thruster/wamv_propeller.obj" scale="0.5"/>
+                    <material name="Neutral"/>
+                    <look name="red"/>
+                </propeller>
+            <ros_subscriber topic="$(arg robot_name)/control/thruster/port"/>
+        </actuator>
+
+        <actuator name="ThrusterStarboard" type="propeller">
+                <link name="Base"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.25 0.5 0.05"/>
+                <specs thrust_coeff="100.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                 <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
+                <propeller diameter="0.16" right="true">
+                    <!-- <origin rpy="1.571 0.0 0.0" xyz="0.0 0.0 0.0"/> -->
+                    <mesh filename="parts/thruster/wamv_propeller.obj" scale="0.5"/>
+                    <material name="Neutral"/>
+                    <look name="red"/>
+                </propeller>
+            <ros_subscriber topic="$(arg robot_name)/control/thruster/starboard"/>
+        </actuator>
+
+
+        <world_transform xyz="5.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <!-- <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/>  -->
+		<!-- <ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/> -->
+    </robot>
+</scenario>

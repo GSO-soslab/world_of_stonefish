@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+    This file is part of ALPHA AUV project.
+
+    Author: Emir Cem Gezer
+    Email: emircem@uri.edu;emircem.gezer@gmail.com
+    Year: 2022
+
+    Copyright (C) 2022 Smart Ocean Systems Laboratory
+-->
+<scenario>
+	<environment>
+		<ned latitude="41.0" longitude="-71.0"/>
+		<ocean>
+			<water density="1023.0" jerlov="0.2"/>
+			<!-- <waves height="1.5"/> -->
+			<particles enabled="true"/>
+			<current type="uniform">
+				<velocity xyz="0.0 0.0 0.0"/>
+			</current>
+		</ocean>
+		<atmosphere>
+			<sun azimuth="40.0" elevation="10.0"/>
+		</atmosphere>
+	</environment>
+
+
+	<include file="$(find world_of_stonefish)/metadata/materials.scn"/>
+	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
+
+    <!-- <include file="$(find world_of_stonefish)/world/iceberg.scn"/> -->
+    <include file="$(find world_of_stonefish)/vehicles/alpha_rise.scn">
+        <arg name="robot_name" value="alpha_rise"/>
+	</include>
+
+    <!--include file="$(find world_of_stonefish)/vehicles/wamv.scn"/> -->
+    <include file="$(find world_of_stonefish)/vehicles/wamv_rise.scn">
+        <arg name="robot_name" value="wamv_rise"/>
+	</include>
+
+
+    <!-- <alpha_rise robot_name="alpha_rise" xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
+    <!--wamv robot_name="wamv" xyz="0.0 5.0 0.0" rpy="0.0 0.0 0.0"/> -->
+
+
+
+	<static name="Bottom" type="model">
+        <physical>
+            <mesh filename="objects/flat_terrain.obj" scale="10.0" convex="true"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/flat_terrain.obj" scale="10.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="Gray"/>
+        <world_transform xyz="0.0 0.0 40.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+
+</scenario>
