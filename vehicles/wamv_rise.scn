@@ -141,6 +141,15 @@
         </sensor>
 
 
+        <comm name="luma" device_id="1" type="optical_modem">
+            <specs fov="120.0" range="50.0" ambient_light_sensitivity="0.0"/>
+            <connect device_id="2"/>
+            <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/luma"/>
+            <ros_subscriber topic="$(arg robot_name)/stonefish/luma"/>
+        </comm>
+
         <!-- <world_transform xyz="5.0 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
         <world_transform xyz="$(arg xyz)" rpy="$(arg rpy)"/>
 

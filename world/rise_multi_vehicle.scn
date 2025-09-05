@@ -36,7 +36,7 @@
     <!--include file="$(find world_of_stonefish)/vehicles/wamv.scn"/> -->
     <include file="$(find world_of_stonefish)/vehicles/wamv_rise.scn">
         <arg name="robot_name" value="wamv_rise"/>
-        <arg name="xyz" value="0.0 10.0 0.0"/>
+        <arg name="xyz" value="0.0 2.0 0.0"/>
         <arg name="rpy" value="0.0 0.0 0.0"/>
 
 	</include>
