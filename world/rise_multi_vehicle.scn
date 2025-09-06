@@ -10,7 +10,11 @@
 -->
 <scenario>
 	<environment>
-		<ned latitude="41.0" longitude="-71.0"/>
+        <!-- map origin -->
+		<!-- <ned latitude="41.44697" longitude="-71.4343"/> --> 
+
+        <!-- GSO -->
+		<ned latitude="41.4923" longitude="-71.4173"/>
 		<ocean>
 			<water density="1023.0" jerlov="0.2"/>
 			<!-- <waves height="1.5"/> -->
@@ -20,7 +24,7 @@
 			</current>
 		</ocean>
 		<atmosphere>
-			<sun azimuth="40.0" elevation="10.0"/>
+			<sun azimuth="40.0" elevation="40.0"/>
 		</atmosphere>
 	</environment>
 
@@ -38,7 +42,6 @@
         <arg name="robot_name" value="wamv_rise"/>
         <arg name="xyz" value="0.0 2.0 0.0"/>
         <arg name="rpy" value="0.0 0.0 0.0"/>
-
 	</include>
 
 
@@ -47,7 +50,7 @@
 
 
 
-	<static name="Bottom" type="model">
+	<!-- <static name="Bottom" type="model">
         <physical>
             <mesh filename="objects/flat_terrain.obj" scale="10.0" convex="true"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -59,7 +62,20 @@
         <material name="Rock"/>
         <look name="Gray"/>
         <world_transform xyz="0.0 0.0 40.0" rpy="0.0 0.0 0.0"/>
-    </static>
+    </static> -->
 
+    <static name="Bottom" type="model">
+        <physical>
+            <mesh filename="objects/nb_map.obj" scale="1.0" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/nb_map.obj" scale="1.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="terrain"/>
+        <world_transform xyz="-5049.6 -1420.1 0.0" rpy="0.0 0.0 0.0"/>
+    </static>
 
 </scenario>
