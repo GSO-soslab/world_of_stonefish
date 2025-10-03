@@ -21,8 +21,8 @@ class ModemDriver : public rclcpp::Node
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr modem_received_sub;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr modem_send_pub;
         
-        rclcpp::Subscription<std_msgs::msg::ByteMultiArray>::SharedPtr modem_received_bytearray_sub;
-        rclcpp::Publisher<std_msgs::msg::ByteMultiArray>::SharedPtr modem_send_bytearray_pub;
+        rclcpp::Publisher<std_msgs::msg::ByteMultiArray>::SharedPtr modem_received_bytearray_pub;
+        rclcpp::Subscription<std_msgs::msg::ByteMultiArray>::SharedPtr modem_send_bytearray_sub;
 
         void f_send_callback(const std_msgs::msg::ByteMultiArray::SharedPtr msg);
         void f_received_callback(const std_msgs::msg::String::SharedPtr msg);

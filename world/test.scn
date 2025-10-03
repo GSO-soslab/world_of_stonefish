@@ -6,7 +6,7 @@
 		<ocean>
 			<water density="1023.0" jerlov="0.2"/>
 			<!-- <waves height="1.5"/> -->
-			<particles enabled="true"/>
+			<!-- <particles enabled="true"/> -->
 			<current type="uniform">
 				<velocity xyz="0.0 0.0 0.0"/>
 			</current>
@@ -24,7 +24,9 @@
 		<arg name="robot_name" value="mvp2_test_robot"/>
 	</include>
 
-	<!-- <include file="$(find world_of_stonefish)/vehicles/acomm_buoy.scn" /> -->
+	<include file="$(find world_of_stonefish)/vehicles/acomm_buoy.scn">
+		<arg name="robot_name" value="acomm_buoy"/>
+	</include>
 
 	<!-- <dynamic name="Cyl" type="cylinder" physics="surface" buoyant="true">
     	  <dimensions radius="1.0" height="2.0"/>
