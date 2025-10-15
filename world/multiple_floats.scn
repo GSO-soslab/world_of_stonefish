@@ -45,20 +45,20 @@
 	</include>
 
 	<!-- No. 2 -->
-	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_2"/>
 		<arg name="position_x" value="5.0"/>
 		<arg name="position_y" value="0.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include> -->
+	</include>
 
 	<!-- No. 3 -->
-	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_3"/>
 		<arg name="position_x" value="0.0"/>
 		<arg name="position_y" value="-5.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include> -->
+	</include>
 
 	<!-- No. 4 -->
 	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
