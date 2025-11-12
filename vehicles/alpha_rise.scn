@@ -133,7 +133,7 @@
 
 
         <!-- sensors -->
-        <sensor name="gps" type="gps" rate="1.0">
+        <sensor name="unicore_gps" type="gps" rate="1.0">
             <link name="Base"/>
             <origin rpy="0.0 0.0 0.0" xyz="-0.7 0.0 -0.3"/>
             <noise ned_position="0.0"/>
