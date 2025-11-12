@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<!--
+    This file is part of ALPHA AUV project.
+    Author: Emir Cem Gezer
+    Email: emircem@uri.edu;emircem.gezer@gmail.com
+    Year: 2022
+    Copyright (C) 2022 Smart Ocean Systems Laboratory
+-->
+<scenario>
+    <robot name="$(arg robot_name)" fixed="false" self_collisions="false">
+        <base_link name="Vehicle" type="compound" physics="floating">
+            <external_part name="base" type="model" physics="floating" buoyant="true">
+                <physical>
+                    <mesh filename="parts/body/wamv_base.obj" scale="0.005"/>
+                    <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0.0"/>  
+                </physical>
+                <visual>
+                    <mesh filename="parts/body/wamv_base.obj" scale="0.005"/>
+                    <origin rpy="3.14 0.0 0.0" xyz="0.0 0.0 0.0"/>  
+                </visual>
+                <material name="Vehicle"/>
+                <look name="yellow"/>
+                <mass value="110.0"/>
+                <!-- <inertia xyz="1.0 8.0 8.0"/> -->
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <cg xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            </external_part>
+
+            <!-- engine pods -->
+            <external_part name="engine_starboard" type="model" physics="floating" bouyant="true">
+                    <physical>
+                        <mesh filename="parts/body/wamv_engine.obj" scale="0.5"/>
+                        <origin rpy="3.14 0 0" xyz="-1.1 .5 -.2"/>
+                    </physical>
+                    <visual>
+                        <mesh filename="parts/body/wamv_engine.obj" scale="0.5"/>
+                        <origin rpy="3.14 0 0" xyz="-1.1 .5 -.2"/>
+                    </visual>
+                    <material name="Vehicle"/>
+                    <look name="gray"/>
+                    <mass value="5"/>
+                    <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                    <cg xyz=" 0.0 0 1.0" rpy="0.0 0.0 0.0"/>
+            </external_part>
+
+            <external_part name="engine_port" type="model" physics="floating" bouyant="true">
+                <physical>
+                    <mesh filename="parts/body/wamv_engine.obj" scale="0.5"/>
+                    <origin rpy="3.14 0 0" xyz="-1.1 -.5 -.2"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/body/wamv_engine.obj" scale="0.5"/>
+                    <origin rpy="3.14 0 0" xyz="-1.1 -.5 -.2"/>
+                </visual>
+                <material name="Vehicle"/>
+                <look name="gray"/>
+                <mass value="5"/>
+                <compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+                <cg xyz=" 0.0 0 1.0" rpy="0.0 0.0 0.0"/>
+            </external_part>
+    
+
+        </base_link>
+
+
+         <link name="Base" type="box" physics="submerged">
+                <dimensions xyz="0.01 0.02 0.01"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <material name="Neutral"/>
+                <look name="Green"/>
+        </link>
+        
+        <joint name="Joint1" type="fixed">
+                <parent name="Vehicle"/>
+                <child name="Base"/>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <axis xyz="1.0 0.0 0.0"/>
+        </joint>
+
+
+        <!-- thrusters  -->
+        <actuator name="ThrusterPort" type="propeller">
+                <link name="Base"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.25 -.5 0.05"/>
+                <specs thrust_coeff="150.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                 <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
+                <propeller diameter="0.16" right="true">
+                    <!-- <origin rpy="1.571 0.0 0.0" xyz="0.0 0.0 0.0"/> -->
+                    <mesh filename="parts/thruster/wamv_propeller.obj" scale="0.5"/>
+                    <material name="Neutral"/>
+                    <look name="red"/>
+                </propeller>
+            <ros_subscriber topic="$(arg robot_name)/torqeedo_port/control/controller_speed"/>
+        </actuator>
+
+        <actuator name="ThrusterStarboard" type="propeller">
+                <link name="Base"/>
+                <origin rpy="0.0 0.0 0.0" xyz="-1.25 0.5 0.05"/>
+                <specs thrust_coeff="150.0" torque_coeff="0.01" max_rpm="3000.0"/>
+                 <!-- <specs thrust_coeff="0.3411" torque_coeff="0.01" max_rpm="3000.0"/> -->
+                <propeller diameter="0.16" right="true">
+                    <!-- <origin rpy="1.571 0.0 0.0" xyz="0.0 0.0 0.0"/> -->
+                    <mesh filename="parts/thruster/wamv_propeller.obj" scale="0.5"/>
+                    <material name="Neutral"/>
+                    <look name="red"/>
+                </propeller>
+            <ros_subscriber topic="$(arg robot_name)/torqeedo_stbd/control/controller_speed"/>
+        </actuator>
+
+        
+        <!-- sensors -->
+        <sensor name="unicore_gps" type="gps" rate="1.0">
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.0 -1.0"/>
+            <noise ned_position="0.0"/>
+            <ros_publisher topic="$(arg robot_name)/unicore_rtk/fix"/>
+        </sensor>
+
+         <sensor name="imu_sf" type="imu" rate="20.0">
+                <link name="Base"/>
+                <origin rpy="3.1415926 0.0 0.0" xyz="0.0 0.0 -0.5"/>
+                <!-- <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" yaw_drift="0.0001" linear_acceleration="0.0001"/> -->
+                <noise angle="0.0 0.0 0.0" angular_velocity="0.0" yaw_drift="0.0" linear_acceleration="0.000"/>
+                <ros_publisher topic="$(arg robot_name)/imu/stonefish/data"/>
+        </sensor>
+
+        <sensor name="pressure" type="pressure" rate="5.0">
+                <link name="Base"/>
+                <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.5"/>
+                <noise pressure="2.0"/>
+                <ros_publisher topic="$(arg robot_name)/pressure"/>
+        </sensor>
+
+        <sensor name="dvl_sf" type="dvl" rate="5.0">
+            <link name="Base"/>
+            <origin rpy="3.1415926 0.0 0.0" xyz="0.0 0.0 0.3"/>
+            <specs beam_angle="30.0"/>
+            <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
+            <noise velocity="0.00" altitude="0.001"/>
+            <ros_publisher topic="$(arg robot_name)/dvl/stonefish/raw" altitude_topic="$(arg robot_name)/dvl/stonefish/altitude"/>
+        </sensor>
+
+
+        <comm name="luma" device_id="1" type="optical_modem">
+            <specs fov="120.0" range="50.0" ambient_light_sensitivity="0.0"/>
+            <connect device_id="2"/>
+            <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/luma"/>
+            <ros_subscriber topic="$(arg robot_name)/stonefish/luma"/>
+        </comm>
+
+        <!-- <world_transform xyz="5.0 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
+        <world_transform xyz="$(arg xyz)" rpy="$(arg rpy)"/>
+
+        <!-- <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/>  -->
+		<!-- <ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/> -->
+    </robot>
+</scenario>

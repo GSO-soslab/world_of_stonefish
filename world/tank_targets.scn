@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<scenario>
+
+    <!-- ball -->
+    <static name="ball" type="sphere">
+        <dimensions radius="0.5"/>
+        <material name="Rock"/>
+        <look name="red"/>
+        <world_transform xyz="8.0 25.0 5.5" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="ball" type="sphere">
+        <dimensions radius="1.0"/>
+        <material name="Rock"/>
+        <look name="red"/>
+        <world_transform xyz="0.0 25.0 5.5" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="ball" type="sphere">
+        <dimensions radius="2.0"/>
+        <material name="Rock"/>
+        <look name="red"/>
+        <world_transform xyz="-8.0 25.0 5.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <!-- cylinder -->
+    <static name="cylinder" type="cylinder">
+        <dimensions radius="0.5" height="1.0"/>
+    	  <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    	  <material name="Rock"/>
+    	  <look name="yellow"/>
+        <world_transform xyz="8.0 18.0 5.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cylinder" type="cylinder">
+        <dimensions radius="1.0" height="2.0"/>
+    	  <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    	  <material name="Rock"/>
+    	  <look name="yellow"/>
+        <world_transform xyz="0.0 18.0 5.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cylinder" type="cylinder">
+        <dimensions radius="2.0" height="4.0"/>
+    	  <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    	  <material name="Rock"/>
+    	  <look name="yellow"/>
+        <world_transform xyz="-8.0 18.0 5.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <!-- cylinder down -->
+
+    <static name="cylinder" type="cylinder">
+        <dimensions radius="0.5" height="1.0"/>
+    	  <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5708 0.0"/>
+    	  <material name="Rock"/>
+    	  <look name="yellow"/>
+        <world_transform xyz="8.0 10.0 5.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cylinder" type="cylinder">
+        <dimensions radius="1.0" height="2.0"/>
+    	  <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5708 0.0"/>
+    	  <material name="Rock"/>
+    	  <look name="yellow"/>
+        <world_transform xyz="0.0 10.0 5.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cylinder" type="cylinder">
+        <dimensions radius="2.0" height="3.0"/>
+    	  <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5708 0.0"/>
+    	  <material name="Rock"/>
+    	  <look name="yellow"/>
+        <world_transform xyz="-8.0 10.0 5.0" rpy="0.0 0.0 0.0"/>
+    </static>
+    
+    <!-- cube -->
+    <static name="cube" type="box">
+        <dimensions xyz="0.5 0.5 0.5"/>
+        <material name="Rock"/>
+        <look name="black"/>
+        <world_transform xyz="8.0 5.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+     <static name="cube" type="box">
+        <dimensions xyz="1.0 1.0 1.0"/>
+        <material name="Rock"/>
+        <look name="black"/>
+        <world_transform xyz="0.0 5.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cube" type="box">
+        <dimensions xyz="2.0 2.0 2.0"/>
+        <material name="Rock"/>
+        <look name="black"/>
+        <world_transform xyz="-8.0 5.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+
+    <!-- stacked -->
+    <static name="cube" type="box">
+        <dimensions xyz="0.5 2.0 1.0"/>
+        <material name="Rock"/>
+        <look name="blue"/>
+        <world_transform xyz="-5.0 0.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cube" type="box">
+        <dimensions xyz="0.5 2.0 2.0"/>
+        <material name="Rock"/>
+        <look name="blue"/>
+        <world_transform xyz="-7.0 0.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cube" type="box">
+        <dimensions xyz="0.5 2.0 3.0"/>
+        <material name="Rock"/>
+        <look name="blue"/>
+        <world_transform xyz="-9.0 0.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cube" type="box">
+        <dimensions xyz="0.5 2.0 4.0"/>
+        <material name="Rock"/>
+        <look name="blue"/>
+        <world_transform xyz="-11.0 0.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <!-- stack2 -->
+
+     <static name="cube" type="box">
+        <dimensions xyz="0.5 2.0 1.0"/>
+        <material name="Rock"/>
+        <look name="blue"/>
+        <world_transform xyz="7.0 0.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cube" type="box">
+        <dimensions xyz="0.5 2.0 1.5"/>
+        <material name="Rock"/>
+        <look name="blue"/>
+        <world_transform xyz="7.5 0.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cube" type="box">
+        <dimensions xyz="0.5 2.0 2.0"/>
+        <material name="Rock"/>
+        <look name="blue"/>
+        <world_transform xyz="8.0 0.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cube" type="box">
+        <dimensions xyz="0.5 2.0 2.5"/>
+        <material name="Rock"/>
+        <look name="blue"/>
+        <world_transform xyz="8.5 0.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+    <static name="cube" type="box">
+        <dimensions xyz="0.5 2.0 3.0"/>
+        <material name="Rock"/>
+        <look name="blue"/>
+        <world_transform xyz="9.0 0.0 6.0" rpy="0.0 0.0 0.0"/>
+    </static>
+
+</scenario>

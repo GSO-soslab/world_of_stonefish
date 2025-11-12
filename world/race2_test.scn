@@ -5,6 +5,10 @@
 		<ned latitude="41" longitude="-71"/>
 		<ocean>
 			<water density="1023.0" jerlov="0.2"/>
+			<particles enabled="true"/>
+			<current type="uniform">
+				<velocity xyz="0.1 0.0 0.0"/>
+			</current>
 		</ocean>
 		<atmosphere>
 			<sun azimuth="40.0" elevation="10.0"/>
@@ -20,6 +24,14 @@
 
 	<include file="$(find world_of_stonefish)/vehicles/race2_auv.scn">
 		<arg name="robot_name" value="race2_auv"/>
+		<arg name ="servo_min_ang" value = "-2.356"/>
+		<arg name ="servo_max_ang" value = "2.356"/>
+
+		<!-- <arg name ="servo_min_ang" value = "-0.7854"/> -->
+		<!-- <arg name ="servo_max_ang" value = "0.7854"/> -->
+
+		<!-- <arg name ="servo_min_ang" value = "-1.5708"/> -->
+		<!-- <arg name ="servo_max_ang" value = "1.5708"/> -->
 	</include>
 
 	<!-- <dynamic name="Cyl" type="cylinder" physics="submerged" buoyant="true">

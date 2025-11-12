@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<scenario>
+	<environment>
+		<ned latitude="41" longitude="-71"/>
+		<ocean>
+			<water density="1023.0" jerlov="0.2"/>
+			<!-- <waves height="1.5"/> -->
+			<particles enabled="true"/>
+			<current type="uniform">
+				<velocity xyz="0.0 0.0 0.0"/>
+			</current>
+		</ocean>
+		<atmosphere>
+			<sun azimuth="40.0" elevation="10.0"/>
+		</atmosphere>
+	</environment>
+
+
+	<include file="$(find world_of_stonefish)/metadata/materials.scn"/>
+	<include file="$(find world_of_stonefish)/metadata/looks.scn"/>
+    <include file="$(find world_of_stonefish)/world/tank_targets.scn" />
+    <include file="$(find world_of_stonefish)/world/tank_ladder.scn" />
+    <include file="$(find world_of_stonefish)/world/tank_revolving_plate.scn" />
+
+
+	<include file="$(find world_of_stonefish)/vehicles/mvp2_test_robot.scn">
+		<arg name="robot_name" value="mvp2_test_robot"/>
+	</include>
+
+
+    <static name="tank" type="model">
+        <physical>
+            <mesh filename="objects/tank.obj" scale="1.0" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/tank.obj" scale="1.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="gray"/>
+        <world_transform xyz="0.0 0.0 8.0" rpy="3.1415926 0.0 0.0"/>
+    </static>
+</scenario>

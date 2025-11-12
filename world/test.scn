@@ -44,7 +44,7 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </visual>
         <material name="Rock"/>
-        <look name="Gray"/>
+        <look name="gray"/>
         <world_transform xyz="0.0 0.0 20.0" rpy="0.0 0.0 0.0"/>
     </static>
 
