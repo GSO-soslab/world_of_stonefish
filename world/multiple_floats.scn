@@ -8,8 +8,74 @@
 			<!-- <waves height="0.5"/> -->
 			<particles enabled="true"/>
 			<current type="uniform">
-				<!-- <velocity xyz="0.01 0.005 0.0"/> -->
 				<velocity xyz="0.05 0.05 0.0"/>
+				
+				<!-- ===================== -->
+				<!-- current level 0: 0.00 -->
+				<!-- ===================== -->
+					<!-- direction 1 -->
+				<!-- <velocity xyz="0.0 0.0 0.0"/> 	 -->
+
+				<!-- ===================== -->
+				<!-- current level 1: 0.05 -->
+				<!-- ===================== -->
+					<!-- direction 1 -->
+				<!-- <velocity xyz="0.0 0.05 0.0"/>  -->
+					<!-- direction 2 -->
+				<!-- <velocity xyz="0.05 0.05 0.0"/>  -->
+					<!-- direction 3 -->
+				<!-- <velocity xyz="0.05 0.0 0.0"/>  -->
+					<!-- direction 4 -->
+				<!-- <velocity xyz="0.05 -0.05 0.0"/>  -->
+					<!-- direction 5 -->
+				<!-- <velocity xyz="0.0 -0.05 0.0"/>  -->
+					<!-- direction 6 -->
+				<!-- <velocity xyz="-0.05 -0.05 0.0"/>  -->
+					<!-- direction 7 -->
+				<!-- <velocity xyz="-0.05 -0.0 0.0"/>  -->
+					<!-- direction 8 -->
+				<!-- <velocity xyz="-0.05 0.05 0.0"/>  -->
+
+				<!-- ===================== -->
+				<!-- current level 2: 0.1 -->
+				<!-- ===================== -->
+					<!-- direction 1 -->
+				<!-- <velocity xyz="0.0 0.1 0.0"/>  -->
+					<!-- direction 2 -->
+				<!-- <velocity xyz="0.1 0.1 0.0"/>  -->
+					<!-- direction 3 -->
+				<!-- <velocity xyz="0.1 0.0 0.0"/>  -->
+					<!-- direction 4 -->
+				<!-- <velocity xyz="0.1 -0.1 0.0"/>  -->
+					<!-- direction 5 -->
+				<!-- <velocity xyz="0.0 -0.1 0.0"/>  -->
+					<!-- direction 6 -->
+				<!-- <velocity xyz="-0.1 -0.1 0.0"/>  -->
+					<!-- direction 7 -->
+				<!-- <velocity xyz="-0.1 -0.0 0.0"/>  -->
+					<!-- direction 8 -->
+				<!-- <velocity xyz="-0.1 0.1 0.0"/>  -->
+
+				<!-- ===================== -->
+				<!-- current level 3: 0.5 -->
+				<!-- ===================== -->
+					<!-- direction 1 -->
+				<!-- <velocity xyz="0.0 0.5 0.0"/>  -->
+					<!-- direction 2 -->
+				<!-- <velocity xyz="0.5 0.5 0.0"/>  -->
+					<!-- direction 3 -->
+				<!-- <velocity xyz="0.5 0.0 0.0"/>  -->
+					<!-- direction 4 -->
+				<!-- <velocity xyz="0.5 -0.5 0.0"/>  -->
+					<!-- direction 5 -->
+				<!-- <velocity xyz="0.0 -0.5 0.0"/>  -->
+					<!-- direction 6 -->
+				<!-- <velocity xyz="-0.5 -0.5 0.0"/>  -->
+					<!-- direction 7 -->
+				<!-- <velocity xyz="-0.5 -0.0 0.0"/>  -->
+					<!-- direction 8 -->
+				<!-- <velocity xyz="-0.5 0.5 0.0"/>  -->
+
 			</current>
 		</ocean>
 		<atmosphere>
@@ -61,44 +127,44 @@
 	</include>
 
 	<!-- No. 4 -->
-	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_4"/>
 		<arg name="position_x" value="-5.0"/>
 		<arg name="position_y" value="0.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include> -->
+	</include>
 
 	<!-- No. 5 -->
-	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_5"/>
 		<arg name="position_x" value="0.0"/>
 		<arg name="position_y" value="5.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include> -->
+	</include>
 
 	<!-- No. 6 -->
-	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_6"/>
 		<arg name="position_x" value="0.0"/>
 		<arg name="position_y" value="-10.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include> -->
+	</include>
 
 	<!-- No. 7 -->
-	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_7"/>
 		<arg name="position_x" value="7.071"/>
 		<arg name="position_y" value="7.071"/>
 		<arg name="position_z" value="0.0"/>
-	</include> -->
+	</include>
 
 	<!-- No. 8 -->
-	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">
+	<include file="$(find world_of_stonefish)/vehicles/float.scn">
 		<arg name="robot_name" value="float_rise_8"/>
 		<arg name="position_x" value="10.0"/>
 		<arg name="position_y" value="0.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include> -->
+	</include>
 
 	<!-- No. 9 -->
 	<!-- <include file="$(find world_of_stonefish)/vehicles/float.scn">

@@ -116,13 +116,19 @@
             </propeller>
         </actuator>
 
+        <!-- <sensor name="compass_sf" rate="10.0" type="compass">
+            <link name="Base"/>
+            <origin xyz="0.0 0.0 -0.17" rpy="3.1415926 0.0 0.0"/>
+            <noise heading="0.01"/>
+            <history samples="1"/>
+            <ros_publisher topic="$(arg robot_name)/compass"/>
+        </sensor> -->
+
         <sensor name="imu_sf" type="imu" rate="100.0">
             <link name="Base"/>
             <origin xyz="0.0 0.0 -0.17" rpy="3.1415926 0.0 0.0"/>
-            <noise angle="0.00 0.00 0.00" angular_velocity="0.01" 
+            <noise angle="0.01 0.01 0.01" angular_velocity="0.01" 
                    yaw_drift="0.00" linear_acceleration="0.01"/>                     
-            <!-- <noise angle="0.00 0.00 0.00" angular_velocity="0.00" 
-                   yaw_drift="0.00" linear_acceleration="0.00"/>                        -->
             <ros_publisher topic="$(arg robot_name)/imu/stonefish/data"/>
         </sensor>
 
@@ -131,7 +137,7 @@
             <origin xyz="0.0 0.0 0.06" rpy="3.1415926 0.0 0.0" />
             <specs beam_angle="30.0"/>
             <range velocity="9.0 9.0 9.0" altitude_min="0.2" altitude_max="200.0"/>
-            <noise velocity="0.00" altitude="0.001"/>
+            <noise velocity="0.05" altitude="0.001"/>
             <ros_publisher topic="$(arg robot_name)/dvl/stonefish/raw" altitude_topic="$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
 
@@ -149,7 +155,6 @@
             <ros_publisher topic="$(arg robot_name)/gps/fix"/>
         </sensor>
 
-        <!-- The max is 100hz -->
         <sensor name="odometry_sf" type="odometry" rate="100.0">
             <link name="Base"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
