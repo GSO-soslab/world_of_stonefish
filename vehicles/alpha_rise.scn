@@ -133,7 +133,7 @@
 
 
         <!-- sensors -->
-        <sensor name="gps" type="gps" rate="1.0">
+        <sensor name="unicore_gps" type="gps" rate="1.0">
             <link name="Base"/>
             <origin rpy="0.0 0.0 0.0" xyz="-0.7 0.0 -0.3"/>
             <noise ned_position="0.0"/>
@@ -164,7 +164,7 @@
             <ros_publisher topic="$(arg robot_name)/dvl/stonefish/raw" altitude_topic="$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
 
-        <comm name="usbl" device_id="1" type="usbl">
+        <!-- <comm name="usbl" device_id="1" type="usbl">
             <specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
             <connect device_id="2" occlusion_test="false"/>
             <autoping rate="1.0"/>
@@ -173,7 +173,7 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <link name="Base"/>
             <ros_publisher topic="$(arg robot_name)/stonefish/usbl"/>
-        </comm>
+        </comm> -->
 
         <sensor name="fls_link_sf" type="fls">
             <!--Low Mode-->
@@ -201,6 +201,18 @@
             <ros_publisher topic="$(arg robot_name)/stonefish/msis/data"/>
             <link name="Base"/>
         </sensor>
+
+
+
+        <comm name="luma" device_id="2" type="optical_modem">
+            <specs fov="120.0" range="50.0" ambient_light_sensitivity="0.0"/>
+            <connect device_id="1"/>
+            <origin xyz="0.0 0.0 0.0" rpy="3.1415926 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="$(arg robot_name)/stonefish/luma"/>
+            <ros_subscriber topic="$(arg robot_name)/stonefish/luma"/>
+        </comm>
+
 
         <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 

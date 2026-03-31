@@ -202,5 +202,6 @@
 		<!-- <ros_publisher thrusters="/mvp2_test_robot/stonefish/thruster_state" servos="/mvp2_test_robot/fins/joint_states"/> -->
         <ros_subscriber propellers="$(arg robot_name)/stonefish/thruster_command"/> 
 		<ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/>
+        
     </robot>
 </scenario>
