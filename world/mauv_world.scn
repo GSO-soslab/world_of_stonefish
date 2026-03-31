@@ -9,7 +9,8 @@
 			<particles enabled="true"/>
 			<current type="uniform">
 				<!-- <velocity xyz="0.01 0.005 0.0"/> -->
-				<velocity xyz="0.05 0.05 0.0"/>
+				<!-- <velocity xyz="0.05 0.05 0.0"/> -->
+				<velocity xyz="0.1 0.0 0.0"/>
 			</current>
 		</ocean>
 		<atmosphere>
@@ -38,9 +39,9 @@
 	<include file="$(find world_of_stonefish)/vehicles/mauv_1.scn">
 		<arg name="robot_name" value="mauv_1"/>
 
-		<arg name="position_x"      value="0.0"/>
-		<arg name="position_y"      value="0.0"/>
-		<arg name="position_z"      value="0.0"/>
+		<arg name="position_x"      value="1.0"/>
+		<arg name="position_y"      value="0.1"/>
+		<arg name="position_z"      value="-0.0"/>
 
 	</include>
 
@@ -61,12 +62,12 @@
 
 	</include>
 
-	<include file="$(find world_of_stonefish)/vehicles/mauv_4.scn">
+	<!-- <include file="$(find world_of_stonefish)/vehicles/mauv_4.scn">
 		<arg name="robot_name" value="mauv_4"/>
 
 		<arg name="position_x" value="0.0"/>
 		<arg name="position_y" value="-4.0"/>
 		<arg name="position_z" value="0.0"/>
-	</include>
+	</include> -->
 
 </scenario>
