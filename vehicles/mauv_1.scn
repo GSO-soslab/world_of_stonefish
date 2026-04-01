@@ -208,10 +208,3 @@
 		<ros_publisher propellers="$(arg robot_name)/stonefish/thruster_state"/>
     </robot>
 </scenario>
-        <!-- <ros_subscriber thrusters="/mauv_test_robot/stonefish/thruster_command" servos="/mauv_test_robot/fins/desired_joint_states"/>  -->
-		<!-- <ros_publisher thrusters="/mauv_test_robot/stonefish/thruster_state" servos="/mauv_test_robot/fins/joint_states"/> -->        <!-- <ros_subscriber thrusters="/mauv_test_robot/stonefish/thruster_command" servos="/mauv_test_robot/fins/desired_joint_states"/>  -->
-		<!-- <ros_publisher thrusters="/mauv_test_robot/stonefish/thruster_state" servos="/mauv_test_robot/fins/joint_states"/> -->
-		<!-- <ros_publisher thrusters="/mauv_test_robot/stonefish/thruster_state" servos="/mauv_test_robot/fins/joint_states"/> -->
-		<!-- <ros_publisher thrusters="/mauv_test_robot/stonefish/thruster_state" servos="/mauv_test_robot/fins/joint_states"/> -->
-		<!-- <ros_publisher thrusters="/mauv_test_robot/stonefish/thruster_state" servos="/mauv_test_robot/fins/joint_states"/> -->
-		<!-- <ros_publisher thrusters="/mauv_test_robot/stonefish/thruster_state" servos="/mauv_test_robot/fins/joint_states"/> -->
