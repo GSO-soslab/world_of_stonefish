@@ -33,6 +33,19 @@
         <arg name="robot_name" value="alpha_rise"/>
 	</include>
 
+    <!-- <static name="tank" type="model">
+        <physical>
+            <mesh filename="objects/tank.obj" scale="4.0" convex="false"/>
+            <origin xyz="80.0 80.0 10" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/tank.obj" scale="4.0"/>
+            <origin xyz="80.0 80.0 10" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="Gray"/>
+        <world_transform xyz="0.0 0.0 18.0" rpy="3.1415926 0.0 0.0"/>
+    </static> -->
     <!--include file="$(find world_of_stonefish)/vehicles/wamv.scn"/> -->
 
     <!-- <alpha_rise robot_name="alpha_rise" xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
@@ -42,11 +55,11 @@
 
 	<static name="Bottom" type="model">
         <physical>
-            <mesh filename="objects/flat_terrain.obj" scale="10.0" convex="true"/>
+            <mesh filename="objects/flat_terrain.obj" scale="50.0" convex="true"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </physical>
         <visual>
-            <mesh filename="objects/flat_terrain.obj" scale="10.0"/>
+            <mesh filename="objects/flat_terrain.obj" scale="50.0"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         </visual>
         <material name="Rock"/>
