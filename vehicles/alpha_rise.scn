@@ -191,7 +191,7 @@
             <ros_publisher topic="$(arg robot_name)/stonefish/fls/data"/>
         </sensor>
 
-        <sensor name="mbes_link_sf" rate="1.0" type="multibeam">
+        <sensor name="mbes_link_sf" rate="8.0" type="multibeam">
             <specs fov="80.0" steps="16"/>
             <range distance_min="0.5" distance_max="100.0"/>
             <noise distance="0.1"/>
@@ -204,7 +204,7 @@
         <sensor name="ping360_link_sf" type="msis">
             <specs step="0.9" bins="100" horizontal_beam_width="2.0" vertical_beam_width="10.0"/>
             <settings range_min="0.5" range_max="50.0" rotation_min="-30.0" rotation_max="135.0" gain="1.5"/>
-            <noise multiplicative="0.002" additive="0.003"/>
+            <noise multiplicative="0.02" additive="0.05"/>
             <display colormap="hot"/>
             <origin xyz="0.0 0.0 0.0" rpy="1.57 0 1.57"/> 
             <!-- <origin xyz="0.0 0.0 0.0" rpy="1.57 3.14 4.71"/> -->
