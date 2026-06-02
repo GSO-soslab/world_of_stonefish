@@ -240,7 +240,7 @@
         <joint name="mid_starboard_servo_joint" type="revolute">
             <parent name="Base"/>
             <child name="mid_starboard_thruster_link"/>
-            <origin rpy="-1.571 0.0 0.0" xyz="-0.4 0.24 -0.05485"/> 
+            <origin rpy="-1.571 0.0 0.0" xyz="-0.4cale="0.01 0.24 -0.05485"/> 
             <axis xyz="0.0 0.0 1.0"/>
             <limits min= "$(arg servo_min_ang)" max="$(arg servo_max_ang)"/>   
         </joint>
