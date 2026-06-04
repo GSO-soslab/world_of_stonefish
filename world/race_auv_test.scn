@@ -17,19 +17,66 @@
 		<arg name="robot_name" value="race_auv"/>
 	</include>
 
-	<static name="DockingStation" type="model">
-		<physical>
-			<mesh filename="objects/RACE_station_with_back.obj" scale="0.011" convex="false"/>
-			<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
-		</physical>
-		<visual>
-			<mesh filename="objects/RACE_station_with_back.obj" scale="0.011"/>
-			<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
-		</visual>
-		<material name="Rock"/>
-		<look name="Gray"/>
-		<world_transform xyz="-1.0 -0.365 0.0" rpy="0.0 0.0 0.0"/>
-	</static>
+	<robot name="DockingStation" fixed="true" self_collisions="false">
+		<base_link name="Station" type="compound" physics="submerged">
+			<external_part name="Body" type="model" physics="submerged" buoyant="false">
+				<physical>
+					<mesh filename="objects/RACE_station_flat.obj" scale="0.011" convex="false"/>
+					<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
+				</physical>
+				<visual>
+					<mesh filename="objects/RACE_station_flat.obj" scale="0.011"/>
+					<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
+				</visual>
+				<material name="Rock"/>
+				<look name="Gray"/>
+				<compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			</external_part>
+		</base_link>
+
+		<link name="UsblLink" type="box" physics="disabled">
+			<dimensions xyz="0.001 0.001 0.001"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<look name="Green"/>
+		</link>
+
+		<joint name="Joint1" type="fixed">
+			<parent name="Station"/>
+			<child name="UsblLink"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<axis xyz="0.0 0.0 0.0"/>
+		</joint>
+
+		<link name="ApriltagLink" type="box" physics="disabled">
+			<dimensions xyz="0.21 0.21 0.001"/>
+			<origin xyz="0.4 0.4 0.545" rpy="0.0 0.0 0.0"/>
+			<material name="Steel"/>
+			<look name="apriltag0" uv_mode="1"/>
+		</link>
+
+		<joint name="ApriltagJoint" type="fixed">
+			<parent name="Station"/>
+			<child name="ApriltagLink"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<axis xyz="0.0 0.0 0.0"/>
+		</joint>
+
+		<comm name="usbl" device_id="2" type="usbl">
+			<specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
+			<connect device_id="1" occlusion_test="false"/>
+			<autoping rate="1.0"/>
+			<noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
+			<resolution range="0.1" angle="0.1"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<link name="UsblLink"/>
+			<ros_publisher topic="docking_station/stonefish/usbl"/>
+		</comm>
+
+		<!-- <world_transform xyz="-1.0 -0.365 0.0" rpy="0.0 0.0 0.0"/> -->
+		<world_transform xyz="0.0 0.0 1.0" rpy="0.0 0.0 0.0"/>
+
+	</robot>
 
 	<static name="Bottom" type="model">
         <physical>
