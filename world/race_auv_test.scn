@@ -19,17 +19,16 @@
 
 	<static name="DockingStation" type="model">
 		<physical>
-			<!-- <mesh filename="objects/RACE_station.obj" scale="0.012" convex="true"/> -->
-			<mesh filename="objects/RACE_station.obj" scale="0.011" convex="false"/>
+			<mesh filename="objects/RACE_station_with_back.obj" scale="0.011" convex="false"/>
 			<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
 		</physical>
 		<visual>
-			<mesh filename="objects/RACE_station.obj" scale="0.011"/>
+			<mesh filename="objects/RACE_station_with_back.obj" scale="0.011"/>
 			<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
 		</visual>
 		<material name="Rock"/>
 		<look name="Gray"/>
-		<world_transform xyz="-1.0 -0.365 0.1" rpy="0.0 0.0 0.0"/>
+		<world_transform xyz="-1.0 -0.365 0.0" rpy="0.0 0.0 0.0"/>
 	</static>
 
 	<static name="Bottom" type="model">
