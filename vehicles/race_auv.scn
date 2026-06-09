@@ -163,15 +163,15 @@
             <ros_publisher topic="/$(arg robot_name)/dvl/stonefish/raw" altitude_topic="/$(arg robot_name)/dvl/stonefish/altitude"/>
         </sensor>
 
-        <comm name="usbl" device_id="1" type="usbl">
+        <comm name="Modem" device_id="1" type="acoustic_modem">
             <specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
             <connect device_id="2" occlusion_test="false"/>
-            <autoping rate="1.0"/>
-            <noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
-            <resolution range="0.1" angle="0.1"/>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <link name="Base"/>
-            <ros_publisher topic="/$(arg robot_name)/stonefish/usbl"/>
+            <!-- <ros_publisher topic="/$(arg robot_name)/modem"/>
+            <ros_subscriber  topic="/$(arg robot_name)/modem"/> -->
+            <ros_publisher topic="$(arg robot_name)/stonefish/acomms"/>
+            <ros_subscriber topic="$(arg robot_name)/stonefish/acomms"/>
         </comm>
 
         <sensor name="cam1" rate="10.0" type="camera">

@@ -46,6 +46,7 @@ add_library(${library_name} SHARED
   include/world_of_stonefish/servo_driver.cpp
   include/world_of_stonefish/rudder_driver.cpp
   include/world_of_stonefish/usbl_driver.cpp
+  include/world_of_stonefish/modem_driver.cpp
 )
 
 
@@ -123,6 +124,16 @@ target_link_libraries(usbl_driver_node ${library_name})
 ament_target_dependencies(usbl_driver_node ${dependencies})
 
 install(TARGETS usbl_driver_node ${library_name}
+ARCHIVE DESTINATION lib
+LIBRARY DESTINATION lib
+RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+
+add_executable(modem_driver_node src/modem_driver_node.cpp)
+target_link_libraries(modem_driver_node ${library_name})
+ament_target_dependencies(modem_driver_node ${dependencies})
+
+install(TARGETS modem_driver_node ${library_name}
 ARCHIVE DESTINATION lib
 LIBRARY DESTINATION lib
 RUNTIME DESTINATION lib/${PROJECT_NAME}

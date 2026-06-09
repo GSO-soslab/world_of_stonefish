@@ -70,7 +70,10 @@
 			<resolution range="0.1" angle="0.1"/>
 			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			<link name="UsblLink"/>
-			<ros_publisher topic="docking_station/stonefish/usbl"/>
+			<!-- <ros_publisher topic="race_top/stonefish/usbl"/>
+			<ros_subscriber  topic="race_top/stonefish/usbl"/> -->
+            <ros_publisher topic="race_top/stonefish/acomms"/>
+            <ros_subscriber topic="race_top/stonefish/acomms"/>
 		</comm>
 
 		<!-- <world_transform xyz="-1.0 -0.365 0.0" rpy="0.0 0.0 0.0"/> -->
