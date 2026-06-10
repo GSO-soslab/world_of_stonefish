@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+
+<scenario>
+	<robot name="$(arg robot_name)" fixed="true" self_collisions="false">
+		<base_link name="Station" type="compound" physics="submerged">
+			<external_part name="Body" type="model" physics="submerged" buoyant="false">
+				<physical>
+					<mesh filename="objects/RACE_station_flat.obj" scale="0.011" convex="false"/>
+					<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
+				</physical>
+				<visual>
+					<mesh filename="objects/RACE_station_flat.obj" scale="0.011"/>
+					<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
+				</visual>
+				<material name="Rock"/>
+				<look name="Gray"/>
+				<compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			</external_part>
+		</base_link>
+
+        <!-- the actual base frame  -->
+        <link name="Base" type="box" physics="submerged">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="Green"/>
+        </link>
+
+
+        <joint name="Joint1" type="fixed">
+            <parent name="Station"/>
+            <child name="Base"/>
+            <origin xyz="0.0 0.0 0.545" rpy="0.0 0.0 0.0"/>
+            <axis xyz="1.0 0.0 0.0"/>
+        </joint>
+
+		<link name="ApriltagLink0" type="box" physics="disabled">
+			<dimensions xyz="0.27 0.27 0.001"/>
+			<!-- <origin xyz="0.4 0.4 0.545" rpy="0.0 0.0 0.0"/> -->
+			<origin xyz="1.2 0.4 0.0" rpy="0.0 0.0 3.1415926"/>
+			<material name="Steel"/>
+			<look name="apriltag0" uv_mode="1"/>
+		</link>
+
+		<joint name="ApriltagJoint0" type="fixed"	>
+			<parent name="Base"/>
+			<child name="ApriltagLink0"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<axis xyz="0.0 0.0 0.0"/>
+		</joint>
+
+		<link name="ApriltagLink1" type="box" physics="disabled">
+			<dimensions xyz="0.27 0.27 0.001"/>
+			<!-- <origin xyz="0.4 0.4 0.545" rpy="0.0 0.0 0.0"/> -->
+			<origin xyz="0.15 0.4 0.0" rpy="0.0 0.0 3.1415926"/>
+			<material name="Steel"/>
+			<look name="apriltag1" uv_mode="1"/>
+		</link>
+
+		<joint name="ApriltagJoint1" type="fixed"	>
+			<parent name="Base"/>
+			<child name="ApriltagLink1"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<axis xyz="0.0 0.0 0.0"/>
+		</joint>
+
+		<link name="ApriltagLink2" type="box" physics="disabled">
+			<dimensions xyz="0.27 0.27 0.001"/>
+			<!-- <origin xyz="0.4 0.4 0.545" rpy="0.0 0.0 0.0"/> -->
+			<origin xyz="1.4 0.4 -0.3" rpy="0.0 1.5707963 3.1415926"/>
+			<material name="Steel"/>
+			<look name="apriltag2" uv_mode="1"/>
+		</link>
+
+		<joint name="ApriltagJoint2" type="fixed"	>
+			<parent name="Base"/>
+			<child name="ApriltagLink2"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<axis xyz="0.0 0.0 0.0"/>
+		</joint>
+
+        <!-- sensors -->
+		<sensor name="Odometry" rate="10.0" type="odometry">
+            <noise position="0.0" velocity="0.0" angle="0.0" angular_velocity="0.0"/>
+            <history samples="1"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="/$(arg robot_name)/stonefish/odometry"/>
+        </sensor>
+
+        <sensor name="gps" type="gps" rate="1.0">
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -2.0"/>
+            <noise ned_position="0.0"/>
+            <ros_publisher topic="/$(arg robot_name)/gps/fix"/>
+        </sensor>
+
+        <sensor name="imu_sf" type="imu" rate="20.0">
+			<link name="Base"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" yaw_drift="0.0001" linear_acceleration="0.0001"/>
+			<ros_publisher topic="/$(arg robot_name)/imu/stonefish/data"/>
+        </sensor>
+
+        <sensor name="pressure" type="pressure" rate="5.0">
+			<link name="Base"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			<noise pressure="2.0"/>
+			<ros_publisher topic="/$(arg robot_name)/pressure"/>
+        </sensor>
+
+		<comm name="usbl" device_id="2" type="usbl">
+			<specs min_vertical_fov="0.0" max_vertical_fov="360.0" range="1000.0"/>
+			<connect device_id="1" occlusion_test="false"/>
+			<autoping rate="1.0"/>
+			<noise range="0.05" horizontal_angle="0.2" vertical_angle="0.5"/>
+			<resolution range="0.1" angle="0.1"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<link name="Base"/>
+            <ros_publisher topic="/$(arg robot_name)/stonefish/acomms"/>
+            <ros_subscriber topic="/$(arg robot_name)/stonefish/acomms"/>
+		</comm>
+
+		<world_transform xyz="0.0 0.0 0.4" rpy="0.0 0.0 0.0"/>
+
+	</robot>
+</scenario>

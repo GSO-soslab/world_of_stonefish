@@ -133,6 +133,14 @@
 
 
         <!-- sensors -->
+        <sensor name="Odometry" rate="10.0" type="odometry">
+            <noise position="0.0" velocity="0.0" angle="0.0" angular_velocity="0.0"/>
+            <history samples="1"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="/$(arg robot_name)/stonefish/odometry"/>
+        </sensor>
+
         <sensor name="gps" type="gps" rate="1.0">
             <link name="Base"/>
             <origin rpy="0.0 0.0 0.0" xyz="-0.5 0.0 -0.18"/>
@@ -140,18 +148,18 @@
             <ros_publisher topic="/$(arg robot_name)/gps/fix"/>
         </sensor>
 
-         <sensor name="imu_sf" type="imu" rate="20.0">
-                <link name="Base"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-0.5 0.0 -0.08"/>
-                <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" yaw_drift="0.0001" linear_acceleration="0.0001"/>
-                <ros_publisher topic="/$(arg robot_name)/imu/stonefish/data"/>
+        <sensor name="imu_sf" type="imu" rate="20.0">
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 0.0" xyz="-0.5 0.0 -0.08"/>
+            <noise angle="0.0001 0.0001 0.0001" angular_velocity="0.0001" yaw_drift="0.0001" linear_acceleration="0.0001"/>
+            <ros_publisher topic="/$(arg robot_name)/imu/stonefish/data"/>
         </sensor>
 
         <sensor name="pressure" type="pressure" rate="5.0">
-                <link name="Base"/>
-                <origin rpy="0.0 0.0 0.0" xyz="-1.0 0.0 0.0"/>
-                <noise pressure="2.0"/>
-                <ros_publisher topic="/$(arg robot_name)/pressure"/>
+            <link name="Base"/>
+            <origin rpy="0.0 0.0 0.0" xyz="-1.0 0.0 0.0"/>
+            <noise pressure="2.0"/>
+            <ros_publisher topic="/$(arg robot_name)/pressure"/>
         </sensor>
 
         <sensor name="dvl_sf" type="dvl" rate="5.0">
@@ -175,7 +183,7 @@
         </comm>
 
         <sensor name="cam1" rate="10.0" type="camera">
-            <specs resolution_x="800" resolution_y="600" horizontal_fov="120.0"/>
+            <specs resolution_x="1600" resolution_y="1200" horizontal_fov="82.0"/>
             <!-- <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
             <origin xyz="0.0 0.0 -0.05" rpy="1.571 0.0 1.571"/>
             <link name="Base"/>
@@ -183,7 +191,7 @@
         </sensor>
 
         <sensor name="cam2" rate="10.0" type="camera">
-            <specs resolution_x="800" resolution_y="600" horizontal_fov="120.0"/>
+            <specs resolution_x="1600" resolution_y="1200" horizontal_fov="82.0"/>
             <origin xyz="-0.3 0.0 0.01" rpy="0.0 0.0 1.571"/>
             <link name="Base"/>
             <ros_publisher topic="/$(arg robot_name)/camera2/stonefish/data"/>
