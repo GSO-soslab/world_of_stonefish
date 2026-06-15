@@ -25,6 +25,13 @@
         <look name="apriltag0" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00000_1000px.png"/>
         <look name="apriltag1" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00001_1000px.png"/>
         <look name="apriltag2" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00002_1000px.png"/>
+        <look name="apriltag3" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00003_1000px.png"/>
+        <look name="apriltag4" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00004_1000px.png"/>
+        <look name="apriltag5" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00005_1000px.png"/>
+        <look name="apriltag6" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00006_1000px.png"/>
+        <look name="apriltag7" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00007_1000px.png"/>
+        <look name="apriltag8" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00008_1000px.png"/>
+        <look name="apriltag9" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00009_1000px.png"/>
 
     </looks>
 </scenario>

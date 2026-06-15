@@ -3,14 +3,16 @@
 <scenario>
 	<robot name="$(arg robot_name)" fixed="true" self_collisions="false">
 		<base_link name="Station" type="compound" physics="submerged">
-			<external_part name="Body" type="model" physics="submerged" buoyant="false">
+			<external_part name="Body" type="model" physics="submerged" buoyant="true">
 				<physical>
 					<mesh filename="objects/RACE_station_flat.obj" scale="0.011" convex="false"/>
 					<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
+					<!-- <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
 				</physical>
 				<visual>
 					<mesh filename="objects/RACE_station_flat.obj" scale="0.011"/>
 					<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
+					<!-- <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
 				</visual>
 				<material name="Rock"/>
 				<look name="Gray"/>
@@ -31,18 +33,17 @@
             <parent name="Station"/>
             <child name="Base"/>
             <origin xyz="0.0 0.0 0.545" rpy="0.0 0.0 0.0"/>
-            <axis xyz="1.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
         </joint>
 
 		<link name="ApriltagLink0" type="box" physics="disabled">
 			<dimensions xyz="0.27 0.27 0.001"/>
-			<!-- <origin xyz="0.4 0.4 0.545" rpy="0.0 0.0 0.0"/> -->
-			<origin xyz="1.2 0.4 0.0" rpy="0.0 0.0 3.1415926"/>
+			<origin xyz="1.1 0.4 0.0" rpy="0.0 3.1415926 3.1415926"/>
 			<material name="Steel"/>
 			<look name="apriltag0" uv_mode="1"/>
 		</link>
 
-		<joint name="ApriltagJoint0" type="fixed"	>
+		<joint name="ApriltagJoint0" type="fixed">
 			<parent name="Base"/>
 			<child name="ApriltagLink0"/>
 			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -51,13 +52,12 @@
 
 		<link name="ApriltagLink1" type="box" physics="disabled">
 			<dimensions xyz="0.27 0.27 0.001"/>
-			<!-- <origin xyz="0.4 0.4 0.545" rpy="0.0 0.0 0.0"/> -->
-			<origin xyz="0.15 0.4 0.0" rpy="0.0 0.0 3.1415926"/>
+			<origin xyz="0.2 0.4 0.0" rpy="0.0 3.1415926 3.1415926"/>
 			<material name="Steel"/>
 			<look name="apriltag1" uv_mode="1"/>
 		</link>
 
-		<joint name="ApriltagJoint1" type="fixed"	>
+		<joint name="ApriltagJoint1" type="fixed">
 			<parent name="Base"/>
 			<child name="ApriltagLink1"/>
 			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
@@ -66,15 +66,28 @@
 
 		<link name="ApriltagLink2" type="box" physics="disabled">
 			<dimensions xyz="0.27 0.27 0.001"/>
-			<!-- <origin xyz="0.4 0.4 0.545" rpy="0.0 0.0 0.0"/> -->
-			<origin xyz="1.4 0.4 -0.3" rpy="0.0 1.5707963 3.1415926"/>
+			<origin xyz="0.0 0.4 0.3" rpy="0.0 1.5707963 3.1415926"/>
 			<material name="Steel"/>
 			<look name="apriltag2" uv_mode="1"/>
 		</link>
 
-		<joint name="ApriltagJoint2" type="fixed"	>
+		<joint name="ApriltagJoint2" type="fixed">
 			<parent name="Base"/>
 			<child name="ApriltagLink2"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<axis xyz="0.0 0.0 0.0"/>
+		</joint>
+
+		<link name="ApriltagLink2_Backsideblock" type="box" physics="disabled">
+			<dimensions xyz="0.27 0.27 0.001"/>
+			<origin xyz="0.001 0.4 0.3" rpy="0.0 1.5707963 3.1415926"/>
+			<material name="Neutral"/>
+			<look name="gray"/>
+		</link>
+
+		<joint name="ApriltagLink2_Backsideblock" type="fixed">
+			<parent name="Base"/>
+			<child name="ApriltagLink2_Backsideblock"/>
 			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			<axis xyz="0.0 0.0 0.0"/>
 		</joint>
@@ -88,12 +101,12 @@
             <ros_publisher topic="/$(arg robot_name)/stonefish/odometry"/>
         </sensor>
 
-        <sensor name="gps" type="gps" rate="1.0">
+        <!-- <sensor name="gps" type="gps" rate="1.0">
             <link name="Base"/>
             <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -2.0"/>
             <noise ned_position="0.0"/>
             <ros_publisher topic="/$(arg robot_name)/gps/fix"/>
-        </sensor>
+        </sensor> -->
 
         <sensor name="imu_sf" type="imu" rate="20.0">
 			<link name="Base"/>
@@ -121,7 +134,9 @@
             <ros_subscriber topic="/$(arg robot_name)/stonefish/acomms"/>
 		</comm>
 
-		<world_transform xyz="0.0 0.0 0.4" rpy="0.0 0.0 0.0"/>
+		<!-- <world_transform xyz="1.5 -0.5 -0.2" rpy="0.0 0.0 0.0"/> -->
+		<world_transform xyz="-1.0 0.0 1.0" rpy="0.0 0.0 0.0"/>
+
 
 	</robot>
 </scenario>
