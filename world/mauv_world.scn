@@ -55,7 +55,7 @@
 
 		<arg name="position_x"      value="-5.0"/>
 		<arg name="position_y"      value="-2.0"/>
-		<arg name="position_z"      value="0.0"/>
+		<arg name="position_z"      value="0.5"/>
 
 	</include>
 
