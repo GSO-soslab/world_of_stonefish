@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+
+<scenario>
+	<arg name="robot_name" default="race_station_light"/>
+	<arg name="world_xyz"  default="0.0 0.0 1.0"/>
+	<arg name="world_rpy"  default="0.0 0.0 0.0"/>
+	<robot name="$(arg robot_name)" fixed="true" self_collisions="false">
+		<base_link name="Station" type="compound" physics="submerged">
+			<external_part name="Body" type="model" physics="submerged" buoyant="true">
+				<physical>
+					<mesh filename="objects/RACE_station_flat.obj" scale="0.011" convex="false"/>
+					<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
+				</physical>
+				<visual>
+					<mesh filename="objects/RACE_station_flat.obj" scale="0.011"/>
+					<origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/>
+				</visual>
+                <material name="Rock"/>
+                <look name="MatteGray"/>
+				<compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+			</external_part>
+		</base_link>
+
+        <!-- the actual base frame  -->
+        <link name="Base" type="box" physics="submerged">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="MatteGray"/>
+        </link>
+
+
+        <joint name="Joint1" type="fixed">
+            <parent name="Station"/>
+            <child name="Base"/>
+            <origin xyz="0.0 0.0 0.545" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
+        </joint>
+
+		<!-- Apriltag2: the docking-facing tag, placed vertically -->
+		<link name="ApriltagLink2" type="box" physics="disabled">
+			<dimensions xyz="0.27 0.27 0.001"/>
+			<origin xyz="0.0 0.4 0.46" rpy="0.0 1.5707963 3.1415926"/>
+			<material name="Steel"/>
+			<look name="apriltag2" uv_mode="1"/>
+		</link>
+
+		<joint name="ApriltagJoint2" type="fixed">
+			<parent name="Base"/>
+			<child name="ApriltagLink2"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<axis xyz="0.0 0.0 0.0"/>
+		</joint>
+
+		<link name="ApriltagLink2_Backsideblock" type="box" physics="disabled">
+			<dimensions xyz="0.27 0.27 0.001"/>
+			<origin xyz="0.001 0.4 0.46" rpy="0.0 1.5707963 3.1415926"/>
+			<material name="Neutral"/>
+			<look name="MatteGray"/>
+		</link>
+
+		<joint name="ApriltagLink2_BacksideJoint" type="fixed">
+			<parent name="Base"/>
+			<child name="ApriltagLink2_Backsideblock"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<axis xyz="0.0 0.0 0.0"/>
+		</joint>
+
+        <!-- Spot light mounted on the station near Apriltag2
+             Physical LED spec: 1500 lm, 5700 K, 135 deg beam (in water),
+             reflector diameter 37 mm (radius 18.5 mm).
+             Illuminance = 1500 / (pi * sin^2(67.5 deg)) ~= 559 lux
+             (Lambertian on-axis illuminance at 1 m). -->
+        <light name="DockingSpot">
+            <specs radius="0.0185" cone_angle="135.0" illuminance="10000.0"/>
+            <color temperature="5700.0"/>
+            <origin xyz="0.0 0.4 -0.2" rpy="0.0 -1.5707963 0.0"/>
+            <link name="Base"/>
+        </light>
+
+        <!-- Odometry at the station base frame -->
+        <sensor name="Odometry" rate="10.0" type="odometry">
+            <noise position="0.0" velocity="0.0" angle="0.0" angular_velocity="0.0"/>
+            <history samples="1"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="/$(arg robot_name)/stonefish/odometry"/>
+        </sensor>
+
+        <!-- Odometry at the light position (matches DockingSpot origin) -->
+        <sensor name="LightOdometry" rate="10.0" type="odometry">
+            <noise position="0.0" velocity="0.0" angle="0.0" angular_velocity="0.0"/>
+            <history samples="1"/>
+            <origin xyz="0.0 0.4 -0.2" rpy="0.0 -1.5707963 0.0"/>
+            <link name="Base"/>
+            <ros_publisher topic="/$(arg robot_name)/stonefish/light_odometry"/>
+        </sensor>
+
+		<world_transform xyz="$(arg world_xyz)" rpy="$(arg world_rpy)"/>
+
+	</robot>
+</scenario>

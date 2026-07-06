@@ -10,6 +10,14 @@
     <robot name="$(arg robot_name)" fixed="false" self_collisions="false">
         <base_link name="Vehicle" type="compound" physics="submerged">
             <external_part name="Hull" type="model" physics="submerged" buoyant="false">
+                <!-- <physical>
+                    <mesh filename="parts/body/RACE_sim.obj" scale="0.01"/>
+                    <origin rpy="0.0 -1.57 0.0" xyz="0.0 0.0 0.0"/>
+                </physical>
+                <visual>
+                    <mesh filename="parts/body/RACE_sim.obj" scale="0.01"/>
+                    <origin rpy="0.0 -1.57 0.0" xyz="0.0 0.0 0.0"/>
+                </visual> -->
                 <physical>
                     <mesh filename="parts/body/RACE_body.obj" scale="0.001"/>
                     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>

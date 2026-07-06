@@ -16,6 +16,7 @@
         <look name="blue" rgb="0.1 0.1 0.9" roughness="0.3"/>
         <look name="red" rgb="0.9 0.1 0.1" roughness="0.3"/>
         <look name="gray" gray="0.5" roughness="0.4" metalness="0.5"/>
+        <look name="MatteGray" gray="0.5" roughness="1.0" metalness="0.0"/>
         <look name="tank" rgb="0.9 0.9 0.9" roughness="0.9"/>
         <look name="ice" rgb="0.31 0.34 0.35" roughness="0.8"/>
         <look name="duct" gray="0.1" roughness="0.4" metalness="0.5"/>
