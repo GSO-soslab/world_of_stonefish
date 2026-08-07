@@ -71,10 +71,16 @@
              reflector diameter 37 mm (radius 18.5 mm).
              Illuminance = 1500 / (pi * sin^2(67.5 deg)) ~= 559 lux
              (Lambertian on-axis illuminance at 1 m). -->
-        <light name="lumen_light">
-            <specs radius="0.0185" cone_angle="135.0" illuminance="10000.0"/>
+        <!-- <light name="lumen_light">
+            <specs radius="0.0185" cone_angle="135.0" illuminance="50000.0"/>
             <color temperature="5700.0"/>
-            <origin xyz="0.0 0.4 -0.2" rpy="0.0 -1.57079632679 0.0"/>
+            <origin xyz="0.0 0.4 -0.3" rpy="0.0 -1.57079632679 0.0"/>
+            <link name="Base"/>
+        </light> -->
+        <light name="lumen_light">
+            <specs radius="0.0035" cone_angle="135.0" illuminance="50000.0"/>
+            <color temperature="5700.0"/>
+            <origin xyz="0.0 0.4 -0.3" rpy="0.0 -1.57079632679 0.0"/>
             <link name="Base"/>
         </light>
 
@@ -88,10 +94,10 @@
         </sensor> -->
 
         <!-- Odometry at the light position (matches DockingSpot origin) -->
-        <sensor name="lumen_light_odometry" rate="10.0" type="odometry">
+        <sensor name="lumen_light_odometry" rate="1.0" type="odometry">
             <noise position="0.0" velocity="0.0" angle="0.0" angular_velocity="0.0"/>
             <history samples="1"/>
-            <origin xyz="0.0 0.4 -0.2" rpy="0.0 -1.57079632679 0.0"/>
+            <origin xyz="0.0 0.4 -0.3" rpy="0.0 -1.57079632679 0.0"/>
             <link name="Base"/>
             <ros_publisher topic="/$(arg robot_name)/stonefish/light/odometry"/>
         </sensor>

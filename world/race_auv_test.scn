@@ -4,10 +4,15 @@
 	<environment>
 		<ned latitude="41" longitude="-71"/>
 		<ocean>
-			<water density="1023.0" jerlov="0.2"/>
+			<water density="$(param density)" jerlov="$(param jerlov)" temperature="$(param temperature)"/>
+			<waves height="$(param wave_height)"/>
+			<particles enabled="$(param particles_enabled)"/>
+			<current type="uniform">
+				<velocity xyz="$(param uniform_current)"/>
+			</current>
 		</ocean>
 		<atmosphere>
-			<sun azimuth="40.0" elevation="10.0"/>
+			<sun azimuth="$(param sun_azimuth)" elevation="$(param sun_elevation)"/>
 		</atmosphere>
 	</environment>
 	
@@ -20,6 +25,20 @@
 	<include file="$(find world_of_stonefish)/vehicles/race_station.scn">
 		<arg name="robot_name" value="race_station"/>
 	</include>
+
+	<static name="tank" type="model">
+        <physical>
+            <mesh filename="objects/ORL_Tank.obj" scale="1.0" convex="false"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </physical>
+        <visual>
+            <mesh filename="objects/ORL_Tank.obj" scale="1.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+        <material name="Rock"/>
+        <look name="Gray"/>
+        <world_transform xyz="0.0 0.0 5.1" rpy="-1.57 0.0 1.57"/>
+    </static>
 
 	<static name="Bottom" type="model">
         <physical>

@@ -12,12 +12,14 @@
 
     <materials>
         <material name="Foam" density="320.37" restitution="0.1"/>
+        <material name="LightFoam" density="192.0" restitution="0.1"/>
         <material name="Neutral" density="1023.0" restitution="0.1"/>
         <material name="Resin" density="1150.0" restitution="0.1"/>
         <material name="Rock" density="3000.0" restitution="0.8"/>
         <material name="Fiberglass" density="1500.0" restitution="0.3"/>
         <material name="Aluminium" density="2710.0" restitution="0.5"/>
         <material name="Vehicle" density="990.0" restitution="0.8"/>
+        <material name="RACEBody" density="461.5" restitution="0.8"/>
         <material name="Ice" density="900.0" restitution="0.8"/>
         <friction_table>
             <friction material1="Neutral" material2="Neutral" static="0.5" dynamic="0.2"/>

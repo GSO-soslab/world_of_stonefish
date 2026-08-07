@@ -15,6 +15,7 @@
         <look name="yellow" rgb="1.0 0.9 0.0" roughness="0.3"/>
         <look name="blue" rgb="0.1 0.1 0.9" roughness="0.3"/>
         <look name="red" rgb="0.9 0.1 0.1" roughness="0.3"/>
+        <look name="green" rgb="0.1 0.9 0.1" roughness="0.3"/>
         <look name="gray" gray="0.5" roughness="0.4" metalness="0.5"/>
         <look name="MatteGray" gray="0.5" roughness="1.0" metalness="0.0"/>
         <look name="tank" rgb="0.9 0.9 0.9" roughness="0.9"/>
@@ -23,16 +24,21 @@
         <look name="manipulator" rgb="0.2 0.15 0.1" roughness="0.6" metalness="0.8"/>
         <look name="ee" rgb="0.59 0.56 0.51" roughness="0.6" metalness="0.8"/>
         <look name="terrain" rgb="0.2 0.8 0.3" roughness="0.8" metalness="0.5"/>
-        <look name="apriltag0" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00000_1000px.png"/>
-        <look name="apriltag1" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00001_1000px.png"/>
-        <look name="apriltag2" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00002_1000px.png"/>
-        <look name="apriltag3" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00003_1000px.png"/>
-        <look name="apriltag4" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00004_1000px.png"/>
-        <look name="apriltag5" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00005_1000px.png"/>
-        <look name="apriltag6" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00006_1000px.png"/>
-        <look name="apriltag7" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00007_1000px.png"/>
-        <look name="apriltag8" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00008_1000px.png"/>
-        <look name="apriltag9" gray="0.1" roughness="0.1" texture="apriltags/tag25_09_00009_1000px.png"/>
+        <look name="apriltag25h9_02" gray="0.05" roughness="0.1" texture="apriltags/tag25_09_00002_1000px.png"/>
+        <look name="apriltag25h9_13" gray="0.05" roughness="0.1" texture="apriltags/tag25_09_00013_1000px.png"/>
+        <look name="apriltag25h9_17" gray="0.05" roughness="0.1" texture="apriltags/tag25_09_00017_1000px.png"/>
+        <look name="apriltag25h9_25" gray="0.05" roughness="0.1" texture="apriltags/tag25_09_00025_1000px.png"/>
+        <look name="apriltag36h11_008" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00008_1000px.png"/>
+        <look name="apriltag36h11_009" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00009_1000px.png"/>
+        <look name="apriltag36h11_022" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00022_1000px.png"/>
+        <look name="apriltag36h11_054" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00054_1000px.png"/>
+        <look name="apriltag36h11_055" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00055_1000px.png"/>
+        <look name="apriltag36h11_205" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00205_1000px.png"/>
+        <look name="apriltag36h11_222" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00222_1000px.png"/>
+        <look name="apriltag36h11_541" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00541_1000px.png"/>
+        <look name="apriltag36h11_558" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00558_1000px.png"/>
+        <look name="apriltag36h11_568" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00568_1000px.png"/>
+        <look name="apriltag36h11_585" gray="0.05" roughness="0.1" texture="apriltags/tag36_11_00585_1000px.png"/>
 
     </looks>
 </scenario>
