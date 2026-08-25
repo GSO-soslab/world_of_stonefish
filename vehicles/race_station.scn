@@ -20,15 +20,15 @@
 			</external_part>
 
 			<external_part name="Body" type="model" physics="submerged" buoyant="true">
-				<physical>
-					<mesh filename="objects/race_station_couplink_sim.obj" scale="1.0" convex="false"/>
-					<!-- <origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/> -->
-					<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.571"/>
-				</physical>
-				<visual>
-					<mesh filename="objects/race_station_couplink_sim.obj" scale="1.0"/>
-					<!-- <origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/> -->
-					<origin xyz="0.0 0.0 -0.007" rpy="0.0 0.0 1.571"/>
+			<physical>
+				<mesh filename="objects/race_station_couplink_sim.obj" scale="1.0" convex="false"/>
+				<!-- <origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/> -->
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.571"/>
+			</physical>
+			<visual>
+				<mesh filename="objects/race_station_couplink_sim.obj" scale="1.0"/>
+				<!-- <origin xyz="0.0 0.0 0.0" rpy="3.1415 0.0 1.57"/> -->
+				<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.571"/>
 				</visual>
 				<material name="Resin"/>
 				<look name="black"/>
@@ -53,9 +53,9 @@
         </joint>
 		
 		<!-- Dock Point -->
-        <!-- <link name="dock_point" type="box" physics="disabled">
+        <link name="dock_point" type="box" physics="disabled">
             <dimensions xyz="0.01 0.01 0.01"/>
-            <origin xyz="-0.415 0.33 -0.05" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <material name="Neutral"/>
             <look name="Green"/>
         </link>
@@ -63,156 +63,217 @@
         <joint name="dock_point_joint" type="fixed">
             <parent name="Base"/>
             <child name="dock_point"/>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!-- <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
+            <origin xyz="-0.410 0.325 -0.04" rpy="3.1415926 0.0 0.0"/>
             <axis xyz="0.0 0.0 0.0"/>
-        </joint> -->
+        </joint>
 
 		<!-- Large Tag Front -->
 		<link name="apriltag_large_1" type="box" physics="disabled">
 			<dimensions xyz="0.27 0.27 0.001"/>
-            <origin xyz="-1.22 0.33 0.17" rpy="0.0 1.5707963 3.1415926"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			<material name="Neutral"/>
-			<look name="apriltag25h9_17" uv_mode="1"/>
+			<look name="apriltag25h9_02" uv_mode="1"/>
 		</link>
 
 		<joint name="apriltag_large_1_joint" type="fixed">
-			<parent name="Base"/>
+			<parent name="dock_point"/>
 			<child name="apriltag_large_1"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<origin xyz="-0.81 0.0 -0.21" rpy="0.0 1.5707963 0.0"/>
 			<axis xyz="0.0 0.0 0.0"/>
 		</joint>
 
 		<link name="apriltag_large_1_back" type="box" physics="disabled">
 			<dimensions xyz="0.27 0.27 0.001"/>
-            <origin xyz="-1.219 0.33 0.17" rpy="0.0 1.5707963 3.1415926"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			<material name="Neutral"/>
 			<look name="gray"/>
 		</link>
 
 		<joint name="apriltag_large_1_back_joint" type="fixed">
-			<parent name="Base"/>
+			<parent name="dock_point"/>
 			<child name="apriltag_large_1_back"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<origin xyz="-0.809 0.0 -0.21" rpy="0.0 1.5707963 0.0"/>
 			<axis xyz="0.0 0.0 0.0"/>
 		</joint>
 
-		<!-- Large Tag Right -->
+		<!-- Large Tag Port (25h9_13) -->
 		<link name="apriltag_large_2" type="box" physics="disabled">
 			<dimensions xyz="0.27 0.27 0.001"/>
-            <origin xyz="-0.65 0.68 0.17" rpy="1.5707963 1.5707963 3.1415926"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			<material name="Neutral"/>
 			<look name="apriltag25h9_13" uv_mode="1"/>
 		</link>
 
 		<joint name="apriltag_large_2_joint" type="fixed">
-			<parent name="Base"/>
+			<parent name="dock_point"/>
 			<child name="apriltag_large_2"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="-0.26 0.37 -0.21" rpy="1.5707963 1.5707963 0.0"/>
 			<axis xyz="0.0 0.0 0.0"/>
 		</joint>
 
 		<link name="apriltag_large_2_back" type="box" physics="disabled">
 			<dimensions xyz="0.27 0.27 0.001"/>
-            <origin xyz="-0.65 0.679 0.17" rpy="1.5707963 1.5707963 3.1415926"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			<material name="Neutral"/>
 			<look name="gray"/>
 		</link>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
 		<joint name="apriltag_large_2_back_joint" type="fixed">
-			<parent name="Base"/>
+			<parent name="dock_point"/>
 			<child name="apriltag_large_2_back"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="-0.26 0.369 -0.21" rpy="1.5707963 1.5707963 0.0"/>
 			<axis xyz="0.0 0.0 0.0"/>
 		</joint>
 
-
-		<!-- Large Tag Back -->
-		<link name="apriltag_large_3" type="box" physics="disabled">
-			<dimensions xyz="0.27 0.27 0.001"/>
-            <origin xyz="0.0 0.33 0.17" rpy="0.0 1.5707963 0.0"/>
-			<material name="Neutral"/>
-			<look name="apriltag25h9_02" uv_mode="1"/>
-		</link>
-
-		<joint name="apriltag_large_3_joint" type="fixed">
-			<parent name="Base"/>
-			<child name="apriltag_large_3"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-			<axis xyz="0.0 0.0 0.0"/>
-		</joint>
-
-		<link name="apriltag_large_3_back" type="box" physics="disabled">
-			<dimensions xyz="0.27 0.27 0.001"/>
-            <origin xyz="-0.001 0.33 0.17" rpy="0.0 1.5707963 0.0"/>
-			<material name="Neutral"/>
-			<look name="gray"/>
-		</link>
-
-		<joint name="apriltag_large_3_back_joint" type="fixed">
-			<parent name="Base"/>
-			<child name="apriltag_large_3_back"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-			<axis xyz="0.0 0.0 0.0"/>
-		</joint>
-
-		<!-- Large Tag Left -->
+		<!-- Large Tag Starboard (25h9_17) -->
 		<link name="apriltag_large_4" type="box" physics="disabled">
 			<dimensions xyz="0.27 0.27 0.001"/>
-            <origin xyz="-0.65 -0.03 0.17" rpy="1.5707963 1.5707963 0.0"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			<material name="Neutral"/>
-			<look name="apriltag25h9_25" uv_mode="1"/>
+			<look name="apriltag25h9_17" uv_mode="1"/>
 		</link>
 
 		<joint name="apriltag_large_4_joint" type="fixed">
-			<parent name="Base"/>
+			<parent name="dock_point"/>
 			<child name="apriltag_large_4"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="-0.26 -0.37 -0.21" rpy="-1.5707963 1.5707963 0.0"/>
 			<axis xyz="0.0 0.0 0.0"/>
 		</joint>
 
 		<link name="apriltag_large_4_back" type="box" physics="disabled">
 			<dimensions xyz="0.27 0.27 0.001"/>
-            <origin xyz="-0.65 -0.029 0.17" rpy="1.5707963 1.5707963 0.0"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			<material name="Neutral"/>
 			<look name="gray"/>
 		</link>
 
 		<joint name="apriltag_large_4_back_joint" type="fixed">
-			<parent name="Base"/>
+			<parent name="dock_point"/>
 			<child name="apriltag_large_4_back"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="-0.26 -0.369 -0.21" rpy="-1.5707963 1.5707963 0.0"/>
 			<axis xyz="0.0 0.0 0.0"/>
 		</joint>
 
-		<!-- Medium Tag Left -->
+		<!-- Medium Tag Port (36h11_176) -->
 		<link name="apriltag_medium_1" type="box" physics="disabled">
-			<dimensions xyz="0.15625 0.15625 0.001"/>
-            <origin xyz="-0.42 0.12 0.0" rpy="0.0 3.1415926 3.1415926"/>
+			<dimensions xyz="0.15 0.15 0.001"/>
 			<material name="Neutral"/>
-			<look name="apriltag36h11_009" uv_mode="1"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<look name="apriltag36h11_176" uv_mode="1"/>
 		</link>
 
 		<joint name="apriltag_medium_1_joint" type="fixed">
-			<parent name="Base"/>
+			<parent name="dock_point"/>
 			<child name="apriltag_medium_1"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <origin xyz="0.0 0.25 -0.012" rpy="0.0 0.0 0.0"/>
 			<axis xyz="0.0 0.0 0.0"/>
 		</joint>
 
-		<!-- Medium Tag Right -->
+		<!-- Medium Tag Starboard (36h11_185) -->
 		<link name="apriltag_medium_2" type="box" physics="disabled">
-			<dimensions xyz="0.15625 0.15625 0.001"/>
-            <origin xyz="-0.42 0.52 0.0" rpy="0.0 3.1415926 3.1415926"/>
+			<dimensions xyz="0.15 0.15 0.001"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 			<material name="Neutral"/>
-			<look name="apriltag36h11_022" uv_mode="1"/>
+			<look name="apriltag36h11_185" uv_mode="1"/>
 		</link>
 
 		<joint name="apriltag_medium_2_joint" type="fixed">
-			<parent name="Base"/>
-			<child name="apriltag_medium_2"/>
-			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-			<axis xyz="0.0 0.0 0.0"/>
-		</joint>
+            <parent name="dock_point"/>
+            <child name="apriltag_medium_2"/>
+            <origin xyz="0.0 -0.25 -0.012" rpy="0.0 0.0 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
+        </joint>
+
+		<!-- Medium Tag Top (36h11_146) -->
+		<link name="apriltag_medium_3" type="box" physics="disabled">
+			<dimensions xyz="0.15 0.15 0.001"/>
+            <!-- <origin xyz="0.020 0.435 0.4623" rpy="0.0 1.5707963 3.1415926"/> -->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<look name="apriltag36h11_146" uv_mode="1"/>
+		</link>
+
+		<joint name="apriltag_medium_3_joint" type="fixed">
+            <parent name="dock_point"/>
+            <child name="apriltag_medium_3"/>
+            <!-- <origin xyz="0.430 0.110 0.480" rpy="0.0 1.5707963 0.0"/> -->
+            <origin xyz="0.430 0.0 0.405" rpy="0.0 1.5707963 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
+        </joint>
+
+		<link name="apriltag_medium_3_back" type="box" physics="disabled">
+			<dimensions xyz="0.15 0.15 0.001"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<look name="gray"/>
+		</link>
+
+		<joint name="apriltag_medium_3_back_joint" type="fixed">
+            <parent name="dock_point"/>
+            <child name="apriltag_medium_3_back"/>
+            <origin xyz="0.431 0.0 0.405" rpy="0.0 1.5707963 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
+        </joint>
+
+		<!-- Small Tag Upper (36h11_541) -->
+		<link name="apriltag_small_1" type="box" physics="disabled">
+			<dimensions xyz="0.05 0.05 0.001"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<look name="apriltag36h11_541" uv_mode="1"/>
+		</link>
+
+		<joint name="apriltag_small_1_joint" type="fixed">
+            <parent name="dock_point"/>
+            <child name="apriltag_small_1"/>
+            <origin xyz="0.470 0.0 0.160" rpy="0.0 1.5707963 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
+        </joint>
+
+		<link name="apriltag_small_1_back" type="box" physics="disabled">
+			<dimensions xyz="0.05 0.05 0.001"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<look name="gray"/>
+		</link>
+
+		<joint name="apriltag_small_1_back_joint" type="fixed">
+            <parent name="dock_point"/>
+            <child name="apriltag_small_1_back"/>
+            <origin xyz="0.471 0.0 0.160" rpy="0.0 1.5707963 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
+        </joint>
+
+		<!-- Small Tag Lower (36h11_558) -->
+		<link name="apriltag_small_2" type="box" physics="disabled">
+			<dimensions xyz="0.05 0.05 0.001"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<look name="apriltag36h11_558" uv_mode="1"/>
+		</link>
+
+		<joint name="apriltag_small_2_joint" type="fixed">
+            <parent name="dock_point"/>
+            <child name="apriltag_small_2"/>
+            <origin xyz="0.470 0.0 0.095" rpy="0.0 1.5707963 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
+        </joint>
+
+		<link name="apriltag_small_2_back" type="box" physics="disabled">
+			<dimensions xyz="0.05 0.05 0.001"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<look name="gray"/>
+		</link>
+
+		<joint name="apriltag_small_2_back_joint" type="fixed">
+            <parent name="dock_point"/>
+            <child name="apriltag_small_2_back"/>
+            <origin xyz="0.471 0.0 0.095" rpy="0.0 1.5707963 0.0"/>
+            <axis xyz="0.0 0.0 0.0"/>
+        </joint>
 
         <!-- sensors -->
 		<sensor name="Odometry" rate="10.0" type="odometry">

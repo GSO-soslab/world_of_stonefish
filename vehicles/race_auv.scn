@@ -120,6 +120,20 @@
             <axis xyz="1.0 0.0 0.0"/>
         </joint>
 
+        <!-- <link name="auv_dock_point" type="box" physics="submerged">
+            <dimensions xyz="0.01 0.02 0.01"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+            <material name="Neutral"/>
+            <look name="Blue"/>
+        </link>
+
+        <joint name="JointDockpoint" type="fixed">
+            <parent name="Base"/>
+            <child name="auv_dock_point"/>
+            <origin rpy="0.0 0.0 0.0" xyz="-0.305 0.0 -0.13"/>
+            <axis xyz="1.0 0.0 0.0"/>
+        </joint> -->
+
 
         <!-- Thruster -->
         <actuator name="ThrusterSwayStern" type="propeller">
@@ -248,7 +262,7 @@
 
         <sensor name="cam_down" rate="10.0" type="camera">
             <specs resolution_x="1600" resolution_y="1200" horizontal_fov="82.0"/>
-            <origin xyz="-0.305 0.0 -0.153" rpy="0.0 3.1415 1.571"/>
+            <origin xyz="-0.305 0.0 -0.128" rpy="0.0 3.1415 1.571"/>
             <link name="Base"/>
             <ros_publisher topic="$(arg robot_name)/cam_down/stonefish/data"/>
         </sensor>
