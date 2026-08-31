@@ -18,7 +18,6 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(tf2_eigen REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
-find_package(acomms_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -30,7 +29,6 @@ set(dependencies
   sensor_msgs
   stonefish_ros2
   nav_msgs
-  acomms_msgs
 )
 
 include_directories(include
