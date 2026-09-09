@@ -319,7 +319,9 @@
 
 		<!-- <world_transform xyz="1.5 -0.5 -0.2" rpy="0.0 0.0 0.0"/> -->
 		<!-- <world_transform xyz="3.2 0.0 3.95" rpy="0.0 0.0 0.0"/> -->
-		<world_transform xyz="0.08 -0.325 3.0" rpy="0.0 0.0 0.0"/>
+		<!-- <world_transform xyz="0.08 -0.325 3.0" rpy="0.0 0.0 0.0"/> -->
+		<!-- <world_transform xyz="2.0 -0.325 0.6" rpy="0.0 0.0 0.0"/> -->
+		<world_transform xyz="0.28 -0.325 0.64" rpy="0.0 0.0 0.0"/>
 
 
 	</robot>

@@ -268,7 +268,7 @@
         </sensor>
 
         <!-- <world_transform xyz="-3.2 0.0 0.0" rpy="0.0 0.0 0.0"/> -->
-        <world_transform xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <world_transform xyz="0.0 0.0 0.2" rpy="0.0 0.0 0.0"/>
 
         <!-- <ros_subscriber thrusters="/race_auv/stonefish/thruster_command" servos="/race_auv/fins/desired_joint_states"/> 
 		<ros_publisher thrusters="/race_auv/stonefish/thruster_state" servos="/race_auv/fins/joint_states"/> -->
